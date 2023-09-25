@@ -93,9 +93,28 @@ if ($errmsg) {
 		$update->GuideNo = $GuideNo;
 		$update->GuideVer = $GuideVer;
 		$update->GuideID = $GuideNo;
-		$result = $db->updateObject($guidetable, $update, 'GuideID');
-		if (!$result) {
-			echo ("Couldn't update guide ");
+
+
+		// Debugging before setting GuideRating
+		error_log("Debug: GuideRating before setting: " . var_export($GuideRating, true));
+
+		// Explicitly handle NULL and empty strings
+		if ($GuideRating === NULL || $GuideRating === '') {
+			$GuideRating = 0;
+		}
+		$update->GuideRating = (int) $GuideRating;
+
+		// Debugging after setting GuideRating
+		error_log("Debug: GuideRating after setting: " . var_export($update->GuideRating, true));
+		error_log("Debug: Type of GuideRating: " . gettype($GuideRating));
+
+		try {
+			$result = $db->updateObject($guidetable, $update, 'GuideID');
+			if (!$result) {
+				echo ("Couldn't update guide ");
+			}
+		} catch (Exception $e) {
+			error_log("Database error: " . $e->getMessage());
 		}
 		if ($GuideCategory == 2) {
 			$changelogtext = "Guide hazard - '" . $GuideName . "'(" . $GuideWaterway . ") added";
