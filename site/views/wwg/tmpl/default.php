@@ -8,19 +8,15 @@
  * @author      Chris Grant www.productif.co.uk
  */
 
-/* Updated for Google Maps API V 3 CJG 20201028 */
-
-
 // no direct access
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
-
-use Joomla\CMS\Router\Route;
-use Joomla\CMS\Uri\Uri;
 
 $app = Factory::getApplication('com_membership');
 $db = Factory::getDBO();
@@ -38,17 +34,6 @@ $parentlink = Route::_('index.php?Itemid=' . Factory::getApplication()->getMenu(
 
 echo ("<h2>Waterways Guide</h2>");
 ?>
-
-<!--
-Updates:
-20091118 Hazard updates started
-
-20091114 Sequence number added to admin view of list
-20110310 Facilities filter added, hazards hidden for now.
-
-
-
--->
 
 <style type="text/css" media="screen,projection">
 	.table_admin_profile {
@@ -150,8 +135,6 @@ Updates:
 <form name="form" enctype="multipart/form-data" method="post">
 	<table width="100%" border="0" cellpadding="3" cellspacing="1">
 		<?php
-
-
 
 		$test_vars = (array(
 			'country',
@@ -265,8 +248,6 @@ Updates:
 		if ($guideaction == "map" || $guideaction == "map_edit" || $guideaction == "memberedit" || $guideaction == "edit" || $positionaction == "map") {
 		?>
 
-
-
 		<?php
 		}
 
@@ -274,9 +255,6 @@ Updates:
 
 			$admin = "open";
 		}
-
-		//echo("login:".$login_memberid." | login email:".$login_email." | guides email:".$guidesemail." | view:".$view);
-
 
 		//---------------------------------------guide submission approve / reject---------------------------------------------
 
@@ -420,406 +398,14 @@ Updates:
 			//$waterway=$GuideWaterway;
 		}
 
-
-
-
-
 		//---------------------------------------guide member save---------------------------------------------
-
-		if ($guideaction == "membersave") {
-
-			$errmsg = "";
-
-			if ($errmsg) {
-				$errmsg = "Please check " . $errmsg;
-				$guideaction = "edit";
-			} else {
-				//entry OK so update
-				$updates = 0;
-				$GuideUpdate = date("Y-m-d H:i:s");
-
-				$updatetext = "";
-				$subject = "Guides";
-				//get info for this submitter
-				if (empty($login_MembershipNo)) {
-					$query = $db->getQuery(true)
-						->select('*')
-						->from($db->qn('tblMembers'))
-						->where($db->qn('ID') . ' = ' . $db->q($login_memberid));
-					$memberrow = $db->setQuery($query)->loadAssoc();
-					$login_MembershipNo = $memberrow["MembershipNo"];
-					$contact = $memberrow["FirstName"] . " " . $memberrow["LastName"] . ", " . $memberrow["Email"] . ", Membership No. " . $login_MembershipNo . "";
-					$submitteremail = $memberrow["Email"];
-					$submitterid = $memberrow["ID"];
-				} else {
-					$login_MembershipNo = "Unknown";
-					$contact = "Unknown";
-				}
-
-				$GuideEditorMemNo = $login_MembershipNo;
-				if ($infoid == "new") {
-					//add new
-					if (!$GuidePostingDate) {
-						$GuidePostingDate = $GuideUpdate;
-					}
-					if ($GuideLat == "51.67256") {
-						//default mid channel still there so make blank for 'unknown'
-						$GuideLat = "";
-						$GuideLong = "";
-					}
-					$GuideStatus = 0; //pending
-					$GuideVer = 1; //start at v1
-					$newby = 1;
-
-					//$mytext_utf = iconv('windows-1251', 'utf-8', $mytext);
-					$GuideWaterway = str_replace(chr(146), chr(39), $GuideWaterway); //`'
-					$GuideWaterway = str_replace(chr(34), chr(39), $GuideWaterway); //"'
-					$insert = new \stdClass();
-					$insert->GuideNo = $GuideNo;
-					$insert->GuideVer = $GuideVer;
-					$insert->GuideCountry = addslashes($GuideCountry);
-					//			$insert->GuideWaterway = addslashes($GuideWaterway);
-					$insert->GuideWaterway = $GuideWaterway;
-					$insert->GuideSummary = addslashes($GuideSummary);
-					$insert->GuideName = addslashes($GuideName);
-					$insert->GuideRef = addslashes($GuideRef);
-
-					// Check if $GuideOrder is an empty string
-					if ($GuideOrder === '') {
-						// If it is, set it to NULL
-						$GuideOrder = NULL;
-					} else {
-						// Otherwise, escape it with addslashes
-						$GuideOrder = addslashes($GuideOrder);
-					}
-
-					$insert->GuideOrder = $GuideOrder;
-
-
-					// REPLACED WITH THE ABOVE $insert->GuideOrder = addslashes($GuideOrder);
-
-					$insert->GuideLatLong = addslashes($GuideLatLong);
-					$insert->GuideLocation = addslashes($GuideLocation);
-					$insert->GuideMooring = addslashes($GuideMooring);
-					$insert->GuideFacilities = addslashes($GuideFacilities);
-					$insert->GuideCodes = addslashes($GuideCodes);
-					$insert->GuideCosts = addslashes($GuideCosts);
-					$insert->GuideRating = addslashes($GuideRating);
-					$insert->GuideAmenities = addslashes($GuideAmenities);
-					$insert->GuideContributors = addslashes($GuideContributors);
-					$insert->GuideRemarks = addslashes($GuideRemarks);
-					$insert->GuideLat = $GuideLat;
-					$insert->GuideLong = $GuideLong;
-					$insert->GuideDocs = $GuideDocs;
-					$insert->GuidePostingDate = $GuidePostingDate;
-					$insert->GuideCategory = addslashes($GuideCategory);
-					$insert->GuideUpdate = $GuideUpdate;
-					$insert->GuideStatus = $GuideStatus;
-					$insert->GuideEditorMemNo = $GuideEditorMemNo;
-					$result = $db->insertObject($guidetable, $insert, 'GuideID');
-					if (!$result) {
-						die("Couldn't update database");
-					}
-					//get ID and update GuideNo GuideVer
-					$GuideVer = 1;
-					$GuideNo = $insert->GuideID;
-					$update = new \stdClass();
-					$update->GuideNo = $GuideNo;
-					$update->GuideVer = $GuideVer;
-					$update->GuideID = $GuideNo;
-					$result = $db->updateObject($guidetable, $update, 'GuideID');
-					if (!$result) {
-						echo ("Couldn't update guide ");
-					} else {
-						$changelogtext = "Guide " . $GuideNo . " - '" . $GuideName . "' Version " . $GuideVer . " (" . $GuideWaterway . ") submitted for approval";
-						$updates = 1;
-						$linkinfoid = $GuideNo;
-					}
-				} elseif ($infoid > 0) {
-
-					$GuideStatus = 0; //pending
-					//$GuideNo=$infoid; //from previous version
-					$GuideVer += 1; //up the version
-
-					$GuideWaterway = str_replace(chr(146), chr(39), $GuideWaterway); //`'
-					$GuideWaterway = str_replace(chr(34), chr(39), $GuideWaterway); //"'
-					$insert = new \stdClass();
-					$insert->GuideNo = $GuideNo;
-					$insert->GuideVer = $GuideVer;
-					$insert->GuideCountry = addslashes($GuideCountry);
-					$insert->GuideWaterway = addslashes($GuideWaterway);
-					$insert->GuideSummary = addslashes($GuideSummary);
-					$insert->GuideName = addslashes($GuideName);
-					$insert->GuideRef = addslashes($GuideRef);
-					$insert->GuideOrder = addslashes($GuideOrder);
-					$insert->GuideLatLong = addslashes($GuideLatLong);
-					$insert->GuideLocation = addslashes($GuideLocation);
-					$insert->GuideMooring = addslashes($GuideMooring);
-					$insert->GuideFacilities = addslashes($GuideFacilities);
-					$insert->GuideCodes = addslashes($GuideCodes);
-					$insert->GuideCosts = addslashes($GuideCosts);
-					$insert->GuideRating = addslashes($GuideRating);
-					$insert->GuideAmenities = addslashes($GuideAmenities);
-					$insert->GuideContributors = addslashes($GuideContributors);
-					$insert->GuideRemarks = addslashes($GuideRemarks);
-					$insert->GuideLat = $GuideLat;
-					$insert->GuideLong = $GuideLong;
-					$insert->GuideDocs = $GuideDocs;
-					$insert->GuidePostingDate = $GuidePostingDate;
-					$insert->GuideCategory = addslashes($GuideCategory);
-					$insert->GuideUpdate = $GuideUpdate;
-					$insert->GuideStatus = $GuideStatus;
-					$insert->GuideEditorMemNo = $GuideEditorMemNo;
-					$result = $db->insertObject($guidetable, $insert, 'GuideID');
-					if (!$result) {
-						die("Couldn't update database");
-					}
-					$linkinfoid = $insert->GuideID;
-					$changelogtext = "Guide " . $GuideNo . " - '" . $GuideName . "' Version " . $GuideVer . " (" . $GuideWaterway . ") submitted for approval";
-					$updates = 1;
-				}
-				if ($updates > 0) {
-
-					//send to editor for approval
-
-					$guidesurl = $menu_url . "?guideaction=edit&infoid=" . $linkinfoid;
-					$thissubject = "DBA waterways guide member update";
-					$thismessage = "A waterways guide update, '" . stripslashes($changelogtext) . "', has been made on the " . $sitename . " website.
-			\n\nSubmitter: " . $contact . "\n\nLog in as waterways guide administrator and then click this link " . $guidesurl . " to check and approve.";
-
-					$to = $guidesemail;
-					$from = $guidesemail;
-					$fromname = "DBA Waterways Guides Administration";
-					$recipient = $guidesemail;
-					$subject = $thissubject;
-					$body = $thismessage;
-
-					if ($mailOn) {
-						$mailer = Factory::getMailer();
-						$mailer->setSender([$config->get('mailfrom'), $config->get('fromname')]);
-						$mailer->addRecipient($recipient);
-						$mailer->addReplyTo($from, $fromname);
-						$mailer->setSubject($subject);
-						$mailer->setBody(nl2br($body));
-						$mailer->isHtml(true);
-						$mailer->Send();
-					} else echo "<br />\r\n<span style='color: red'>Mail Disabled</span><br />\r\n";
-					//update log
-					$subject = "Guides";
-					$updatetext .= stripslashes($changelogtext) . "<br>";
-					$insert = new \stdClass();
-					$insert->MemberID = $login_memberid;
-					$insert->Subject = $subject;
-					$insert->ChangeDesc = $changelogtext;
-					$insert->ChangeDate = $GuideUpdate;
-					$update = $db->insertObject('tblChangeLog', $insert);
-					if (!$update) {
-						echo ("Couldn't update changelog");
-					} else {
-						$message = "<font color=ff0000><b>The change history log has been updated with the following details:<br></font>\n";
-						$message .= $updatetext . "<br>Many thanks for your submission which is now pending approval</b>. You will receive an email as soon as your update has been checked by the editor and added into the live guide.\n";
-					}
-				}
-
-				//exit();	
-				if ($lastguideaction == "list") {
-					$guideaction = "list";
-				} elseif ($lastguideaction == "map") {
-					$guideaction = "map";
-				} else {
-					$guideaction = "list";
-				}
-				$country = $GuideCountry;
-				$waterway = $GuideWaterway;
-			}
+		if ($guideaction == "membersave") { 
+			include("guide-member-save.php");
 		}
-
-
-
 		//---------------------------------------guide save admin only---------------------------------------------
-
 		if ($guideaction == "save") {
-
-
-			$errmsg = "";
-			if (!$GuideCountry) {
-				if ($errmsg) {
-					$errmsg .= ", ";
-				}
-				$errmsg .= " Guide Country";
-			}
-			if (!$GuideWaterway) {
-				if ($errmsg) {
-					$errmsg .= ", ";
-				}
-
-				$errmsg .= " Guide Waterway";
-			}
-			if (!$GuideName) {
-				if ($errmsg) {
-					$errmsg .= ", ";
-				}
-				$errmsg .= " Guide Name";
-			}
-
-			if ($errmsg) {
-				$errmsg = "Please check " . $errmsg;
-				$guideaction = "edit";
-			} else {
-				//entry OK so update
-				$updates = 0;
-				$GuideUpdate = date("Y-m-d H:i:s");
-				if (!$GuidePostingDate) {
-					$GuidePostingDate = $GuideUpdate;
-				}
-				$updatetext = "";
-				$subject = "Guides";
-
-
-				if ($infoid == "newmooring" || $infoid == "newhazard") {
-					//add new
-					$GuideStatus = 1; //live
-					$GuideVer = 1; //start at v1
-					if ($GuideLat == "51.67256") {
-						//default mid channel still there so make blank for 'unknown'
-						$GuideLat = "";
-						$GuideLong = "";
-					}
-					$newby = 1;
-					$GuideEditorMemNo = $login_MembershipNo;
-
-					$GuideWaterway = str_replace(chr(146), chr(39), $GuideWaterway); //`'
-					$GuideWaterway = str_replace(chr(34), chr(39), $GuideWaterway); //"'
-					$insert = new \stdClass();
-					$insert->GuideCountry = addslashes($GuideCountry);
-					$insert->GuideWaterway = addslashes($GuideWaterway);
-					$insert->GuideSummary = addslashes($GuideSummary);
-					$insert->GuideName = addslashes($GuideName);
-					$insert->GuideRef = addslashes($GuideRef);
-					$insert->GuideOrder = addslashes($GuideOrder);
-					$insert->GuideLatLong = addslashes($GuideLatLong);
-					$insert->GuideLocation = addslashes($GuideLocation);
-					$insert->GuideMooring = addslashes($GuideMooring);
-					$insert->GuideFacilities = addslashes($GuideFacilities);
-					$insert->GuideCodes = addslashes($GuideCodes);
-					$insert->GuideCosts = addslashes($GuideCosts);
-					$insert->GuideRating = addslashes($GuideRating);
-					$insert->GuideAmenities = addslashes($GuideAmenities);
-					$insert->GuideContributors = addslashes($GuideContributors);
-					$insert->GuideRemarks = addslashes($GuideRemarks);
-					$insert->GuideLat = $GuideLat;
-					$insert->GuideLong = $GuideLong;
-					$insert->GuideDocs = $GuideDocs;
-					$insert->GuidePostingDate = $GuidePostingDate;
-					$insert->GuideCategory = addslashes($GuideCategory);
-					$insert->GuideUpdate = $GuideUpdate;
-					$insert->GuideStatus = $GuideStatus;
-					$insert->GuideEditorMemNo = $GuideEditorMemNo;
-					//$result = $db->insertObject($guidetable, $insert, 'GuideID');
-
-					// Check if GuideOrder is empty or not a numeric value
-					if (empty($insert->GuideOrder) || !is_numeric($insert->GuideOrder)) {
-						// Set a default value
-						$insert->GuideOrder = 1.00;
-					}
-
-					$result = $db->insertObject($guidetable, $insert, 'GuideID');
-
-					if (!$result) {
-						die("Couldn't update database");
-					}
-					//get ID and update GuideNo GuideVer
-					$GuideNo = $insert->GuideID;
-					$update = new \stdClass();
-					$update->GuideNo = $GuideNo;
-					$update->GuideVer = $GuideVer;
-					$update->GuideID = $GuideNo;
-					$result = $db->updateObject($guidetable, $update, 'GuideID');
-					if (!$result) {
-						echo ("Couldn't update guide ");
-					}
-					if ($GuidCategory == 2) {
-						$changelogtext = "Guide hazard - '" . $GuideName . "'(" . $GuideWaterway . ") added";
-					} else {
-						$changelogtext = "Guide mooring - '" . $GuideName . "'(" . $GuideWaterway . ") added";
-					}
-					$updates = 1;
-				} elseif ($infoid > 0) {
-					//admin update so leave GuideVer, GuideStatus, GuideEditorMemNo as is
-
-					//$target_encoding="UTF-8";
-					//$GuideWaterway=convert_to ($GuideWaterway, $target_encoding);
-					$GuideWaterway = str_replace(chr(146), chr(39), $GuideWaterway); //`'
-					$GuideWaterway = str_replace(chr(34), chr(39), $GuideWaterway); //"'
-					$update = new \stdClass();
-					$update->GuideCountry = addslashes($GuideCountry);
-					$update->GuideWaterway = addslashes($GuideWaterway);
-					$update->GuideSummary = addslashes($GuideSummary);
-					$update->GuideName = addslashes($GuideName);
-					$update->GuideRef = addslashes($GuideRef);
-					$update->GuideOrder = addslashes($GuideOrder);
-					$update->GuideLatLong = addslashes($GuideLatLong);
-					$update->GuideLocation = addslashes($GuideLocation);
-					$update->GuideMooring = addslashes($GuideMooring);
-					$update->GuideFacilities = addslashes($GuideFacilities);
-					$update->GuideCodes = addslashes($GuideCodes);
-					$update->GuideCosts = addslashes($GuideCosts);
-					$update->GuideRating = $GuideRating;
-					$update->GuideAmenities = addslashes($GuideAmenities);
-					$update->GuideContributors = addslashes($GuideContributors);
-					$update->GuideRemarks = addslashes($GuideRemarks);
-					$update->GuideLat = $GuideLat;
-					$update->GuideLong = $GuideLong;
-					$update->GuideDocs = $GuideDocs;
-					$update->GuideCategory = addslashes($GuideCategory);
-					$update->GuidePostingDate = $GuidePostingDate;
-					$update->GuideUpdate = $GuideUpdate;
-					$update->GuideID = $infoid;
-					$result = $db->updateObject($guidetable, $update, 'GuideID');
-					if (!$result) {
-						echo ("Couldn't update guide ");
-					} else {
-						$updates += 1;
-						if ($GuidCategory == 2) {
-							$changelogtext = "Guide hazard - '" . $GuideName . "'(" . $GuideWaterway . ") updated";
-						} else {
-							$changelogtext = "Guide mooring - '" . $GuideName . "'(" . $GuideWaterway . ") updated";
-						}
-					}
-					$updates = 1;
-				}
-				if ($updates > 0) {
-
-
-					//update log
-					$updatetext .= $changelogtext . "<br>";
-					$insert = new \stdClass();
-					$insert->MemberID = $login_memberid;
-					$insert->Subject = $subject;
-					$insert->ChangeDesc = $changelogtext;
-					$insert->ChangeDate = $GuideUpdate;
-					$update = $db->insertObject('tblChangeLog', $insert);
-					if (!$update) {
-						echo ("Couldn't update changelog");
-					} else {
-						$message = "The change history log and site have been updated with the following details:<br>\n";
-						$message .= $updatetext . "<br>\n";
-					}
-				}
-
-				//exit();	
-				if ($lastguideaction == "list") {
-					$guideaction = "list";
-				} elseif ($lastguideaction == "map") {
-					$guideaction = "map";
-				} else {
-					$guideaction = "list";
-				}
-				$country = $GuideCountry;
-				$waterway = $GuideWaterway;
-			}
+			include("guide-admin-save.php");
 		}
-
 		//---------------------------------------guide remove---------------------------------------------
 
 		if ($guideaction == "remove") {
@@ -2108,20 +1694,20 @@ Updates:
 
 
 			$listresults .= "<tr valign='top'><td><b>Order:</b> <i>Ascending number along waterway</i><br><input type=\"text\" name=\"GuideOrder\" class=\"formcontrol\" size=\"4\" placeholder=\"1.00\" step=\"0.01\" min=\"0\" max=\"1000\" value=\"" . $GuideOrder . "\"></td><td>" . $ChangeGuideOrder . "</td></tr>\n";
-			$listresults .= "<tr valign='top'><td><b>Rating:</b><br><input type=\"text\" name=\"GuideRating\" class=\"formcontrol\" size=\"4\" value=\"" . $GuideRating . "\"> 1-3 value</td><td>" . $ChangeGuideRating . "</td></tr>\n";
-			//			// REPLACED ABOVE WITH THE FOLLOWING
-			//			$GuideRating = intval($_POST['GuideRating']); // Get the submitted GuideRating value
-			//			// Validate the GuideRating value
-			//			if ($GuideRating < 0 || $GuideRating > 3) {
-			//				// If the GuideRating value is not between 0 and 3, set it to a default value (e.g., 1)
-			//				$GuideRating = 1;
-			//			}
-			//			// Then continue with your code...
-			//			$listresults .= "<tr valign='top'><td><b>Rating:</b><br><input type=\"text\" name=\"GuideRating\" class=\"formcontrol\" size=\"4\" value=\"" . $GuideRating . "\"> 0-3 value</td><td>" . $ChangeGuideRating . "</td></tr>\n";
 
 
+			$listresults .= "<tr valign='top'>
+								<td><b>Is this edit? Rating:</b><br>
+									<select name=\"GuideRating\" class=\"formcontrol\">
+										<option value=\"0\"" . ($GuideRating == 0 ? ' selected' : '') . ">Doubtful</option>
+										<option value=\"1\"" . ($GuideRating == 1 ? ' selected' : '') . ">Adequate</option>
+										<option value=\"2\"" . ($GuideRating == 2 ? ' selected' : '') . ">Good</option>
+										<option value=\"3\"" . ($GuideRating == 3 ? ' selected' : '') . ">Very Good</option>
+		  							</select>
+								</td>
+								<td>" . $ChangeGuideRating . "</td></tr>\n";
 
-			//$listresults.="<tr valign='top'><td colspan=2><b>Lat / Long text:</b> <i>Not used but may contain old format position. Convert to decimal and enter in Lat (dec) and Long (dec) below or click 'Find on map' to locate manually</i><br><input type=\"text\" id=\"GuideLatLong\" name=\"GuideLatLong\" class=\"formcontrol\" size=\"50\" value=\"".$GuideLatLong."\"></td></tr>\n";
+
 
 			$listresults .= "<tr valign='top'>
   <td><b>Map Marker: </b><i>To mark the location on the map, type the name of a nearby place in the 'Search Box' below and click on a place in the list that appears. Then drag the marker to the right spot. You can zoom in to make the location more accurate. France has many places with the same name so you may have to use another nearby place in the search.</i><br> 
@@ -2134,17 +1720,6 @@ Updates:
   <input id=\"pac-input\" class=\"controls\" type=\"text\" placeholder=\"Search Box\"/>
   <div align=\"center\" id=\"map\" style=\"width: 100%; height: 400px\"><br/></div>
 </td></tr>\n";
-
-
-
-
-
-
-
-
-
-
-
 
 
 			$listresults .= "<tr valign='top'><td><b>Reference(PK?):</b><br><input type=\"text\" name=\"GuideRef\" class=\"formcontrol\"size=\"50\" value=\"" . $GuideRef . "\"></td><td>" . $ChangeGuideRef . "</td></tr>\n";
@@ -2394,6 +1969,8 @@ Updates:
 
 				$GuideUpdatedisplay = (empty($row['GuideUpdate']) ? 'Date unknown' : date('Y-m-d', strtotime($row['GuideUpdate']))) . " - Mooring Index: " . $GuideNo . " - Version: " . $GuideVer;
 			}
+
+
 			//echo("<tr><td colspan=4> update $guidetable $GuideNo $GuideEditorMemNo $submitteremail");
 			echo ("<tr><td colspan=4>");
 			//Check if this GuideNo has any outstanding pending already and if so reject another edit and inform 'still pending'
