@@ -11,7 +11,7 @@ echo ("<tr><td colspan=4>");
 	$GuideRequestDate=date("Y-m-d H:i:s");
 	$query = $db->getQuery(true)
 		->select('*')
-		->from($db->qn('tblGuidesRequests'))
+		->from($db->qn('#__waterways_guide_requests'))
 		->order($colsort);
 	if($country && $country != 'All') $query->where($db->qn('GuideCountry').' = '.$db->q($country));
 	if($waterway && $waterway != 'All') $query->where($db->qn('GuideWaterway').' = '.$db->q(stripslashes($waterway)));
@@ -68,7 +68,7 @@ echo ("<tr><td colspan=4>");
 	$query = $db->getQuery(true)
 		->select($db->qn('GuideCountry'))
 		->select('COUNT(*) AS '.$db->qn('Count'))
-		->from($db->qn('tblGuidesRequests'))
+		->from($db->qn('#__waterways_guide_requests'))
 		->group($db->qn('GuideCountry'));
 	if($country && $country != 'All') $query->where($db->qn('GuideCountry').' = '.$db->q($country));
 	if($waterway && $waterway != 'All') $query->where($db->qn('GuideWaterway').' = '.$db->q(s$waterway));
@@ -81,7 +81,7 @@ echo ("<tr><td colspan=4>");
 		$query = $db->getQuery(true)
 			->select($db->qn('GuideWaterway'))
 			->select('COUNT(*) AS '.$db->qn('Number'))
-			->from($db->qn('tblGuidesRequests'))
+			->from($db->qn('#__waterways_guide_requests'))
 			->where($db->qn('GuideCountry').' = '.$db->q($GuideCountry))
 			->group($db->qn('GuideWaterway'))
 			->order($db->qn('Number').' DESC');

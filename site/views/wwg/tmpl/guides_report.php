@@ -17,13 +17,13 @@ $mailOn = Factory::getConfig()->get('mailonline') == '1';
 		$insert->GuideRequestMethod = $GuideRequestMethod;
 		$insert->GuideRequestStatus = $GuideRequestStatus;
 		//GuideRequestStatus 1=success 0=refused
-		$db->insertObject('tblGuidesRequests', $insert) or die ("Couldn't update request log $query");
+		$db->insertObject('#__waterways_guide_requests', $insert) or die ("Couldn't update request log $query");
 
 	}
 	$waterway=str_replace("_", " ", $waterway);
 	$waterway=stripslashes($waterway);
 	if(!$guidetable){
-		$guidetable="tblGuides";
+		$guidetable="#__waterways_guide";
 	}	
 
 	if(!$login_memberid){

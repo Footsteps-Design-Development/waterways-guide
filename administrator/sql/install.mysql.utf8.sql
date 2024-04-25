@@ -32,3 +32,12 @@ CREATE TABLE `#__waterways_guide` (
   `GuideEditorMemNo` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`GuideID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `#__waterways_guide_requests` (
+  `memberid` bigint(20) NOT NULL DEFAULT '0',
+  `GuideCountry` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `GuideWaterway` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `GuideRequestDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `GuideRequestMethod` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `GuideRequestStatus` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

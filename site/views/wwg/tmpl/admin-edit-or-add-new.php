@@ -116,7 +116,7 @@
             $OldGuideVer = $GuideVer - 1;
             $query = $db->getQuery(true)
                 ->select('*')
-                ->from($db->qn('tblGuides'))
+                ->from($db->qn('#__waterways_guide'))
                 ->where($db->qn('GuideNo') . ' = ' . $db->q($GuideNo))
                 ->where($db->qn('GuideVer') . ' = ' . $db->q($OldGuideVer));
             $oldguide = $db->setQuery($query)->loadAssocList();

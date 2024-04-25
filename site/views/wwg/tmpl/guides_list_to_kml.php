@@ -29,7 +29,7 @@ if(empty($memberrow["ID2"])){
 //create  output
 $query = $db->getQuery(true)
 	->select('*')
-	->from($db->qn('tblGuides'))
+	->from($db->qn('#__waterways_guide'))
 	->where($db->qn('GuideStatus').' = 1')
 	->order($db->qn(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
 if($country && $country != 'All') $query->where($db->qn('GuideCountry').' = '.$db->q($country));

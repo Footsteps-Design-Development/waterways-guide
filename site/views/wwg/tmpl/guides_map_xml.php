@@ -11,7 +11,7 @@ $db = Factory::getDbo();
 getpost_ifset(array('waterway','country','guidetable','GuideMooringCodes','GuideHazardCodes','thisid','filteroption'));
 
 if(!$guidetable){
-	$guidetable="tblGuides";
+	$guidetable="#__waterways_guide";
 }
 
 //$thisid="4858";
