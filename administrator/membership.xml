@@ -15,50 +15,43 @@
 		<filename>membership.php</filename>
 		<filename>controller.php</filename>
 		<filename>router.php</filename>
-		<folder>views</folder>
-		<folder>models</folder>
 		<folder>controllers</folder>
+		<folder>cron</folder>
 		<folder>helpers</folder>
+		<folder>images</folder>
+		<folder>models</folder>
+		<folder>paypal</folder>
+		<folder>popcal</folder>
+		<folder>templates</folder>
+		<folder>views</folder>
 	</files>
-	<languages folder="site">
-		<language tag="en-GB">language/en-GB.com_membership.ini
-		</language>
+
+	<languages folder="site/language">
+  		<language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
 	</languages>
+
+
+	<files folder="administrator">
+		<folder>language</folder>
+		<folder>sql</folder>
+		<filename>access.xml</filename>
+		<filename>config.xml</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>membership.php</filename>
+	</files>
+
+	<languages folder="administrator">
+		<language tag="en-GB">language/en-GB.com_waterways_guide.ini</language>
+		<language tag="en-GB">language/en-GB.com_waterways_guide.sys.ini</language>
+	</languages>
+
 
 	<administration>
 		<menu>COM_MEMBERSHIP</menu>
 		<submenu>
-			<menu link="option=com_membership&amp;view=search" view="search" img="class:search" alt="Membership/Search">COM_MEMBERSHIP_SEARCH</menu>
-			<menu link="option=com_membership&amp;view=searchresults" view="searchresults" img="class:searchresults" alt="Membership/Searchresults">COM_MEMBERSHIP_SEARCHRESULTS</menu>
-			<menu link="option=com_membership&amp;view=profile" view="profile" img="class:profile" alt="Membership/Profile">COM_MEMBERSHIP_PROFILE</menu>
-			<menu link="option=com_membership&amp;view=report" view="report" img="class:report" alt="Membership/Report">COM_MEMBERSHIP_REPORT</menu>
-			<menu link="option=com_membership&amp;view=bargeregister" view="bargeregister" img="class:bargeregister" alt="Membership/Bargeregister">COM_MEMBERSHIP_BARGEREGISTER</menu>
-			<menu link="option=com_membership&amp;view=bargeregister&amp;task=edit" view="bargeregister" img="class:bargeregister" alt="Membership/Bargeregister">COM_MEMBERSHIP_BARGEREGISTER_EDIT</menu>
 			<menu link="option=com_membership&amp;view=waterwaysguide" view="waterwaysguide" img="class:waterwaysguide" alt="Membership/Waterwaysguide">COM_MEMBERSHIP_WATERWAYSGUIDE</menu>
-			<menu link="option=com_membership&amp;view=classified" view="classified" img="class:classified" alt="Membership/Classified">COM_MEMBERSHIP_CLASSIFIED</menu>
-			<menu link="option=com_membership&amp;view=classified&amp;task=edit" view="classified" img="class:classified" alt="Membership/Classified">COM_MEMBERSHIP_CLASSIFIED_EDIT</menu>
-			<menu link="option=com_membership&amp;view=shop" view="shop" img="class:shop" alt="Membership/Shop">COM_MEMBERSHIP_SHOP</menu>
-
         </submenu>
-		<files folder="administrator">
-			<filename>access.xml</filename>
-			<filename>config.xml</filename>
-			<filename>controller.php</filename>
-			<filename>index.html</filename>
-			<filename>membership.php</filename>
-			<folder>controllers</folder>
-			<folder>helpers</folder>
-			<folder>models</folder>
-			<folder>sql</folder>
-			<folder>tables</folder>
-			<folder>views</folder>
-		</files>
-		<languages folder="administrator">
-			<language tag="en-GB">language/en-GB.com_membership.ini
-			</language>
-			<language tag="en-GB">language/en-GB.com_membership.sys.ini
-			</language>
-		</languages>
 	</administration>
 
 
