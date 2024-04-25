@@ -1,12 +1,5 @@
-
-<!--
-TO do
-
-
-
--->
-
 <?php
+echo ("<tr><td colspan=4>");
 	echo("<input name=\"colsort\" type=\"hidden\" value=\"$colsort\">\n");
 
 	$sort_col="<img src='Image/common/arrow_down.gif' alt='Sorted on this column. Click another heading to re-sort' title='Sorted on this column. Click another heading to re-sort' width='9' height='6' border='0'>";
@@ -106,6 +99,4 @@ TO do
 	echo($Summary);
 	echo("<br><b>Full listing</b> <i>Column * 1=OK 0=rejected, non-member</i><br><i>Click a column heading to sort the list</i>");
 	echo($listresults);
-?>
-
-
+	echo ("</td></tr>\n");
