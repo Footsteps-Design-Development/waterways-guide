@@ -3,7 +3,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 
 ?><table border="0" cellspacing="2" cellpadding="3" width="100%">
 <?php
@@ -1534,7 +1534,7 @@ if ($assetaction=="editdetail") {
 		
 		$emaillink1="<a href=\"mailto:".$Email."?Subject=".$mailsubject."&Body=".$mailmessage."\">".$Email."</a>";
 		
-		//Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_membership/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_membership/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
+		//Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
 
 		//email anon owner
 		$mailsubject="DBA Barge register update";
@@ -1548,7 +1548,7 @@ if ($assetaction=="editdetail") {
 		$mailmessage.="%0A%0ABarge Register administration";
 
 		$emaillink2="<a href=\"mailto:".$Email."?Subject=".$mailsubject."&Body=".$mailmessage."\">".$Email."</a>";
-		//Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_membership/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_membership/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
+		//Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
 		
 		
 		//allow name link to PM discussion-forum/private-messaging?task=new&recip=7591
@@ -1575,7 +1575,7 @@ if ($assetaction=="editdetail") {
 		echo("<tr><td colspan=4 class=list_small>
 		Barge: ".$vesselname."<br>
 		Barge status: ".$Barge_Status_text."<br>
-		Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_membership/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_membership/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
+		Keeper(s): ".$fullname." <a href='javascript:MoreInfo(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/info.gif' width=16 border=0 alt='Click to view details' title='Click to view details'></a> <a href='javascript:Changelog(" . $memid . ")'><img height=16 src='/components/com_waterways_guide/images/txt.gif' width=16 border=0 alt='Click to view change log' title='Click to view change log'></a><br>
 		Ex Keeper(s): ".$Keepers."<br>
 		View name in profile: ".$showname."<br>
 		Membership No: ".$MembershipNo."<br>
@@ -1621,7 +1621,7 @@ if ($assetaction=="editdetail") {
 	<!--
 	function MoreInfo(memberid){
 		var mypage = "<?php 
-		echo("../../../../../index.php?option=com_membership&tmpl=component&view=profile&userid=");
+		echo("../../../../../index.php?option=com_waterways_guide&tmpl=component&view=profile&userid=");
 		?>"+memberid;
 		//alert("mypage "+mypage);
 		var myname = "Member_Profile";
@@ -1637,7 +1637,7 @@ if ($assetaction=="editdetail") {
 	}
 	
 	function Changelog(memberid){
-		var mypage = "/components/com_membership/views/search/tmpl/view_change_log.php?memberid="+memberid;
+		var mypage = "/components/com_waterways_guide/views/search/tmpl/view_change_log.php?memberid="+memberid;
 		//alert("mypage "+mypage);
 		var myname = "Member_Changelog";
 		var w = 800;
@@ -2031,7 +2031,7 @@ if ($assetaction=="edit") {
      <input type="FILE" name="thefile" id="thefile" class="formcontrol" size="70" />
      
      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-     <a href='javascript:Help("/components/com_membership/views/bargeregister/tmpl/help_upload_file.php")'><img src="Image/common/help.gif" width="20" height="20" alt="Help on uploading an image" border="0"></a></td>
+     <a href='javascript:Help("/components/com_waterways_guide/views/bargeregister/tmpl/help_upload_file.php")'><img src="Image/common/help.gif" width="20" height="20" alt="Help on uploading an image" border="0"></a></td>
     </tr><tr>
 <td valign="top" class='table_stripe_even'>
 Additional info</td>

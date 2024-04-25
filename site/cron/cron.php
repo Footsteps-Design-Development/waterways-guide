@@ -21,14 +21,14 @@ Daily member totals will be added here to track member trends
 20090402 $live=1 added and email senders prior to going live
 */
 
-//cron command   /usr/local/bin/php -q /home/bargesor/public_html/components/com_membership/cron/cron.php
+//cron command   /usr/local/bin/php -q /home/bargesor/public_html/components/com_waterways_guide/cron/cron.php
 
 
 //load Joomla helpers
 define( '_JEXEC', 1 );
 define('DS', DIRECTORY_SEPARATOR);
 define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
-define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_membership');
+define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_waterways_guide');
 require_once(JPATH_BASE .DS.'includes'.DS.'defines.php');
 require_once(JPATH_BASE .DS.'includes'.DS.'framework.php');
 require_once(JPATH_COMPONENT .DS.'commonV3.php');
@@ -37,7 +37,7 @@ use Joomla\CMS\Factory;
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 $db = Factory::getDBO();
 $test_vars=(array('test', 'input_surname', 'input_barge'));
 		

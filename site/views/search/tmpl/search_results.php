@@ -2,7 +2,7 @@
 error_reporting(E_ALL & ~E_NOTICE);
 /**
  * @version     3.0.0 20210713
- * @package     com_membership search
+ * @package     com_waterways_guide search
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -11,7 +11,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 define( '_JEXEC', 1 );
 define('DS', DIRECTORY_SEPARATOR);
 define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
-define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_membership');
+define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_waterways_guide');
 require_once(JPATH_BASE .DS.'includes'.DS.'defines.php');
 require_once(JPATH_BASE .DS.'includes'.DS.'framework.php');
 require_once(JPATH_COMPONENT .DS.'commonV3.php');
@@ -52,7 +52,7 @@ function printWindow(){
 }
 
 function MoreInfo(memberid){
-	var mypage = "../../../../../index.php?option=com_membership&tmpl=component&view=profile&userid="+memberid<?php if(isset($table) && $table=="archive"){echo("+\"&table=archive\"");	} ?>;
+	var mypage = "../../../../../index.php?option=com_waterways_guide&tmpl=component&view=profile&userid="+memberid<?php if(isset($table) && $table=="archive"){echo("+\"&table=archive\"");	} ?>;
 	//alert("mypage "+mypage);
 	var myname = "Member_Profile";
 	var w = 800;
@@ -321,7 +321,7 @@ if ($num_rows > $maxrecords) {
 
         
 //<option value="message_edit.php">Prepare email message</option>
-//components/com_membership/views/profile/tmpl/mergedoc.php?template="+template+"&memberid="+mid;
+//components/com_waterways_guide/views/profile/tmpl/mergedoc.php?template="+template+"&memberid="+mid;
 
 	//echo("<option value='maillist_report_sub_paid.php'>Mark Sub paid</option>\n");
  

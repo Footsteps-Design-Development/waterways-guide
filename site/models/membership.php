@@ -1,7 +1,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership
+ * @package     com_waterways_guide
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\Model;
 jimport('joomla.application.component.model');
 jimport('joomla.application.component.helper');
 
-Table::addIncludePath(JPATH_ROOT . '/administrator/components/com_membership/tables');
+Table::addIncludePath(JPATH_ROOT . '/administrator/components/com_waterways_guide/tables');
 
 /**
  * Model
@@ -33,7 +33,7 @@ class MembershipModelMembership extends BaseModel
 	{
 		if (!isset($this->_item))
 		{
-			$cache = Factory::getCache('com_membership', '');
+			$cache = Factory::getCache('com_waterways_guide', '');
 
 			$id = $this->getState('membership.id');
 

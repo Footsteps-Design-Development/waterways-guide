@@ -1,7 +1,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership Member search
+ * @package     com_waterways_guide Member search
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Rod North www.calara.co.uk
@@ -11,7 +11,7 @@
 
 use Joomla\CMS\Factory;
 
-	$app = Factory::getApplication('com_membership');
+	$app = Factory::getApplication('com_waterways_guide');
 	$db = Factory::getDBO();
 	require_once(JPATH_COMPONENT_SITE."/commonV3.php");
 

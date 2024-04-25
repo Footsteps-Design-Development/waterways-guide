@@ -35,7 +35,7 @@ function initMap() {
 	
 	
 	// Change this depending on the name of your PHP or XML file
-	downloadUrl("/components/com_membership/views/wwg/tmpl/guides_map_xml.php<?php echo($mapvars); ?>", function(data) {
+	downloadUrl("/components/com_waterways_guide/views/wwg/tmpl/guides_map_xml.php<?php echo($mapvars); ?>", function(data) {
 		var waterwaysummary = [];
 
 		var xml = data.responseXML;

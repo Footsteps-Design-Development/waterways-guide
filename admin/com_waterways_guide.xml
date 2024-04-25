@@ -46,9 +46,9 @@
 	</languages>
 
 	<administration>
-		<menu>COM_MEMBERSHIP</menu>
+		<menu>com_waterways_guide</menu>
 		<submenu>
-			<menu link="option=com_membership&amp;view=waterwaysguide" view="waterwaysguide" img="class:waterwaysguide" alt="Membership/Waterwaysguide">COM_MEMBERSHIP_WATERWAYSGUIDE</menu>
+			<menu link="option=com_waterways_guide&amp;view=waterwaysguide" view="waterwaysguide" img="class:waterwaysguide" alt="Waterwaysguide">com_waterways_guide_WATERWAYSGUIDE</menu>
         </submenu>
 		<files folder="admin">
 			<folder>language</folder>
@@ -57,7 +57,7 @@
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>
 			<filename>index.html</filename>
-			<filename>membership.php</filename>
+			<filename>com_waterways_guide.php</filename>
 		</files>
 	</administration>
 

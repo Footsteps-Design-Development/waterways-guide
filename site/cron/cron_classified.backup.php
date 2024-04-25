@@ -7,13 +7,13 @@ Updates ................................
 20140302 Cron split to seperate classified and avoid ocasional crashing of membership cron
 */
 
-//cron command   /usr/local/bin/php -q /home/bargesor/public_html/components/com_membership/cron/cron_classified.php
+//cron command   /usr/local/bin/php -q /home/bargesor/public_html/components/com_waterways_guide/cron/cron_classified.php
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 ini_set('log_errors', 1);
-ini_set('error_log', '/home/customer/www/barges.org/public_html/components/com_membership/cron/classified_error.log'); // Replace '/path/to/error.log' with the actual path and filename where you want to store the error log.
+ini_set('error_log', '/home/customer/www/barges.org/public_html/components/com_waterways_guide/cron/classified_error.log'); // Replace '/path/to/error.log' with the actual path and filename where you want to store the error log.
 
 error_log('Execution started.'); // Example log statement
 
@@ -21,7 +21,7 @@ error_log('Execution started.'); // Example log statement
 define( '_JEXEC', 1 );
 define('DS', DIRECTORY_SEPARATOR);
 define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
-define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_membership');
+define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_waterways_guide');
 require_once(JPATH_BASE .DS.'includes'.DS.'defines.php');
 require_once(JPATH_BASE .DS.'includes'.DS.'framework.php');
 require_once(JPATH_COMPONENT .DS.'commonV3.php');

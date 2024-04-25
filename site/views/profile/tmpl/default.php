@@ -2,7 +2,7 @@
 
 /**
  * @version     3.0.0 Revision for sqli and php update 20210713
- * @package     com_membership
+ * @package     com_waterways_guide
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -22,10 +22,10 @@ use Joomla\CMS\User\UserHelper;
 
 //get form type params from menu item to decide new or existing user
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 //check access level of user
 $user = Factory::getUser();
-$componentpath = "/components/com_membership/views/profile/tmpl/";
+$componentpath = "/components/com_waterways_guide/views/profile/tmpl/";
 $userGroups = $user->getAuthorisedGroups();
 
 if (in_array("8", $userGroups) || in_array("22", $userGroups)) {
@@ -1857,7 +1857,7 @@ if (in_array("25", $userGroups)) {
 
 							$buy .= "<input type=\"hidden\" name=\"country\" value=\"" . $CountryCode . "\">\n";
 
-							$buy .= "<input type=\"hidden\" name=\"image_url\" value=\"http://www.barges.org/com_membership/paypal/dba_logo_icon_150x150.png\">\n";
+							$buy .= "<input type=\"hidden\" name=\"image_url\" value=\"http://www.barges.org/com_waterways_guide/paypal/dba_logo_icon_150x150.png\">\n";
 
 							$buy .= "<input type=\"image\" src=\"Image/shop/btn_addtobasket.gif\" border=\"0\" name=\"submit\" alt=\"PayPal � pay online!\">\n";
 
@@ -2751,7 +2751,7 @@ if (in_array("25", $userGroups)) {
 
 									} else {
 
-										$introtext .= "<a href=\"index.php?option=com_membership&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
+										$introtext .= "<a href=\"index.php?option=com_waterways_guide&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
 									}
 
 									$introtext .= "</div>\n";
@@ -2772,7 +2772,7 @@ if (in_array("25", $userGroups)) {
 
 								} else {
 
-									$introtext .= "<a href=\"index.php?option=com_membership&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
+									$introtext .= "<a href=\"index.php?option=com_waterways_guide&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
 								}
 
 								$introtext .= "</div>\n";
@@ -2795,7 +2795,7 @@ if (in_array("25", $userGroups)) {
 
 							} else {
 
-								$introtext .= "<a href=\"index.php?option=com_membership&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
+								$introtext .= "<a href=\"index.php?option=com_waterways_guide&view=classified&Itemid=771\"><img src=\"Image/common/icon_posting.gif\" 	width=59 height=18 border=0 alt=\"Add or edit classified adverts\"> Add or edit classified adverts</a><br>\n";
 							}
 
 							//$introtext.="<a href=\"#\" onClick=\"document.form.subaction.value='paysub'; document.form.submit();\"><img src=\"Image/common/icon_psysubscription.gif\" width=59 height=18 border=0 alt=\"Pay subscription\"> Pay subscription</a>\n";
@@ -4968,7 +4968,7 @@ if (in_array("25", $userGroups)) {
 
 					$buy .= "<input type=\"hidden\" name=\"country\" value=\"" . $CountryCode . "\">\n";
 
-					$buy .= "<input type=\"hidden\" name=\"image_url\" value=\"http://www.barges.org/com_membership/paypal/dba_logo_icon_150x150.png\">\n";
+					$buy .= "<input type=\"hidden\" name=\"image_url\" value=\"http://www.barges.org/com_waterways_guide/paypal/dba_logo_icon_150x150.png\">\n";
 
 					$buy .= "<input type=\"image\" src=\"Image/shop/btn_addtobasket.gif\" border=\"0\" name=\"submit\" alt=\"PayPal � pay online!\">\n";
 

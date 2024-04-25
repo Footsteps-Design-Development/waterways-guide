@@ -3,7 +3,7 @@
 
 //---------------------------------------kmz------------------------------------------------------
 
-//http://www.barges.org/components/com_membership/views/waterwaysguide/tmpl/guides_list_to_kmz.php
+//http://www.barges.org/components/com_waterways_guide/views/waterwaysguide/tmpl/guides_list_to_kmz.php
 
 $mooringsguidedocintrotextpdf="";
 $filtertext="";

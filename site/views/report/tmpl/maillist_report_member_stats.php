@@ -13,7 +13,7 @@ To do ................................
 define( '_JEXEC', 1 );
 define('DS', DIRECTORY_SEPARATOR);
 define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
-define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_membership');
+define('JPATH_COMPONENT', JPATH_BASE .DS.'components'.DS.'com_waterways_guide');
 require_once(JPATH_BASE .DS.'includes'.DS.'defines.php');
 require_once(JPATH_BASE .DS.'includes'.DS.'framework.php');
 require_once(JPATH_BASE .DS.'libraries/joomla/user/helper.php');

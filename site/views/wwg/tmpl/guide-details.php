@@ -51,7 +51,7 @@ $GuideLong = stripslashes($row["GuideLong"]);
 //convert dec to lat long
 if ($GuideLat && $GuideLong) {
     $GuideLatLong = decimal2degree($GuideLat, 'LAT') . " , " . decimal2degree($GuideLong, 'LON');
-    //$mapicon=" View on a map <a href='javascript:Map(\"/components/com_membership/views/wwg/tmpl/guides_map_pop.php?thisid=".$GuideID."\")'><img src=\"Image/common/compass.gif\" width=\"18\" height=\"18\" border=\"0\" title=\"View on a map\" alt=\"View on a map\"></a>";
+    //$mapicon=" View on a map <a href='javascript:Map(\"/components/com_waterways_guide/views/wwg/tmpl/guides_map_pop.php?thisid=".$GuideID."\")'><img src=\"Image/common/compass.gif\" width=\"18\" height=\"18\" border=\"0\" title=\"View on a map\" alt=\"View on a map\"></a>";
 
     $mapicon = " View on a map <a href=\"#\" onClick=\"document.form.guideaction.value='map';document.form.lastguideaction.value='map';document.form.thisid.value=" . $GuideID . ";document.form.submit()\"><img src=\"Image/common/compass.gif\" width=\"18\" height=\"18\" border=\"0\" title=\"View on a map\" alt=\"View on a map\"></a>";
     $mapping = 1;

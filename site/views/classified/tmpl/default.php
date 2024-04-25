@@ -1,7 +1,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership classified adverts
+ * @package     com_waterways_guide classified adverts
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -14,7 +14,7 @@ use Joomla\CMS\Factory;
 
 /* Updated for Joomla 3 CJG 21061221 */
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 $db = Factory::getDBO();
 require_once(JPATH_COMPONENT_SITE."/commonV3.php");
 //get menu parameters

@@ -109,7 +109,7 @@
 	define('JPATH_BASE', substr(__FILE__,0,strrpos(__FILE__, DS."components")));
 	require_once JPATH_BASE.'/includes/defines.php';
 	require_once JPATH_BASE.'/includes/framework.php';	
-	require_once(JPATH_BASE.'/components/com_membership/commonV3.php');
+	require_once(JPATH_BASE.'/components/com_waterways_guide/commonV3.php');
 
 	use Joomla\CMS\Factory;
 	$config = Factory::getConfig();
@@ -476,7 +476,7 @@
 	
 		$subject="Activation of subscription ".$LastName." ".$MembershipNo." to the ".$sitename;
 		$content="A new member ".$LastName." ".$MembershipNo." has completed card payment for subscription to the ".$sitename." and is ready for a welcome pack. Verification code:". strcmp ($res, "VERIFIED");
-		$content.="\n\nDirect link if you are already logged in as administrator\nbarges.org/index.php?option=com_membership&tmpl=component&view=profile&userid=".$custom;
+		$content.="\n\nDirect link if you are already logged in as administrator\nbarges.org/index.php?option=com_waterways_guide&tmpl=component&view=profile&userid=".$custom;
 		
 		$from=$registrationemail;
 

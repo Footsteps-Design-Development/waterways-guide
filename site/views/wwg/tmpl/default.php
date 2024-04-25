@@ -2,7 +2,7 @@
 
 /**
  * @version     3.0.0
- * @package     com_membership waterwaysguide
+ * @package     com_waterways_guide waterwaysguide
  * @copyright   Copyright (C) 2020. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -19,7 +19,7 @@ $config = Factory::getConfig();
 $doc = Factory::getDocument();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 $db = Factory::getDBO();
 require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
 $user = Factory::getUser();
@@ -34,8 +34,8 @@ $menu_url = substr(strstr(Uri::current(), '//'), 2);
 $parentlink = Route::_('index.php?Itemid=' . Factory::getApplication()->getMenu()->getActive()->parent_id);
 
 
-$doc->addStyleSheet('media/com_membership/css/wwg.css');
-$doc->addScript('media/com_membership/js/wwg.js', 'text/javascript');
+$doc->addStyleSheet('media/com_waterways_guide/css/wwg.css');
+$doc->addScript('media/com_waterways_guide/js/wwg.js', 'text/javascript');
 
 
 echo ("<h2>Waterways Guide</h2>");

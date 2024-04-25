@@ -4,7 +4,7 @@ use Joomla\CMS\Factory;
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 
 ?><h2>Classified Adverts Update</h2>
 
@@ -942,7 +942,7 @@ Price</td>
      <input type="FILE" name="uploadfile" id="uploadfile" class="formcontrol" size="70" />
      
      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-     <a href='javascript:Help("/components/com_membership/views/classified/tmpl/help_upload_file.php")'><img src="Image/common/help.gif" width="20" height="20" alt="Help on uploading an image" border="0"></a></td>
+     <a href='javascript:Help("/components/com_waterways_guide/views/classified/tmpl/help_upload_file.php")'><img src="Image/common/help.gif" width="20" height="20" alt="Help on uploading an image" border="0"></a></td>
     </tr>
     <tr>
       <td valign="top" class='table_stripe_even'>

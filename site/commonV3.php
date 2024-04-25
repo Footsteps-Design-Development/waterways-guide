@@ -2,7 +2,7 @@
 if(!defined( '_JEXEC')) {
 	define( '_JEXEC', 1 );
 	define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
-	define('JPATH_COMPONENT', JPATH_BASE .'/components/com_membership');
+	define('JPATH_COMPONENT', JPATH_BASE .'/components/com_waterways_guide');
 	require_once(JPATH_BASE .'/includes/defines.php');
 	require_once(JPATH_BASE .'/includes/framework.php');
 }
@@ -25,7 +25,7 @@ if(Version::MAJOR_VERSION > 3) {
 	Factory::$application = $app;
 }
 
-$cParams = ComponentHelper::getParams('com_membership');
+$cParams = ComponentHelper::getParams('com_waterways_guide');
 
 foreach([
 	'adminemail',
@@ -111,7 +111,7 @@ function decimal2degree($decimal_coord="",$latorlon="")	{
 
 function unEscape($codedString)
 {
-	return preg_replace(["#", "~", "\^", "&", "£"], ["\"", ",", "<br>", "&amp;", "&pound;"], $codedString);
+	return preg_replace(["#", "~", "\^", "&", "ï¿½"], ["\"", ",", "<br>", "&amp;", "&pound;"], $codedString);
 }
 
 function check_login($thislevel){

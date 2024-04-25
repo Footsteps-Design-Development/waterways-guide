@@ -2,7 +2,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership Shop
+ * @package     com_waterways_guide Shop
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 
 $db = Factory::getDBO();
 require_once(JPATH_COMPONENT_SITE."/commonV3.php");
@@ -81,7 +81,7 @@ foreach($test_vars as $test_var) {
 
 //check access level of user
 $user = Factory::getUser();
-$componentpath="/components/com_membership/";
+$componentpath="/components/com_waterways_guide/";
 
 $userGroups = $user->getAuthorisedGroups();
 if (in_array("8", $userGroups) || in_array("30", $userGroups)) {

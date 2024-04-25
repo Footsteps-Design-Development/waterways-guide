@@ -1,7 +1,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership search
+ * @package     com_waterways_guide search
  * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant www.productif.co.uk
@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
-$componentpath="/components/com_membership/views/search/tmpl/";
+$componentpath="/components/com_waterways_guide/views/search/tmpl/";
 
 $maxlength=50;
 
@@ -485,7 +485,7 @@ function gofind() {
 
 	
 	document.form.wheresql = sqltext;
-	//opendoc="index.php?option=com_membership&tmpl=component&view=search";
+	//opendoc="index.php?option=com_waterways_guide&tmpl=component&view=search";
 	
 	opendoc='<?php echo($componentpath."search_results.php"); ?>';
 
@@ -587,7 +587,7 @@ function admin(form){
 }
 
 function addmember(){
-	var mypage = "/index.php?option=com_membership&tmpl=component&view=profile&userid=new&ID=new";
+	var mypage = "/index.php?option=com_waterways_guide&tmpl=component&view=profile&userid=new&ID=new";
 	var myname = "Member_Profile";
 	var w = 800;
 	var h = 600;

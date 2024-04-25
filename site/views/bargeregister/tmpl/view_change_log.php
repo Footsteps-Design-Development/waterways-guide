@@ -5,7 +5,7 @@ require_once(JPATH_BASE.'/includes/framework.php');
 
 use Joomla\CMS\Factory;
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 $db = Factory::getDBO();
 
 ?><html>

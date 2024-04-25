@@ -1,7 +1,7 @@
 <?php
 /**
  * @version     1.0.0
- * @package     com_membership bargeregister member_websites
+ * @package     com_waterways_guide bargeregister member_websites
  * @copyright   Copyright (C) 2020. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Chris Grant
@@ -12,7 +12,7 @@
 
 use Joomla\CMS\Factory;
 
-$app = Factory::getApplication('com_membership');
+$app = Factory::getApplication('com_waterways_guide');
 $db = Factory::getDBO();
 require_once(JPATH_COMPONENT_SITE."/commonV3.php");
 //get menu parameters
@@ -380,7 +380,7 @@ To list all entries, leave all fields as 'Any' and leave the 'Search text' box b
 				$search = trim(strtolower($assetsearchtext));
 				$search = preg_replace("/\s+/", " ", $search); 
 				$keywords = explode(" ", $search); 
-				//Clean empty arrays so they don’t get every row as result
+				//Clean empty arrays so they donï¿½t get every row as result
 				$keywords = array_diff($keywords, array("")); 
 				$filterset.="1";
 			}else{
@@ -1129,7 +1129,7 @@ To list all entries, leave all fields as 'Any' and leave the 'Search text' box b
 			var maillist = "_199_";
 			var	wheresql = "";
 			var criteria = "1";
-			var docname = "/components/com_membership/views/search/tmpl/maillist_email.php?var=1";
+			var docname = "/components/com_waterways_guide/views/search/tmpl/maillist_email.php?var=1";
 			var mypage = docname+"&maillist="+maillist+"&criteria="+criteria;			
 			var myname = "Reports";
 			var w = 800;

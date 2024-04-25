@@ -7,7 +7,7 @@ use Joomla\CMS\Factory;
 
 $doc = Factory::getDocument();
 
-$doc->addScript('media/com_membership/js/show-facility-tick-box-filter.js', 'text/javascript');
+$doc->addScript('media/com_waterways_guide/js/show-facility-tick-box-filter.js', 'text/javascript');
 
 $query = $db->getQuery(true)
     ->select('*')
@@ -139,8 +139,8 @@ if ($admin == "open") {
 					var filteroption = dml.filteroption.value;
 					var GuideMooringCodes = dml.GuideMooringCodes.value;
 					var GuideHazardCodes = dml.GuideHazardCodes.value;
-					var reportname = "/components/com_membership/views/wwg/tmpl/guides_list_to_pdf.php";
-					//var reportname = "/components/com_membership/views/wwg/tmpl/guides_list_to_pdf.php";
+					var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_pdf.php";
+					//var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_pdf.php";
 					var msid = "<?php echo ($login_memberid); ?>";
 					var menu_url = "<?php echo ($menu_url); ?>";
 					//check
@@ -190,8 +190,8 @@ if ($admin == "open") {
 					var filteroption = dml.filteroption.value;
 					var GuideMooringCodes = dml.GuideMooringCodes.value;
 					var GuideHazardCodes = dml.GuideHazardCodes.value;
-					var reportname = "/components/com_membership/views/wwg/tmpl/guides_list_to_kml.php";
-					//var reportname = "components/com_membership/views/wwg/tmpl/guides_list_to_kml.php";
+					var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_kml.php";
+					//var reportname = "components/com_waterways_guide/views/wwg/tmpl/guides_list_to_kml.php";
 					var msid = "<?php echo ($login_memberid); ?>";
 					var menu_url = "<?php echo ($menu_url); ?>";
 					if (option > 0) {
