@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="1.6.1" method="upgrade">
-  <name>membership</name>
-	<creationDate>2011-12-16</creationDate>
-	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
+<extension type="component" version="4.0" method="upgrade">
+  <name>Waterways Guide</name>
+	<creationDate>25-04-2024</creationDate>
+	<copyright>Copyright (C) 2024. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <author>Chris Grant</author>
-	<authorEmail>chris@productif.co.uk</authorEmail>
-	<authorUrl>www.productif.co.uk</authorUrl>
-	<version>1.0.1</version>
+    <author>Russell English</author>
+	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
+	<authorUrl>www.footsteps-design.co.uk</authorUrl>
+	<version>1.0.0</version>
 	<description>Membership administration and updates</description>
-
-	<install> <!-- Runs on install -->
-    	<sql>
-        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-  		</sql>
-    </install>
-    <uninstall> <!-- Runs on uninstall -->
-    	<sql>
-        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
-  		</sql>
-   </uninstall>
 
 	<files folder="site">
 		<filename>index.html</filename>
@@ -35,6 +24,7 @@
 		<language tag="en-GB">language/en-GB.com_membership.ini
 		</language>
 	</languages>
+
 	<administration>
 		<menu>COM_MEMBERSHIP</menu>
 		<submenu>
@@ -70,5 +60,18 @@
 			</language>
 		</languages>
 	</administration>
+
+
+	<install> <!-- Runs on install -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+  		</sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+  		</sql>
+   </uninstall>
+
 </extension>
 
