@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <extension type="component" version="4.0" method="upgrade">
-  <name>Waterways Guide</name>
+    <name>Waterways Guide</name>
 	<creationDate>25-04-2024</creationDate>
 	<copyright>Copyright (C) 2024. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
@@ -9,32 +10,6 @@
 	<authorUrl>www.footsteps-design.co.uk</authorUrl>
 	<version>1.0.0</version>
 	<description>Waterways Guide</description>
-
-	<files folder="site">
-		<folder>controllers</folder>
-		<folder>cron</folder>
-		<folder>helpers</folder>
-		<folder>images</folder>
-		<folder>models</folder>
-		<folder>paypal</folder>
-		<folder>popcal</folder>
-		<folder>templates</folder>
-		<folder>views</folder>
-		<filename>common.php</filename>
-		<filename>commonV3.php</filename>
-		<filename>controller.php</filename>
-		<filename>index.html</filename>
-		<filename>membership.php</filename>
-		<filename>router.php</filename>
-		<filename>tags.php</filename>
-	</files>
-
-	<media folder="media" destination="com_waterways_guide">
-		<folder>css</folder>
-		<folder>images</folder>
-		<folder>js</folder>
-		<filename>index.html</filename>
-	</media>
 
 	<languages folder="site/language">
   		<language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
@@ -45,33 +20,4 @@
 		<language tag="en-GB">language/en-GB.com_waterways_guide.sys.ini</language>
 	</languages>
 
-	<administration>
-		<menu>com_waterways_guide</menu>
-		<submenu>
-			<menu link="option=com_waterways_guide&amp;view=waterwaysguide" view="waterwaysguide" img="class:waterwaysguide" alt="Waterwaysguide">com_waterways_guide_WATERWAYSGUIDE</menu>
-        </submenu>
-		<files folder="admin">
-			<folder>language</folder>
-			<folder>sql</folder>
-			<filename>access.xml</filename>
-			<filename>config.xml</filename>
-			<filename>controller.php</filename>
-			<filename>index.html</filename>
-			<filename>com_waterways_guide.php</filename>
-		</files>
-	</administration>
-
-
-	<install> <!-- Runs on install -->
-    	<sql>
-        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-  		</sql>
-    </install>
-    <uninstall> <!-- Runs on uninstall -->
-    	<sql>
-        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
-  		</sql>
-   </uninstall>
-
 </extension>
-
