@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Members classified adverts">
+		<message>"Members classified adverts"</message>
+	</layout>
+	<!-- Add fields to the parameters object for the layout. -->	
+	<fields name="params">
+
+
+
+		<!-- Basic options. -->
+		<fieldset name="basic" label="Basic">
+			<field name="classified_view" type="list"
+
+				description="Choose a view to display"
+				label="Classified View"
+			>
+				<option value="search">Search</option>
+				<option value="member_edit">Member edit</option>
+				<option value="admin_edit">Admin edit</option>
+			</field>
+
+			
+		</fieldset>
+	</fields>
+</metadata>
