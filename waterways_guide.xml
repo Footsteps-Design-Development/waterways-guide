@@ -29,11 +29,17 @@
         </sql>
     </uninstall>
 
-    
-
     <files folder="site">
+        <folder>controllers</folder>
+        <folder>cron</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>paypal</folder>
+        <folder>popcal</folder>
         <folder>src</folder>
+        <folder>templates</folder>
         <folder>tmpl</folder>
+        <folder>views</folder>
     </files>
     <media destination="com_waterways_guide" folder="media">
         <folder>css</folder>
