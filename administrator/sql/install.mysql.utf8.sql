@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `#__waterways_guide` (
   `GuideID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `state` TINYINT(1)  NULL  DEFAULT 1,
   `checked_out` INT(11)  UNSIGNED,
   `checked_out_time` DATETIME NULL  DEFAULT NULL ,
   `created_by` INT(11)  NULL  DEFAULT 0,
