@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="4.0" method="upgrade">
+    <name>com_waterways_guide</name>
+    <creationDate>2024-04-26</creationDate>
+    <copyright>2024 Russell English</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Russell English</author>
+    <authorEmail>russell@footsteps-design.co.uk</authorEmail>
+    <authorUrl>https://www.footsteps-design.co.uk</authorUrl> 
+    <version>1.0.0</version>
+    <description>Waterways Guide component for Barges</description>
+    <namespace path="src">Waterwaysguide\Component\Waterways_guide</namespace>
+    
+    
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+        <schemas>
+            <schemapath type="mysql">sql/updates</schemapath>
+        </schemas>
+    </update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    
+
+    <files folder="site">
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <media destination="com_waterways_guide" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <filename>joomla.asset.json</filename>
+    </media>
+    <languages folder="site/languages">
+        
+			<language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+    </languages>
+    <administration>
+        <menu>COM_WATERWAYS_GUIDE</menu>
+        <submenu>
+            
+			<menu link="option=com_waterways_guide&amp;view=guides" view="guides" alt="Waterways_guide/Guides">COM_WATERWAYS_GUIDE_TITLE_GUIDES</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <folder>forms</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+            <folder>services</folder>
+            <folder>presets</folder>
+            <folder>sql</folder>
+        </files>
+        <languages folder="administrator/languages">
+            
+			<language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+			<language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
+        </languages>
+    </administration>
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" default="0" />
+            </fieldset>
+        </fields>
+    </config>
+    <plugins>
+    </plugins>
+    
+
+    <updateservers>
+        <server type="extension" priority="1" name="com_waterways_guide"></server>
+    </updateservers>
+</extension>
