@@ -40,12 +40,11 @@ class GuidesModel extends ListModel
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
+				'id', 'a.id',
 				'state', 'a.state',
 				'ordering', 'a.ordering',
 				'created_by', 'a.created_by',
 				'modified_by', 'a.modified_by',
-				'guideid', 'a.guideid',
-				'GuideName', 'a.guidename',
 			);
 		}
 
@@ -74,7 +73,7 @@ class GuidesModel extends ListModel
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// List state information.
-		parent::populateState("a.guideid", "ASC");
+		parent::populateState("a.id", "ASC");
 
 		$context = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $context);
@@ -132,7 +131,8 @@ class GuidesModel extends ListModel
 		// Select the required fields from the table.
 		$query->select(
 			$this->getState(
-				'list.select', 'DISTINCT a.*'
+				// 'list.select', 'DISTINCT a.*'
+				'list.select', 'DISTINCT a.*, a.GuideID, a.GuideName'
 			)
 		);
 		$query->from('`#__waterways_guide` AS a');
@@ -169,7 +169,7 @@ class GuidesModel extends ListModel
 		{
 			if (stripos($search, 'id:') === 0)
 			{
-				$query->where('a.guideid = ' . (int) substr($search, 3));
+				$query->where('a.id = ' . (int) substr($search, 3));
 			}
 			else
 			{
@@ -179,7 +179,7 @@ class GuidesModel extends ListModel
 		}
 		
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering', "a.guideid");
+		$orderCol  = $this->state->get('list.ordering', "a.id");
 		$orderDirn = $this->state->get('list.direction', "ASC");
 
 		if ($orderCol && $orderDirn)

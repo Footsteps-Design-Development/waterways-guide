@@ -70,13 +70,16 @@ if (!empty($saveOrder)) {
 								<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 							</th>
 
-							<th scope="col" class="w-3 d-none d-lg-table-cell">
-								<?php echo HTMLHelper::_('searchtools.sort',  'COM_WATERWAYS_GUIDE_HEADING_GUIDEID', 'a.guideid', $listDirn, $listOrder); ?>
+							<th scope="col" class="w-1 text-center">
+								<?php echo HTMLHelper::_('searchtools.sort', 'COM_WATERWAYS_GUIDE_HEADING_GUIDEID', 'a.GuideID', $listDirn, $listOrder); ?>
 							</th>
 
-							<th scope="col" class="w-3 d-none d-lg-table-cell">
-								<?php echo HTMLHelper::_('searchtools.sort',  'COM_WATERWAYS_GUIDE_HEADING_GUIDENAME', 'a.guidename', $listDirn, $listOrder); ?>
+							<th scope="col">
+								<?php echo HTMLHelper::_('searchtools.sort', 'COM_WATERWAYS_GUIDE_HEADING_GUIDENAME', 'a.GuideName', $listDirn, $listOrder); ?>
 							</th>
+
+
+
 
 						</tr>
 					</thead>
@@ -97,7 +100,7 @@ if (!empty($saveOrder)) {
 						?>
 							<tr class="row<?php echo $i % 2; ?>" data-draggable-group='1' data-transition>
 								<td class="text-center">
-									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+									<?php echo HTMLHelper::_('grid.id', $i, $item->GuideID); ?>
 								</td>
 
 								<?php if (isset($this->items[0]->ordering)) : ?>
@@ -127,12 +130,12 @@ if (!empty($saveOrder)) {
 								</td>
 
 
-								<td class="d-none d-lg-table-cell">
-									<?php echo $item->guideid; ?>
-								</td>
 
-								<td class="d-none d-lg-table-cell">
-									<?php echo $item->guidename; ?>
+								<td class="text-center">
+									<?php echo htmlspecialchars($item->GuideID, ENT_COMPAT, 'UTF-8'); ?>
+								</td>
+								<td>
+									<?php echo htmlspecialchars($item->GuideName, ENT_COMPAT, 'UTF-8'); ?>
 								</td>
 
 
