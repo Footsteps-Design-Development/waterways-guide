@@ -97,6 +97,8 @@ if (!empty($saveOrder)) {
 							$canEdit    = $user->authorise('core.edit', 'com_waterways_guide');
 							$canCheckin = $user->authorise('core.manage', 'com_waterways_guide');
 							$canChange  = $user->authorise('core.edit.state', 'com_waterways_guide');
+							$link = Route::_('index.php?option=com_waterways_guide&task=guide.edit&id='
+
 						?>
 							<tr class="row<?php echo $i % 2; ?>" data-draggable-group='1' data-transition>
 								<td class="text-center">
@@ -124,18 +126,21 @@ if (!empty($saveOrder)) {
 									</td>
 								<?php endif; ?>
 
-
 								<td class="text-center">
 									<?php echo HTMLHelper::_('jgrid.published', $item->state, $i, 'guides.', $canChange, 'cb'); ?>
 								</td>
-
-
 
 								<td class="text-center">
 									<?php echo htmlspecialchars($item->GuideID, ENT_COMPAT, 'UTF-8'); ?>
 								</td>
 								<td>
-									<?php echo htmlspecialchars($item->GuideName, ENT_COMPAT, 'UTF-8'); ?>
+									<?php if ($canEdit) : ?>
+										<a href="<?php echo $link; ?>">
+											<?php echo htmlspecialchars($item->GuideName, ENT_COMPAT, 'UTF-8'); ?>
+										</a>
+									<?php else : ?>
+										<?php echo htmlspecialchars($item->GuideName, ENT_COMPAT, 'UTF-8'); ?>
+									<?php endif; ?>
 								</td>
 
 
