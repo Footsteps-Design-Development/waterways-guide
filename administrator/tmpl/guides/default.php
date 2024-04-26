@@ -97,8 +97,7 @@ if (!empty($saveOrder)) {
 							$canEdit    = $user->authorise('core.edit', 'com_waterways_guide');
 							$canCheckin = $user->authorise('core.manage', 'com_waterways_guide');
 							$canChange  = $user->authorise('core.edit.state', 'com_waterways_guide');
-							$link = Route::_('index.php?option=com_waterways_guide&task=guide.edit&id='
-
+							$link = Route::_('index.php?option=com_waterways_guide&task=guide.edit&id=' . (int) $item->GuideID);
 						?>
 							<tr class="row<?php echo $i % 2; ?>" data-draggable-group='1' data-transition>
 								<td class="text-center">
