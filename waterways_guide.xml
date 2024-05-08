@@ -9,10 +9,9 @@
     <authorUrl>https://www.footsteps-design.co.uk</authorUrl>
     <version>1.0.1</version>
     <description>Waterways Guide component for Barges</description>
-    <namespace path="administrator/src">Waterwaysguide\Component\Waterways_guide</namespace>
     <install>
         <sql>
-            <file driver="mysql" charset="utf8">administrator/sql/install.mysql.utf8.sql</file>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
         </sql>
     </install>
     <update>
