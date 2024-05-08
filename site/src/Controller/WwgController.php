@@ -8,4 +8,5 @@ use Joomla\CMS\MVC\Controller\BaseController;
  */
 class WwgController extends BaseController
 {
+    protected $default_view = 'wwg';
 }

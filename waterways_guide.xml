@@ -58,6 +58,7 @@
             <folder>src</folder>
             <folder>views</folder>
             <filename>router.php</filename>
+            <filename>commonV3.php</filename>
         </files>
         <languages folder="site/language">
             <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
