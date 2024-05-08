@@ -7,7 +7,7 @@
     <author>Russell English</author>
     <authorEmail>russell@footsteps-design.co.uk</authorEmail>
     <authorUrl>https://www.footsteps-design.co.uk</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>Waterways Guide component for Barges</description>
     <namespace path="administrator/src">Waterwaysguide\Component\Waterways_guide</namespace>
 
@@ -27,18 +27,19 @@
         </sql>
     </uninstall>
 
+    <files folder="administrator">
+        <folder>language</folder>
+        <folder>sql</folder>
+        <folder>src</folder>
+        <filename>access.xml</filename>
+        <filename>config.xml</filename>
+    </files>
+    <languages folder="administrator/language">
+        <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
+    </languages>
+
     <administration>
-        <files folder="administrator">
-            <folder>language</folder>
-            <folder>sql</folder>
-            <folder>src</folder>
-            <filename>access.xml</filename>
-            <filename>config.xml</filename>
-        </files>
-        <languages folder="administrator/language">
-            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
-            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
-        </languages>
         <menu>COM_WATERWAYS_GUIDE</menu>
         <submenu>
             <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
@@ -80,6 +81,6 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="com_waterways_guide"></server>
+        <server type="extension" priority="1" name="com_waterways_guide">https://raw.githubusercontent.com/Footsteps-Design-Development/waterways-guide/blob/main/updates/update.json</server>
     </updateservers>
 </extension>
