@@ -33,8 +33,8 @@
             <menu link="index.php?option=com_waterways_guide&amp;view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
         </submenu>
         <files>
-            <folder>forms</folder>
             <folder>sql</folder>
+            <folder>forms</folder>
             <folder>src</folder>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
