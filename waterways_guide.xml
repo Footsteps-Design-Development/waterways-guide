@@ -9,7 +9,7 @@
     <authorUrl>https://www.footsteps-design.co.uk</authorUrl>
     <version>1.0.0</version>
     <description>Waterways Guide component for Barges</description>
-    <namespace path="src">Waterwaysguide\Component\Waterways_guide</namespace>
+    <namespace path="administrator/src">Waterwaysguide\Component\Waterways_guide</namespace>
 
     <install>
         <sql>
@@ -44,13 +44,6 @@
         <submenu>
             <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
         </submenu>
-        <files>
-            <folder>language</folder>
-            <folder>sql</folder>
-            <folder>src</folder>
-            <filename>access.xml</filename>
-            <filename>config.xml</filename>
-        </files>
     </administration>
 
     <site>
