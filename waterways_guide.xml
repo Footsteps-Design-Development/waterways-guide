@@ -34,14 +34,13 @@
         </submenu>
         <files folder="administrator">
             <folder>forms</folder>
-            <folder>sql</folder>
             <folder>src</folder>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
         </files>
         <languages folder="administrator/language">
-            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
-            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
+            <language tag="en-GB">en-GB.com_waterways_guide.ini</language>
+            <language tag="en-GB">en-GB.com_waterways_guide.sys.ini</language>
         </languages>
     </administration>
 
@@ -61,7 +60,6 @@
         </files>
         <languages folder="site/language">
             <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
-            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
         </languages>
     </site>
 
