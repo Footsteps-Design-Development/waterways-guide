@@ -28,8 +28,12 @@
     </uninstall>
 
     <administration>
-        <files> 
-            <folder>language</folder>
+        <menu>COM_WATERWAYS_GUIDE</menu>
+        <submenu>
+            <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
+        </submenu>
+        <files>
+            <folder>forms</folder>
             <folder>sql</folder>
             <folder>src</folder>
             <filename>access.xml</filename>
@@ -39,10 +43,6 @@
             <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
             <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
         </languages>
-        <menu>COM_WATERWAYS_GUIDE</menu>
-        <submenu>
-            <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
-        </submenu>
     </administration>
 
     <site>
