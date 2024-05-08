@@ -46,7 +46,6 @@
     </media>
     <languages folder="site/languages">
         <language tag="en-GB">en-GB/com_waterways_guide.ini</language>
-        <language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
     </languages>
     <administration>
         <menu>COM_WATERWAYS_GUIDE</menu>
