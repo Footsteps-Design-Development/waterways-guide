@@ -1,5 +1,5 @@
 <?php
-namespace Waterwaysguide\Component\Waterways_guide\Site\Model;
+namespace Waterwaysguide\Component\Waterways_guide\Administrator\Model;
 
 use Joomla\CMS\MVC\Model\ListModel;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Waterwaysguide\Component\Waterways_guide\Site\View\Wwg;
+namespace Waterwaysguide\Component\Waterways_guide\Administrator\View\Guides;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 
