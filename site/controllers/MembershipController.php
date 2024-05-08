@@ -1,10 +1,11 @@
 <?php
-// administrator/src/Controller/DisplayController.php
-namespace Waterwaysguide\Component\Waterways_guide\Administrator\Controller;
+
+// site/controllers/MembershipController.php
+namespace Waterwaysguide\Component\Waterways_guide\Site\Controller;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
-class DisplayController extends BaseController
+class MembershipController extends BaseController
 {
     public function display($cachable = false, $urlparams = [])
     {

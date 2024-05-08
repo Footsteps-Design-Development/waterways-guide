@@ -1,77 +1,20 @@
 <?php
-/**
- * @version    CVS: 1.0.0
- * @package    Com_Waterways_guide
- * @author     Russell English <russell@footsteps-design.co.uk>
- * @copyright  2024 Russell English
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- */
 
+// administrator/src/Extension/Waterways_guideComponent.php
 namespace Waterwaysguide\Component\Waterways_guide\Administrator\Extension;
 
-defined('JPATH_PLATFORM') or die;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Extension\BaseComponent;
 
-use Waterwaysguide\Component\Waterways_guide\Administrator\Service\Html\WATERWAYS_GUIDE;
-use Joomla\CMS\Application\SiteApplication;
-use Joomla\CMS\Association\AssociationServiceInterface;
-use Joomla\CMS\Association\AssociationServiceTrait;
-use Joomla\CMS\Categories\CategoryServiceTrait;
-use Joomla\CMS\Component\Router\RouterServiceInterface;
-use Joomla\CMS\Component\Router\RouterServiceTrait;
-use Joomla\CMS\Extension\BootableExtensionInterface;
-use Joomla\CMS\Extension\MVCComponent;
-use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-use Joomla\CMS\Tag\TagServiceTrait;
-use Psr\Container\ContainerInterface;
-use Joomla\CMS\Categories\CategoryServiceInterface;
-
-/**
- * Component class for Waterways_guide
- *
- * @since  1.0.0
- */
-class Waterways_guideComponent extends MVCComponent implements RouterServiceInterface, BootableExtensionInterface, CategoryServiceInterface
+class Waterways_guideComponent extends BaseComponent
 {
-	use AssociationServiceTrait;
-	use RouterServiceTrait;
-	use HTMLRegistryAwareTrait;
-	use CategoryServiceTrait, TagServiceTrait {
-		CategoryServiceTrait::getTableNameForSection insteadof TagServiceTrait;
-		CategoryServiceTrait::getStateColumnForSection insteadof TagServiceTrait;
-	}
-
-	/** @inheritdoc  */
-	public function boot(ContainerInterface $container)
-	{
-		$db = $container->get('DatabaseDriver');
-		$this->getRegistry()->register('waterways_guide', new WATERWAYS_GUIDE($db));
-	}
-
-	
-/**
- * Returns the table for the count items functions for the given section.
-	 *
-	 * @param   string    The section
-	 *
-	 * * @return  string|null
-	 *
-	 * @since   4.0.0
-	 */
-	    protected function getTableNameForSection(string $section = null)            
-	{
-	}
-	
-	/**
-     * Adds Count Items for Category Manager.
-     *
-     * @param   \stdClass[]  $items    The category objects
-     * @param   string       $section  The section
-     *
-     * @return  void
-     *
-     * @since   4.0.0
-     */
-    public function countItems(array $items, string $section)
+    protected function createController(string $name)
     {
-	}
+        $name = ucfirst($name);
+        $class = "Waterwaysguide\\Component\\Waterways_guide\\Administrator\\Controller\\{$name}Controller";
+        if (class_exists($class)) {
+            return new $class();
+        }
+        return null;
+    }
 }
