@@ -30,7 +30,7 @@
     <administration>
         <menu>COM_WATERWAYS_GUIDE</menu>
         <submenu>
-            <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
+            <menu link="index.php?option=com_waterways_guide&amp;view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
         </submenu>
         <files>
             <folder>forms</folder>
@@ -48,7 +48,7 @@
     <site>
         <menu>
             <title>Waterways Guide</title>
-            <link>index.php?option=com_waterways_guide&view=wwg</link>
+            <link>index.php?option=com_waterways_guide&amp;view=wwg</link>
         </menu>
         <files>
             <folder>controllers</folder>
@@ -80,6 +80,6 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="com_waterways_guide">https://raw.githubusercontent.com/Footsteps-Design-Development/waterways-guide/blob/main/updates/update.json</server>
+        <server type="extension" priority="1" name="com_waterways_guide">https://raw.githubusercontent.com/YOUR-USERNAME/com_waterways_guide/main/update.json</server>
     </updateservers>
 </extension>
