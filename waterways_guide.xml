@@ -7,23 +7,11 @@
     <author>Russell English</author>
     <authorEmail>russell@footsteps-design.co.uk</authorEmail>
     <authorUrl>https://www.footsteps-design.co.uk</authorUrl>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <description>Waterways Guide component for Barges</description>
-    <install>
-        <sql>
-            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-        </sql>
-    </install>
-    <update>
-        <schemas>
-            <schemapath type="mysql">administrator/sql/updates</schemapath>
-        </schemas>
-    </update>
-    <uninstall>
-        <sql>
-            <file driver="mysql" charset="utf8">administrator/sql/uninstall.mysql.utf8.sql</file>
-        </sql>
-    </uninstall>
+    <namespace path="administrator/src">Waterwaysguide\Component\Waterways_guide</namespace>
+
+   
 
     <administration>
         <menu>COM_WATERWAYS_GUIDE</menu>
