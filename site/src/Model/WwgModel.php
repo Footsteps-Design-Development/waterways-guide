@@ -31,7 +31,7 @@ class WwgModel extends ListModel
 
         // Build the query
         $query->select('*')
-            ->from($db->quoteName('#__waterways_guides'));
+            ->from($db->quoteName('#__waterways_guide'));
 
         // Add ordering clause
         $orderCol = $this->getState('list.ordering', 'id');
