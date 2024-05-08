@@ -27,14 +27,14 @@
         </sql>
     </uninstall>
 
-    <administration>
+    <administration folder="administrator">
         <menu>COM_WATERWAYS_GUIDE</menu>
         <submenu>
             <menu link="index.php?option=com_waterways_guide&amp;view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
         </submenu>
         <files>
-            <folder>sql</folder>
             <folder>forms</folder>
+            <folder>sql</folder>
             <folder>src</folder>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
