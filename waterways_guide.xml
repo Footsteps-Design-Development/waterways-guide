@@ -6,13 +6,11 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Russell English</author>
     <authorEmail>russell@footsteps-design.co.uk</authorEmail>
-    <authorUrl>https://www.footsteps-design.co.uk</authorUrl> 
+    <authorUrl>https://www.footsteps-design.co.uk</authorUrl>
     <version>1.0.0</version>
     <description>Waterways Guide component for Barges</description>
     <namespace path="src">Waterwaysguide\Component\Waterways_guide</namespace>
-    
-    
-    
+
     <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -47,43 +45,60 @@
         <filename>joomla.asset.json</filename>
     </media>
     <languages folder="site/languages">
-        
-			<language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+        <language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+        <language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
     </languages>
     <administration>
         <menu>COM_WATERWAYS_GUIDE</menu>
         <submenu>
-            
-			<menu link="option=com_waterways_guide&amp;view=guides" view="guides" alt="Waterways_guide/Guides">COM_WATERWAYS_GUIDE_TITLE_GUIDES</menu>
-
+            <menu link="option=com_waterways_guide&amp;view=guides" view="guides" alt="Waterways_guide/Guides">COM_WATERWAYS_GUIDE_TITLE_GUIDES</menu>
+            <menu link="option=com_waterways_guide&amp;view=requests" view="requests" alt="Waterways_guide/Requests">COM_WATERWAYS_GUIDE_TITLE_REQUESTS</menu>
         </submenu>
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
             <folder>forms</folder>
-            <folder>src</folder>
-            <folder>tmpl</folder>
             <folder>services</folder>
             <folder>presets</folder>
             <folder>sql</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
         </files>
         <languages folder="administrator/languages">
-            
-			<language tag="en-GB">en-GB/com_waterways_guide.ini</language>
-			<language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
+            <language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+            <language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
         </languages>
     </administration>
+    <site>
+        <menu>
+            <title>Waterways Guide</title>
+            <link>index.php?option=com_waterways_guide&amp;view=wwg</link>
+        </menu>
+        <files>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>paypal</folder>
+            <folder>popcal</folder>
+            <folder>src</folder>
+            <folder>templates</folder>
+            <folder>views</folder>
+            <filename>router.php</filename>
+        </files>
+        <languages folder="site/languages">
+            <language tag="en-GB">en-GB/com_waterways_guide.ini</language>
+            <language tag="en-GB">en-GB/com_waterways_guide.sys.ini</language>
+        </languages>
+    </site>
     <config>
         <fields name="params">
             <fieldset name="component">
-                <field name="save_history" default="0" />
+                <field name="save_history" type="radio" label="JGLOBAL_HISTORY_LABEL" description="JGLOBAL_HISTORY_DESC" default="0" />
             </fieldset>
         </fields>
     </config>
     <plugins>
     </plugins>
-    
-
     <updateservers>
         <server type="extension" priority="1" name="com_waterways_guide"></server>
     </updateservers>
