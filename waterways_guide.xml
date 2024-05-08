@@ -11,6 +11,73 @@
     <description>Waterways Guide component for Barges</description>
     <namespace path="administrator/src">Waterwaysguide\Component\Waterways_guide</namespace>
 
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">administrator/sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update>
+        <schemas>
+            <schemapath type="mysql">administrator/sql/updates</schemapath>
+        </schemas>
+    </update>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">administrator/sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <administration>
+        <menu>COM_WATERWAYS_GUIDE</menu>
+        <submenu>
+            <menu link="index.php?option=com_waterways_guide&view=wwg" view="wwg" alt="WWG View">COM_WATERWAYS_GUIDE_WWG</menu>
+        </submenu>
+        <files>
+            <folder>forms</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+        </files>
+        <languages folder="administrator/language">
+            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
+        </languages>
+    </administration>
+
+    <site>
+        <menu>
+            <title>Waterways Guide</title>
+            <link>index.php?option=com_waterways_guide&view=wwg</link>
+        </menu>
+        <files>
+            <folder>controllers</folder>
+            <folder>cron</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>src</folder>
+            <folder>views</folder>
+            <filename>router.php</filename>
+        </files>
+        <languages folder="site/language">
+            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_waterways_guide.sys.ini</language>
+        </languages>
+    </site>
+
+    <media destination="com_waterways_guide" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <filename>index.html</filename>
+    </media>
+
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" type="radio" label="JGLOBAL_HISTORY_LABEL" description="JGLOBAL_HISTORY_DESC" default="0" />
+            </fieldset>
+        </fields>
+    </config>
 
     <updateservers>
         <server type="extension" priority="1" name="com_waterways_guide">https://raw.githubusercontent.com/Footsteps-Design-Development/waterways-guide/blob/main/updates/update.json</server>
