@@ -30,11 +30,22 @@ class WwgModel extends ListModel
         $query = $db->getQuery(true);
 
         // Build the query
-        $query->select('*')
-            ->from($db->quoteName('#__waterways_guide'));
+        $query->select([
+            'GuideID',
+            'GuideName',
+            'GuideSummary',
+            'GuideCountry',
+            'GuideWaterway',
+            'GuideLatLong',
+            'GuideLocation',
+            'GuideRef',
+            'GuidePostingDate',
+            'GuideUpdate'
+        ])
+        ->from($db->quoteName('#__waterways_guide'));
 
         // Add ordering clause
-        $orderCol = $this->getState('list.ordering', 'id');
+        $orderCol = $this->getState('list.ordering', 'GuideID');
         $orderDirn = $this->getState('list.direction', 'asc');
         $query->order($db->quoteName($orderCol) . ' ' . $db->escape($orderDirn));
 

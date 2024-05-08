@@ -1,10 +1,8 @@
 <?php
-
 // src/View/Wwg/HtmlView.php
 namespace Waterwaysguide\Component\Waterways_guide\Site\View\Wwg;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\ToolbarHelper;
 
 class HtmlView extends BaseHtmlView
 {
