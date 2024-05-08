@@ -1,13 +1,13 @@
 <?php
 
-// src/Model/WwgModel.php
+// src/Model/RequestsModel.php
 namespace Waterwaysguide\Component\Waterways_guide\Site\Model;
 
 use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Database\DatabaseQuery;
 use Joomla\CMS\Factory;
 
-class WwgModel extends ListModel
+class RequestsModel extends ListModel
 {
     protected function populateState($ordering = null, $direction = null)
     {
@@ -32,21 +32,17 @@ class WwgModel extends ListModel
 
         // Build the query
         $query->select([
-            'GuideID',
-            'GuideName',
-            'GuideSummary',
+            'memberid',
             'GuideCountry',
             'GuideWaterway',
-            'GuideLatLong',
-            'GuideLocation',
-            'GuideRef',
-            'GuidePostingDate',
-            'GuideUpdate'
+            'GuideRequestDate',
+            'GuideRequestMethod',
+            'GuideRequestStatus'
         ])
-        ->from($db->quoteName('#__waterways_guide'));
+        ->from($db->quoteName('#__waterways_guide_requests'));
 
         // Add ordering clause
-        $orderCol = $this->getState('list.ordering', 'GuideID');
+        $orderCol = $this->getState('list.ordering', 'memberid');
         $orderDirn = $this->getState('list.direction', 'asc');
         $query->order($db->quoteName($orderCol) . ' ' . $db->escape($orderDirn));
 
