@@ -1,0 +1,37 @@
+Array
+(
+    [userid] => 0
+    [ID2] => 
+    [subscription_desc] => Single membership in Europe
+    [subaction] => subscribe2
+    [Services] => |1|
+    [MemNo] => 
+    [MembershipNo] => 
+    [daystorenew] => 
+    [Location] => GB_UK_United Kingdom
+    [MemType] => Ordinary
+    [MemTypeCode] => 1
+    [BasicSub] => 35.00
+    [Title] => Mr
+    [FirstName] => Footsteps
+    [LastName] => Design
+    [Email] => support@footsteps-design.co.uk
+    [Telephone1] => 01206864441
+    [Telephone2] => 
+    [Login] => FootstepsSupport
+    [PW] => WyvuyyHF
+    [Title2] => 
+    [FirstName2] => 
+    [LastName2] => 
+    [Email2] => 
+    [Mobile2] => 
+    [Address1] => 1
+    [Address2] => 2
+    [Address3] => 3
+    [Address4] => 4
+    [PostCode] => CO11WD
+    [Situation] => 2
+    [LocationCruising] => 0_0_0
+    [service1] => 1
+    [PaymentMethod] => dd
+)
