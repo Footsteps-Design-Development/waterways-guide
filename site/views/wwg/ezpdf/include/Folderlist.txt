@@ -1,4 +1,0 @@
-Folderlist.txt
-README.txt
-TTF.php
-TTFsubset.php

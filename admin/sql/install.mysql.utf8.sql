@@ -41,3 +41,23 @@ CREATE TABLE `#__waterways_guide_requests` (
   `GuideRequestMethod` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `GuideRequestStatus` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `#__waterways_guide_services` (
+  `ID` bigint(20) NOT NULL DEFAULT 0,
+  `ServiceID` varchar(4) NOT NULL DEFAULT '',
+  `ServiceDescGB` mediumtext DEFAULT NULL,
+  `ServiceHelpGB` varchar(100) DEFAULT NULL,
+  `ServiceCategory` mediumtext DEFAULT NULL,
+  `ServiceSortOrder` tinyint(3) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `#__waterways_guide_country` (
+  `iso` char(2) NOT NULL DEFAULT '',
+  `name` varchar(80) NOT NULL DEFAULT '',
+  `printable_name` varchar(80) NOT NULL DEFAULT '',
+  `iso3` char(3) DEFAULT NULL,
+  `numcode` smallint(6) DEFAULT NULL,
+  `postzone` char(3) DEFAULT NULL,
+  PRIMARY KEY (`iso`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
