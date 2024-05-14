@@ -1,5 +1,6 @@
 <?php
 
+use Joomla\CMS\Factory;
 
 
 $errmsg = "";
