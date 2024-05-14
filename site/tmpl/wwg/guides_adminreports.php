@@ -1,4 +1,18 @@
 <?php
+
+/**
+ * @version     1.0.0
+ * @package     com_waterways_guide
+ * @copyright   Copyright (C) 2024. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @author      Russell English
+ */
+
+// no direct access
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+
 echo ("<tr><td colspan=4>");
 	echo("<input name=\"colsort\" type=\"hidden\" value=\"$colsort\">\n");
 

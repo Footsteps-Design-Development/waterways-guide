@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * @version     1.0.0
+ * @package     com_waterways_guide
+ * @copyright   Copyright (C) 2024. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @author      Russell English
+ */
+
+// no direct access
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
 
 //---------------------------------------kmz------------------------------------------------------
 
@@ -9,7 +21,6 @@ $mooringsguidedocintrotextpdf="";
 $filtertext="";
 require_once("../../../commonV3.php");
 
-use Joomla\CMS\Factory;
 $db = Factory::getDbo();
 
 getpost_ifset(array('waterway','waterway1','waterway2','country','guideaction','filteroption','GuideMooringCodes','GuideHazardCodes','mooringsguidedocintrotextpdf','msid','menu_url'));
