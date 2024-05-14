@@ -4,11 +4,11 @@
 	<creationDate>May 2024</creationDate>
 	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <author>Russell English</author>
-	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<authorUrl>footsteps-.co.uk</authorUrl>
+    <author>Storm web design</author>
+	<authorEmail>russell.english@stormit.co.uk</authorEmail>
+	<authorUrl>stormit.co.uk</authorUrl>
 	<version>1.0.1</version>
-	<description>Waterways Guide</description>
+	<description>Water Ways Guide</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
 
@@ -29,7 +29,7 @@
 
 	<administration>
 		<!-- The link that will appear in the Admin panel's "Components" menu -->
-		<menu link="index.php?option=com_waterways_guide">Water Ways Guide</menu>
+		<menu link="index.php?option=com_config&amp;view=component&amp;component=com_waterways_guide">Water Ways Guide</menu>
 		<!-- List of files and folders to copy. Note the 'folder' attribute.
              This is the name of the folder in your component package to copy FROM -->
 		<files folder="admin">
@@ -37,6 +37,7 @@
 			<folder>src</folder>
 			<folder>tmpl</folder>
 			<folder>sql</folder>
+			<filename>config.xml</filename>
 		</files>
 		<languages>
 			<language tag="en-GB">admin/language/en-GB/com_waterways_guide.ini</language>
