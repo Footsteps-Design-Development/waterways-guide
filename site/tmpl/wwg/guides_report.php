@@ -1,18 +1,5 @@
 <?php
 
-/**
- * @version     1.0.0
- * @package     com_waterways_guide
- * @copyright   Copyright (C) 2024. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Russell English
- */
-
-// no direct access
-defined('_JEXEC') or die;
-
-use Joomla\CMS\Factory;
-
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
 
@@ -477,7 +464,7 @@ $mailOn = Factory::getConfig()->get('mailonline') == '1';
 								$insert->Subject = $subject;
 								$insert->ChangeDesc = $changelogtext;
 								$insert->ChangeDate = $changedate;
-								$db->insertObject('tblChangeLog', $insert) or die ("Couldn't update change log");
+								$db->insertObject('#__waterways_guide_changelog', $insert) or die ("Couldn't update change log");
 							}		
 						}
 	

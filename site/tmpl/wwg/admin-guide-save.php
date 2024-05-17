@@ -1,5 +1,13 @@
 <?php
+use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
 
+$user       = Factory::getUser();
+$login_memberid = $user->id;
+if($user->guest) {
+    $link  = JRoute::_('index.php?option=com_users&view=login&return=' . base64_encode(JUri::current()), "You must be logged in to view this content");
+    Factory::getApplication()->redirect($link);
+}
 $errmsg = "";
 if (!$GuideCountry) {
 	if ($errmsg) {
@@ -176,7 +184,7 @@ if ($errmsg) {
 		$insert->Subject = $subject;
 		$insert->ChangeDesc = $changelogtext;
 		$insert->ChangeDate = $GuideUpdate;
-		$update = $db->insertObject('tblChangeLog', $insert);
+		$update = $db->insertObject('#__waterways_guide_changelog', $insert);
 		if (!$update) {
 			echo ("Couldn't update changelog");
 		} else {

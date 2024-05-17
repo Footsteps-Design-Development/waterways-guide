@@ -1,19 +1,16 @@
 <?php
 
-/**
- * @version     1.0.0
- * @package     com_waterways_guide
- * @copyright   Copyright (C) 2024. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Russell English
- */
-
-// no direct access
-defined('_JEXEC') or die;
-
 echo ("<input name=\"cat_guides\" type=\"hidden\" value=\"$cat_guides\">");
 echo ("<input name=\"showclosed\" type=\"hidden\" value=\"$showclosed\">");
+use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
 
+$user       = Factory::getUser();
+$login_memberid = $user->id;
+if($user->guest) {
+    $link  = JRoute::_('index.php?option=com_users&view=login&return=' . base64_encode(JUri::current()), "You must be logged in to view this content");
+    Factory::getApplication()->redirect($link);
+}
 //get details for log before deleting
 $query = $db->getQuery(true)
     ->select('*')
@@ -52,7 +49,7 @@ if ($updates > 0) {
     $insert->Subject = $subject;
     $insert->ChangeDesc = $changelogtext;
     $insert->ChangeDate = $changedate;
-    $update = $db->insertObject('tblChangeLog', $insert);
+    $update = $db->insertObject('#__waterways_guide_changelog', $insert);
     if (!$update) {
         echo ("Couldn't update changelog");
     } else {

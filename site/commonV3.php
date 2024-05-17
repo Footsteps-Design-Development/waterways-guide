@@ -85,12 +85,12 @@ foreach([
 	'webmasteremail'
 	] as $k) $$k = $cParams->get($k);
 
-foreach($cParams->get('subamount') as $k=>$v) {
+/*foreach($cParams->get('subamount') as $k=>$v) {
 	foreach($v as $k2=>$v2) {
 		if($k2 == 'n') ${$k} = $v2;
 		else ${$k.$k2} = $v2;
 	}
-}
+}*/
 
 //Quicklogin secret string to MD5 encrypt
 $secretstring="gdprsecretstring"; 

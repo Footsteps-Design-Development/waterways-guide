@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @version     1.0.0
- * @package     com_waterways_guide
- * @copyright   Copyright (C) 2024. All rights reserved.
+ * @version     3.0.0
+ * @package     com_waterways_guide waterwaysguide
+ * @copyright   Copyright (C) 2020. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Russell English
+ * @author      Chris Grant www.productif.co.uk
  */
 
 // no direct access

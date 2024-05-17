@@ -1,18 +1,15 @@
 <?php
 
-/**
- * @version     1.0.0
- * @package     com_waterways_guide
- * @copyright   Copyright (C) 2024. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Russell English
- */
-
-// no direct access
-defined('_JEXEC') or die;
-
 use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
 
+$user       = Factory::getUser();
+$login_memberid = $user->id;
+if($user->guest) {
+   // $link = JRoute::_('index.php?option=com_users&view=login',false);
+    $link2  = JRoute::_('index.php?option=com_users&view=login&return=' . base64_encode(JUri::current()), "You must be logged in to view this content");
+    Factory::getApplication()->redirect($link2);
+}
 $errmsg = "";
 
 if ($errmsg) {
@@ -26,23 +23,22 @@ if ($errmsg) {
 	$updatetext = "";
 	$subject = "Guides";
 	//get info for this submitter
-	if (empty($login_MembershipNo)) {
-		$query = $db->getQuery(true)
-			->select('*')
-			->from($db->qn('tblMembers'))
-			->where($db->qn('ID') . ' = ' . $db->q($login_memberid));
-		$memberrow = $db->setQuery($query)->loadAssoc();
-		$login_MembershipNo = $memberrow["MembershipNo"];
-		$contact = $memberrow["FirstName"] . " " . $memberrow["LastName"] . ", " . $memberrow["Email"] . ", Membership No. " . $login_MembershipNo . "";
-		$submitteremail = $memberrow["Email"];
-		$submitterid = $memberrow["ID"];
-	} else {
-		$login_MembershipNo = "Unknown";
-		$contact = "Unknown";
-	}
 
-	$GuideEditorMemNo = $login_MembershipNo;
-	if ($infoid == "new") {
+    $query = $db->getQuery(true)
+        ->select('*')
+        ->from($db->qn('#__users'))
+        ->where($db->qn('id') . ' = ' . $db->q($login_memberid));
+    $memberrow = $db->setQuery($query)->loadAssoc();
+
+    $login_MembershipNo = $memberrow["id"];
+    $contact = $memberrow["name"] . " " . $memberrow["email"] . ", User id No. " . $login_MembershipNo . "";
+    $submitteremail = $memberrow["email"];
+    $submitterid = $memberrow["id"];
+
+
+	$GuideEditorMemNo = $submitterid;
+	if ($infoid == "new")
+	{
 		//add new
 		if (!$GuidePostingDate) {
 			$GuidePostingDate = $GuideUpdate;
@@ -120,7 +116,8 @@ if ($errmsg) {
 			$updates = 1;
 			$linkinfoid = $GuideNo;
 		}
-	} elseif ($infoid > 0) {
+	} elseif ($infoid > 0)
+    {
 
 		$GuideStatus = 0; //pending
 		//$GuideNo=$infoid; //from previous version
@@ -215,7 +212,7 @@ if ($errmsg) {
 		$insert->Subject = $subject;
 		$insert->ChangeDesc = $changelogtext;
 		$insert->ChangeDate = $GuideUpdate;
-		$update = $db->insertObject('tblChangeLog', $insert);
+		$update = $db->insertObject('#__waterways_guide_changelog', $insert);
 		if (!$update) {
 			echo ("Couldn't update changelog");
 		} else {

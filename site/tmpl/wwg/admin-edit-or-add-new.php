@@ -1,5 +1,6 @@
 <?php
-
+use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
     function diff($old, $new)
     {
         $maxlen = 0;
@@ -51,6 +52,12 @@
     echo ("<tr><td class=content_introduction><b>Edit entry by Administrator</b></td></tr>\n");
     echo ("<tr><td><input type=\"button\" class=\"btn btn-primary\" name=\"listback\" value=\"Back to the list\" onClick=\"document.form.guideaction.value='list';document.form.lastguideaction.value='list';document.form.submit()\"><input type=\"button\" class=\"btn btn-primary\" name=\"mapback\" value=\"Back to the map\" onClick=\"document.form.guideaction.value='map';document.form.lastguideaction.value='map';document.form.submit()\"> " . (isset($adminlink) ? $adminlink : '') . "</td></tr>\n");
 
+    $user       = Factory::getUser();
+    $login_memberid = $user->id;
+    if($user->guest) {
+        $link  = JRoute::_('index.php?option=com_users&view=login&return=' . base64_encode(JUri::current()), "You must be logged in to view this content");
+        Factory::getApplication()->redirect($link);
+    }
 
     if ($errmsg) {
         echo ("<tr><td><font color=ff0000><b>$errmsg</b></font></td></tr>\n");
@@ -247,13 +254,19 @@
         if ($GuideEditorMemNo) {
             $query = $db->getQuery(true)
                 ->select('*')
-                ->from($db->qn('tblMembers'))
-                ->where($db->qn('MembershipNo') . ' = ' . $db->q($GuideEditorMemNo));
+                ->from($db->qn('#__users'))
+                ->where($db->qn('id') . ' = ' . $db->q($GuideEditorMemNo));
             $memberrow = $db->setQuery($query)->loadAssoc();
-            $login_MembershipNo = $memberrow["MembershipNo"];
-            $contact = $memberrow["FirstName"] . " " . $memberrow["LastName"] . ", " . $memberrow["Email"] . ", Membership No. " . $login_MembershipNo . "";
-            $submitteremail = $memberrow["Email"];
-            $submitterid = $memberrow["ID"];
+
+            /*$query = $db->getQuery(true)
+                ->select('*')
+                ->from($db->qn('tblMembers'))
+                ->where($db->qn('MembershipNo') . ' = ' . $db->q($GuideEditorMemNo));*/
+            $memberrow = $db->setQuery($query)->loadAssoc();
+            $login_MembershipNo = $memberrow["id"];
+            $contact = $memberrow["name"] . " " . $memberrow["email"] . ", User id No. " . $login_MembershipNo . "";
+            $submitteremail = $memberrow["email"];
+            $submitterid = $memberrow["id"];
         } else {
             $contact = "Unknown";
         }
