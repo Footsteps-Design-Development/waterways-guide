@@ -4,11 +4,10 @@
 	<creationDate>May 2024</creationDate>
 	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <author>Storm web design</author>
-	<authorEmail>russell.english@stormit.co.uk</authorEmail>
-	<authorUrl>stormit.co.uk</authorUrl>
+    <author>Russell English</author>
+	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
 	<version>1.0.1</version>
-	<description>Water Ways Guide</description>
+	<description>Waterways Guide</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
 
