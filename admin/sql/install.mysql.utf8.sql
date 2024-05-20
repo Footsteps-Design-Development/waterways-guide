@@ -69,5 +69,5 @@ CREATE TABLE `#__waterways_guide_changelog` (
   `Subject` longtext COLLATE utf8mb4_unicode_ci,
   `ChangeDesc` longtext COLLATE utf8mb4_unicode_ci,
   `ChangeDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`LogID`);
+  PRIMARY KEY (`LogID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
