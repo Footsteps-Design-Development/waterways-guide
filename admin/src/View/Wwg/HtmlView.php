@@ -1,46 +1,64 @@
 <?php
 
-namespace Joomla\Component\WaterWaysGuide\Administrator\View\Config;
-
-defined('_JEXEC') or die;
+namespace Joomla\Component\WaterWaysGuide\Administrator\View\Wwg;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\Component\WaterWaysGuide\Administrator\Helper\WaterWaysGuideHelper;
 
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_usersync
- *
- * @copyright   Copyright (C) 2020 John Smith. All rights reserved.
- * @license     GNU General Public License version 3; see LICENSE
- */
+class HtmlView extends BaseHtmlView
+{
+    protected $items;
+    protected $pagination;
+    protected $state;
+    protected $filterForm;
 
-/**
- * Main "Member Mojo" Admin View
- */
-class HtmlView extends BaseHtmlView {
+    public function display($tpl = null)
+    {
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->state = $this->get('State');
+        $this->filterForm = $this->get('FilterForm'); // Ensure filter form is initialized
 
-    /**
-     * Display the main "Member Mojo" view
-     *
-     * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
-     * @return  void
-     */
-    function display($tpl = null) {
-
-
-        parent::display($tpl);
+        // Check for errors.
+        if (count($errors = $this->get('Errors'))) {
+            throw new \Exception(implode("\n", $errors), 500);
+        }
 
         $this->addToolbar();
 
+        // Set the document title
+        $document = Factory::getDocument();
+        $document->setTitle(Text::_('COM_WATERWAYS_GUIDE_MANAGER'));
+
+        // Call the parent display to render the layout
+        parent::display($tpl);
     }
+
     protected function addToolbar()
     {
+        ToolbarHelper::title(Text::_('COM_WATERWAYS_GUIDE_MANAGER'), 'address water-ways-guide');
 
-        $toolbar   = Toolbar::getInstance();
-
-        $toolbar->apply('config.save');
-
+        // We are intentionally not adding the "New" and "Edit" buttons.
+        if (WaterWaysGuideHelper::getActions()->get('core.admin')) {
+            ToolbarHelper::preferences('com_waterways_guide');
+        }
     }
 
+    protected function getSortFields()
+    {
+        return array(
+            'GuideID' => Text::_('COM_WATERWAYS_GUIDE_GUIDE_ID'),
+            'GuideName' => Text::_('COM_WATERWAYS_GUIDE_GUIDE_NAME'),
+            'GuideUpdate' => Text::_('COM_WATERWAYS_GUIDE_GUIDE_UPDATE'),
+            'GuideCountry' => Text::_('COM_WATERWAYS_GUIDE_GUIDE_COUNTRY'),
+        );
+    }
+
+    public function getFilterForm()
+    {
+        return $this->filterForm;
+    }
 }

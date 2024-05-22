@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<access component="com_waterways_guide">
+    <section name="component">
+        <action name="core.admin" title="JLIB_RULES_ALLOW_ADMIN" description="JLIB_RULES_ALLOW_ADMIN_DESC" />
+        <action name="core.manage" title="JLIB_RULES_ALLOW_MANAGE" description="JLIB_RULES_ALLOW_MANAGE_DESC" />
+        <action name="core.create" title="JLIB_RULES_ALLOW_CREATE" description="JLIB_RULES_ALLOW_CREATE_DESC" />
+        <action name="core.delete" title="JLIB_RULES_ALLOW_DELETE" description="JLIB_RULES_ALLOW_DELETE_DESC" />
+        <action name="core.edit" title="JLIB_RULES_ALLOW_EDIT" description="JLIB_RULES_ALLOW_EDIT_DESC" />
+        <action name="core.edit.state" title="JLIB_RULES_ALLOW_EDIT_STATE" description="JLIB_RULES_ALLOW_EDIT_STATE_DESC" />
+        <action name="core.edit.own" title="JLIB_RULES_ALLOW_EDIT_OWN" description="JLIB_RULES_ALLOW_EDIT_OWN_DESC" />
+    </section>
+</access>

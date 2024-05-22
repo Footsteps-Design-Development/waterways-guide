@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.1" method="upgrade">
+  <name>com_waterways_guide</name>
+	<creationDate>May 2024</creationDate>
+	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Russell English</author>
+	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
+	<version>1.0.1</version>
+	<description>Waterways Guide</description>
+
+	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
+
+	<files folder="site">
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<folder>helpers</folder>
+		<filename>commonV3.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">site/language/en-GB/com_waterways_guide.ini</language>
+	</languages>
+	<media destination="com_waterways_guide" folder="media">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+
+	<administration>
+		<!-- The link that will appear in the Admin panel's "Components" menu -->
+		<menu link="index.php?option=com_config&amp;view=component&amp;component=com_waterways_guide">Waterways Guide</menu>
+
+		<!-- List of files and folders to copy. Note the 'folder' attribute.
+             This is the name of the folder in your component package to copy FROM -->
+		<files folder="admin">
+			<folder>services</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<filename>config.xml</filename>
+            <filename>access.xml</filename>
+		</files>
+		<languages>
+			<language tag="en-GB">admin/language/en-GB/com_waterways_guide.ini</language>
+			<language tag="en-GB">admin/language/en-GB/com_waterways_guide.sys.ini</language>
+		</languages>
+	</administration>
+
+	<install> <!-- Runs on install -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+  		</sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+  		</sql>
+   </uninstall>
+
+</extension>
+

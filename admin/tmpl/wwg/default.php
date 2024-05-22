@@ -1,26 +1,52 @@
 <?php
+defined('_JEXEC') or die;
 
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_usersync
- *
- * @copyright   Copyright (C) 2020 John Smith. All rights reserved.
- * @license     GNU General Public License version 3; see LICENSE
- */
-
-// No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
-
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Layout\LayoutHelper;
 
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->useScript('jquery');
+$items = $this->items;
+$pagination = $this->pagination;
+$state = $this->state;
+$filterForm = $this->getFilterForm();
 ?>
-<div class="main-card">
 
-</div>
+<h1><?php echo Text::_('COM_WATERWAYS_GUIDE_LIST'); ?></h1>
 
+<form action="<?php echo Route::_('index.php?option=com_waterways_guide&view=wwg'); ?>" method="post" name="adminForm" id="adminForm">
+    <?php // echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'filters' => $filterForm)); ?>
+
+    <?php if (!empty($items)) : ?>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_ID', 'GuideID', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_UPDATE', 'GuideUpdate', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_NAME', 'GuideName', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_COUNTRY', 'GuideCountry', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($items as $item) : ?>
+                    <tr>
+                        <td><?php echo $item->GuideID; ?></td>
+                        <td><?php echo $item->GuideUpdate; ?></td>
+                        <td><?php echo $item->GuideName; ?></td>
+                        <td><?php echo $item->GuideCountry; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <?php echo $pagination->getListFooter(); ?>
+        </div>
+    <?php else : ?>
+        <p><?php echo Text::_('COM_WATERWAYS_GUIDE_NO_ITEMS'); ?></p>
+    <?php endif; ?>
+
+    <input type="hidden" name="task" value="" />
+    <input type="hidden" name="option" value="com_waterways_guide" />
+    <input type="hidden" name="view" value="wwg" />
+    <?php echo HTMLHelper::_('form.token'); ?>
+</form>

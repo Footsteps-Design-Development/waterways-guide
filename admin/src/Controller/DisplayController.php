@@ -2,39 +2,26 @@
 
 namespace Joomla\Component\WaterWaysGuide\Administrator\Controller;
 
-defined('_JEXEC') or die;
-
 use Joomla\CMS\MVC\Controller\BaseController;
-use Joomla\CMS\Factory;
-use Joomla\Database\DatabaseFactory;
-use Joomla\Database\DatabaseDriver;
-use Joomla\Database\Mysqli;
-use Joomla\CMS\User\User;
-use Joomla\CMS\Table\Table;
-use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_membermojo
- *
- * @copyright   Copyright (C) 2020 John Smith. All rights reserved.
- * @license     GNU General Public License version 3; see LICENSE
- */
 
-/**
- * Default Controller of MemberMojo component
- *
- * @package     Joomla.Administrator
- * @subpackage  com_membermojo
- */
-class DisplayController extends BaseController {
-    /**
-     * The default view for the display method.
-     *
-     * @var string
-     */
-    protected $default_view = 'wwg';
-
-    public function display($cachable = false, $urlparams = array()) {
-        return parent::display($cachable, $urlparams);
+class DisplayController extends BaseController
+{
+    public function display($cachable = false, $urlparams = [])
+    {
+        // Set the default view name and format from the Request.
+        $app = \Joomla\CMS\Factory::getApplication();
+        $viewName = $app->input->getCmd('view', 'wwg');
+        $viewFormat = $app->input->getCmd('format', 'html');
+        $view = $this->getView($viewName, $viewFormat);
+        
+        // Ensure the view has the model
+        $model = $this->getModel('Wwg');
+        if (!$model) {
+            $model = $this->createModel('Wwg', 'Joomla\Component\WaterWaysGuide\Administrator\Model');
+        }
+        $view->setModel($model, true);
+        
+        // Display the view
+        $view->display();
     }
 }
