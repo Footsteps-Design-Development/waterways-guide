@@ -88,7 +88,7 @@ if ($updates > 0) {
         $guidesurl = $menu_url . "?guideaction=detail&infoid=" . $linkinfoid;
         $thissubject = "DBA waterways guide update";
 
-        $thismessage = stripslashes($GuideMessage) . "\nLog in and then click this link " . $guidesurl . " to see the updated entry.";
+        $thismessage = stripslashes($GuideMessage) . "\Click this link <a href='https://" . $guidesurl . "'>" . $guidesurl . "</a> to see the updated entry.";
         //$to=$submitteremail;
         $from = $guidesemail;
         $fromname = "DBA Waterways Guides Admin Administration";
