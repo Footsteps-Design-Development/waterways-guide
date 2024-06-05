@@ -185,7 +185,7 @@ if ($errmsg) {
 		$guidesurl = $menu_url . "?guideaction=edit&infoid=" . $linkinfoid;
 		$thissubject = "DBA waterways guide member update";
 		$thismessage = "A waterways guide update, '" . stripslashes($changelogtext) . "', has been made on the " . $sitename . " website.
-			\n\nSubmitter: " . $contact . "\n\nLog in as waterways guide administrator and then click this link " . $guidesurl . " to check and approve.";
+			\n\nSubmitter: " . $contact . "\n\nLog in as waterways guide administrator and click this link <a href='https://" . $guidesurl . "'>" . $guidesurl . "</a> to check and approve.";
 
 		$to = $guidesemail;
 		$from = $guidesemail;
