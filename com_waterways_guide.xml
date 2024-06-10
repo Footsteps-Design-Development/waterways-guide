@@ -6,7 +6,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Russell English</author>
 	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<description>Waterways Guide</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
@@ -33,6 +33,7 @@
 		<!-- List of files and folders to copy. Note the 'folder' attribute.
              This is the name of the folder in your component package to copy FROM -->
 		<files folder="admin">
+			<folder>forms</folder>
 			<folder>services</folder>
 			<folder>src</folder>
 			<folder>tmpl</folder>
