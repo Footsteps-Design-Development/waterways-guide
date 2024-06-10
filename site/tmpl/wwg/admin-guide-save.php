@@ -70,7 +70,8 @@ if ($errmsg) {
 		$insert->GuideFacilities = addslashes($GuideFacilities);
 		$insert->GuideCodes = addslashes($GuideCodes);
 		$insert->GuideCosts = addslashes($GuideCosts);
-		$insert->GuideRating = addslashes($GuideRating);
+		// $insert->GuideRating = addslashes($GuideRating);
+        $insert->GuideRating = $GuideRating !== '' ? (int)$GuideRating : null;
 		$insert->GuideAmenities = addslashes($GuideAmenities);
 		$insert->GuideContributors = addslashes($GuideContributors);
 		$insert->GuideRemarks = addslashes($GuideRemarks);
