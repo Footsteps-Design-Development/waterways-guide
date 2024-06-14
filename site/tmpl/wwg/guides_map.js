@@ -229,10 +229,10 @@
 
 		function createSidebarEntry(marker,ID,Name,Country,Waterway) {
 		var div = document.createElement('div');
-			if(curCountry!=Country.toUpperCase()){
+		if(curCountry!=Country.toUpperCase()){
 				//new country Country heading
 				var html = '<div class=Country>' + Country.toUpperCase() + '</div>';
-				curCountry=Country.toUpperCase();
+		curCountry=Country.toUpperCase();
 			} else {
 				var html = '';
 			}
@@ -262,9 +262,6 @@
 
 
 	</script>
-		// <script defer
-			// src="//maps.googleapis.com/maps/api/js?key=AIzaSyDqbOSdCUbI7FB7URPvUDSmrEunaDPqgNY&callback=initMap">
-		// </script>
 
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsQEH5-kUddfIY0KFsjZR3tjxLElvC5s4&callback=initMap&libraries=maps,marker">
-</script>
+		<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsQEH5-kUddfIY0KFsjZR3tjxLElvC5s4&callback=initMap&libraries=maps,marker">
+		</script>
