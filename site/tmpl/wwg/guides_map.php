@@ -48,7 +48,7 @@ if ($thisid) {
 		$mapvars .= "&thisid=" . $thisid;
 	}
 }
-//echo($mapvars);
+echo($mapvars);
 
 ?>
 
