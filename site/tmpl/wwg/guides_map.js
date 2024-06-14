@@ -266,5 +266,5 @@
 			// src="//maps.googleapis.com/maps/api/js?key=AIzaSyDqbOSdCUbI7FB7URPvUDSmrEunaDPqgNY&callback=initMap">
 		// </script>
 
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsQEH5-kUddfIY0KFsjZR3tjxLElvC5s4&callback=console.debug&libraries=maps,marker&v=beta">
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsQEH5-kUddfIY0KFsjZR3tjxLElvC5s4&callback=initMap&libraries=maps,marker">
 </script>
