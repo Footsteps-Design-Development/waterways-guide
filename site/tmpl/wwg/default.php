@@ -144,7 +144,7 @@ echo ("<h2>Waterways Guide</h2>");
 		}
 
 		if (!$guidetable) {
-			$guidetable = "jos_waterways_guide";
+			$guidetable = "#__waterways_guide";
 		}
 
 

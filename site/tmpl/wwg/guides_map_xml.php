@@ -1,9 +1,14 @@
 <?php
 //V3 Google Maps API CJG 20210305
 // no direct access
-require_once("../../../commonV3.php");
+// require_once("../../../commonV3.php");
+
+// no direct access
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+
+require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
 
 $db = Factory::getDbo();
 
