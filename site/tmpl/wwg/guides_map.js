@@ -10,7 +10,7 @@
 	var startzoom = 10;
 	var displaySummary="";
 
-	var customIcon= ["","/Image/moorings/marker1.png","/Image/moorings/marker2.png","/Image/moorings/marker3.png","/Image/moorings/marker4.png"];
+	var customIcon= ["","/media/com_waterways_guide/images/marker1.png","/media/com_waterways_guide/images/marker2.png","/media/com_waterways_guide/images/marker3.png","/media/com_waterways_guide/images/marker4.png"];
 
 	function initMap() {
 	var bounds = new google.maps.LatLngBounds;
@@ -28,9 +28,9 @@
 
 
 	// Change this depending on the name of your PHP or XML file
-	console.log("/components/com_waterways_guide/views/wwg/tmpl/guides_map_xml.php<?php echo($mapvars); ?>");
+	console.log("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo($mapvars); ?>");
 
-		downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo $mapvars; ?>", function(data) {
+	downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo $mapvars; ?>", function(data) {
 		var waterwaysummary = [];
 
 	var xml = data.responseXML;
