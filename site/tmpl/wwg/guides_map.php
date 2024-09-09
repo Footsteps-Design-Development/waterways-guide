@@ -52,6 +52,12 @@ echo($mapvars);
 ?>
 
 
+
+<script type="text/javascript">
+    var mapVars = "<?php echo $mapvars; ?>";
+</script>
+
+
 <div id="header" class="Header"></div>
 
 <div class="col-xs-9" id="map" style="overflow: hidden; height: 550px;"></div>
