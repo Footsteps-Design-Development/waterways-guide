@@ -1,9 +1,7 @@
 <script type="text/javascript">
 
-	function initMap() {
-
-//V3 Google Maps API CJG 20201028
-var html1 = "";
+	//V3 Google Maps API CJG 20201028
+	var html1 = "";
 	var curWaterway = "";
 	var curCountry = "";
 	var startLat = "47.6392";
@@ -14,7 +12,7 @@ var html1 = "";
 
 	var customIcon= ["","/media/com_waterways_guide/images/marker1.png","/media/com_waterways_guide/images/marker2.png","/media/com_waterways_guide/images/marker3.png","/media/com_waterways_guide/images/marker4.png"];
 
-
+	function initMap() {
 	var bounds = new google.maps.LatLngBounds;
 	var gmarkers = [];
 	var idmarkers = [];
@@ -30,11 +28,14 @@ var html1 = "";
 
 
 	// Change this depending on the name of your PHP or XML file
-	console.log("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo($mapvars); ?>");
 
 	downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo $mapvars; ?>", function(data) {
-		
-		var waterwaysummary = [];
+		console.log(data); // Log the response
+	var waterwaysummary = [];
+	var xml = data.responseXML;
+	console.log(xml);
+
+	var waterwaysummary = [];
 
 	var xml = data.responseXML;
 	var markers = xml.getElementsByTagName('marker');

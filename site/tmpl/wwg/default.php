@@ -35,6 +35,7 @@ $parentlink = Route::_('index.php?Itemid=' . Factory::getApplication()->getMenu(
 
 
 $doc->addStyleSheet('media/com_waterways_guide/css/wwg.css');
+$doc->addStyleSheet('media/com_waterways_guide/css/guides_map.css');
 $doc->addScript('media/com_waterways_guide/js/wwg.js', 'text/javascript');
 
 
