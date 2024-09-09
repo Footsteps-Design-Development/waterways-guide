@@ -28,6 +28,8 @@
 
 
 	// Change this depending on the name of your PHP or XML file
+	console.log("/components/com_waterways_guide/views/wwg/tmpl/guides_map_xml.php<?php echo($mapvars); ?>");
+
 		downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo $mapvars; ?>", function(data) {
 		var waterwaysummary = [];
 
