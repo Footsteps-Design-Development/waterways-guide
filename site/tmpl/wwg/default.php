@@ -144,8 +144,10 @@ echo ("<h2>Waterways Guide</h2>");
 		}
 
 		if (!$guidetable) {
-			$guidetable = "#__waterways_guide";
+			$guidetable = $db->getPrefix() . "waterways_guide";
 		}
+		
+		echo $guidetable;
 
 
 		if ($country_tmp) {
