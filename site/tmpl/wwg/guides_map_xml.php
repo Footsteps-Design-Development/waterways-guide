@@ -31,7 +31,10 @@ function parseToXML($htmlStr){
 	$xmlStr=str_replace("\'",'&quot',$xmlStr); 
 	$xmlStr=str_replace("&",'&amp;',$xmlStr); 
 	//$xmlStr = htmlspecialchars(strip_tags(($xmlStr)));
-	$xmlStr = utf8_encode($xmlStr);
+	// $xmlStr = utf8_encode($xmlStr);
+
+	$xmlStr = htmlspecialchars($xmlStr, ENT_QUOTES, 'UTF-8');
+
 	//$xmlStr=str_replace("’",'&apos;',$xmlStr); 
 	return $xmlStr; 
 } 
