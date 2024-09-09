@@ -109,9 +109,9 @@
 		var RatingIcon="";
 		for (var m = 0; m < Rating; m++) {
 					if(Cat==2){
-			RatingIcon += "<img src='/Image/common/hazard_small.gif' alt='Hazard level' title='Hazard level' width='16' height='16' border='0'>";				
+			RatingIcon += "<img src='/media/com_waterways_guide/images/hazard_small.gif' alt='Hazard level' title='Hazard level' width='16' height='16' border='0'>";				
 					}else{
-			RatingIcon += "<img src='/Image/common/star.gif' alt='Rating' title='Rating' width='16' height='16' border='0'>";
+			RatingIcon += "<img src='/media/com_waterways_guide/images/star.gif' alt='Rating' title='Rating' width='16' height='16' border='0'>";
 					}
 				}
 
@@ -155,7 +155,7 @@
 				}
 
 
-		html1 += "<br /><b>Submit update:</b> Click <a href='?guideaction=memberedit&infoid="+ID+"'>here to update this mooring <img src='/Image/common/open.gif' width='18' height='18' border='0' title='Submit an update to this entry' alt='Submit an update to this entry'></a>";
+		html1 += "<br /><b>Submit update:</b> Click <a href='?guideaction=memberedit&infoid="+ID+"'>here to update this mooring <img src='/media/com_waterways_guide/images/open.gif' width='18' height='18' border='0' title='Submit an update to this entry' alt='Submit an update to this entry'></a>";
 		html1 += "</div>";
 	html1 += "<div class='pinpop_copyright'>Copyright &copy; <?php echo(date("Y ").$sitename); ?></div>";
 
@@ -269,5 +269,5 @@
 
 	</script>
 
-		<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKo0H_nOTM_q77GOGvWhltJoys9rfvLVo&callback=initMap&libraries=maps,marker">
+		<script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKo0H_nOTM_q77GOGvWhltJoys9rfvLVo&callback=initMap&libraries=maps,marker">
 		</script>
