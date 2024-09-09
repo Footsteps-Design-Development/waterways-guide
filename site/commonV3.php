@@ -1,25 +1,17 @@
 <?php
+if(!defined( '_JEXEC')) {
+	define( '_JEXEC', 1 );
+	define('JPATH_BASE', strstr(__DIR__, 'public_html', true).'public_html');
+	define('JPATH_COMPONENT', JPATH_BASE .'/components/com_waterways_guide');
+	require_once(JPATH_BASE .'/includes/defines.php');
+	require_once(JPATH_BASE .'/includes/framework.php');
+}
 
-defined('_JEXEC') or die;
-
+use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Version;
 use Joomla\CMS\Session\Session;
-use Joomla\CMS\Component\ComponentHelper;
-
-// Define the component path
-if (!defined('JPATH_COMPONENT')) {
-    define('JPATH_COMPONENT', JPATH_BASE . '/components/com_waterways_guide');
-}
-
-// Load the Joomla framework
-require_once JPATH_BASE . '/includes/defines.php';
-require_once JPATH_BASE . '/includes/framework.php';
-
-// Bootstrap Joomla application
-Factory::getApplication('site')->initialise();
-
 
 if(Version::MAJOR_VERSION > 3) {
 	$container = Factory::getContainer();
