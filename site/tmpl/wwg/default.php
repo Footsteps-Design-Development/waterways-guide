@@ -146,9 +146,6 @@ echo ("<h2>Waterways Guide</h2>");
 		if (!$guidetable) {
 			$guidetable = $db->getPrefix() . "waterways_guide";
 		}
-		
-		echo $guidetable;
-
 
 		if ($country_tmp) {
 			$country = $country_tmp;
@@ -277,6 +274,11 @@ if ($guideaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
 	include("guides_map.js");
+?>
+	<script type="text/javascript">
+		var guidetable = "<?php echo $guidetable; ?>";
+	</script>
+<?
 }
 if ($guideaction == "map_edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
