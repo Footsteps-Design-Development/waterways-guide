@@ -30,7 +30,8 @@
 	// Change this depending on the name of your PHP or XML file
 	console.log("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php<?php echo($mapvars); ?>");
 
-		downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php?country=<?php echo urlencode($country); ?>&waterway=<?php echo urlencode($waterway); ?>&guidetable=<?php echo Factory::getDbo()->getPrefix(); ?>waterways_guide&filteroption=<?php echo urlencode($filteroption); ?>", function(data) {
+	// Use the globally available JavaScript variable for the table prefix
+	downloadUrl("/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php?country=GB&waterway=All&guidetable=" + guidetable + "&filteroption=M", function(data) {
 
 		var waterwaysummary = [];
 
