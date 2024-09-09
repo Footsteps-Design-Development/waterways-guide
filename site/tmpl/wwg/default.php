@@ -274,6 +274,7 @@ if ($guideaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
 	include("guides_map.js");
+	include("https://maps.googleapis.com/maps/api/js?key=AIzaSyAKo0H_nOTM_q77GOGvWhltJoys9rfvLVo&callback=initMap&libraries=maps,marker");
 }
 if ($guideaction == "map_edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
