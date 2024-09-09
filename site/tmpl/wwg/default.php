@@ -167,68 +167,94 @@ echo ("<h2>Waterways Guide</h2>");
 
 		//---------------------------------------guide submission approve / reject---------------------------------------------
 		if ($guideaction == "approvesubmission" || $guideaction == "rejectsubmission") {
+			echo "<div id='guide-submission-approve-reject'>";
 			include("guide-submission-approve-reject.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------guide member save---------------------------------------------
 		if ($guideaction == "membersave") {
+			echo "<div id='member-guide-save'>";
 			include("member-guide-save.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------guide save admin only---------------------------------------------
 		if ($guideaction == "save") {
+			echo "<div id='admin-guide-save'>";
 			include("admin-guide-save.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------guide remove---------------------------------------------
 		if ($guideaction == "remove") {
+			echo "<div id='guide-remove'>";
 			include("guide-remove.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------List countries---------------------------------------------
 		if ($guideaction == "" || $guideaction == "waterways" || ($guideaction == "tick_filter") || $guideaction == "savepdflist" || $guideaction == "adminreports") {
+			echo "<div id='list-countries'>";
 			include("list-countries.php");
+			echo '</div>';
 		}
 
 
 		//---------------------------------------List waterways---------------------------------------------
 		if ($guideaction == "waterways" || ($guideaction == "tick_filter") || $guideaction == "savepdflist" || $guideaction == "adminreports") {
+			echo "<div id='list-waterways'>";
 			include("list-waterways.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------Show facility tick box filter---------------------------------------------
 		if ($guideaction == "waterways" || ($guideaction == "tick_filter") || $guideaction == "savepdflist" || $guideaction == "adminreports") {
+			echo "<div id='show-facility-tick-box-filter'>";
 			include("show-facility-tick-box-filter.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------List guides---------------------------------------------
 		if ($guideaction == "list") {
+			echo "<div id='list-guides'>";
 			include("list-guides.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------View map of guides---------------------------------------------
 		if ($guideaction == "map") {
+			echo "<div id='view-map-of-guides'>";
 			include("view-map-of-guides.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------guide details---------------------------------------------
 		if ($guideaction == "detail") {
+			echo "<div id='guide-details'>";
 			include("guide-details.php");
+			echo '</div>';
 		}
 
 		//--------------------------------------- admin edit or add new---------------------------------------------
 		if ($guideaction == "edit") {
+			echo "<div id='admin-edit-or-add-new'>";
 			include("admin-edit-or-add-new.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------member edit or add new---------------------------------------------
 		if ($guideaction == "memberedit") {
+			echo "<div id='member-edit-or-add-new'>";
 			include("member-edit-or-add-new.php");
+			echo '</div>';
 		}
 
 		//---------------------------------------admin reports---------------------------------------------
 		if ($guideaction == "adminreports") {
+			echo "<div id='guides_adminreports'>";
 			include("guides_adminreports.php");
+			echo '</div>';
 		}
 
 
@@ -248,21 +274,29 @@ echo ("<h2>Waterways Guide</h2>");
 if ($guideaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
+	echo "<div id='guides_map'>";
 	include("guides_map.js");
+	echo '</div>';
 }
 if ($guideaction == "map_edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
+	echo "<div id='guides_edit'>";
 	include("guides_edit.js");
+	echo '</div>';
 }
 if ($guideaction == "memberedit" || $guideaction == "edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
 
+	echo "<div id='guides_memberedit'>";
 	include("guides_memberedit.js");
+	echo '</div>';
 }
 if ($positionaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
+	echo "<div id='position_map'>";
 	include("../../wwg/tmpl/position_map.js");
+	echo '</div>';
 }
