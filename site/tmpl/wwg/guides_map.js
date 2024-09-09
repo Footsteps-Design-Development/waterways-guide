@@ -28,7 +28,8 @@
 
 
 	// Change this depending on the name of your PHP or XML file
-	downloadUrl("/components/com_waterways_guide/views/wwg/tmpl/guides_map_xml.php<?php echo($mapvars); ?>", function(data) {
+	downloadUrl("<?php echo JUri::root(); ?>components/com_waterways_guide/tmpl/wwg/</script>guides_map_xml.php<?php echo $mapvars; ?>", function(data) {
+
 		var waterwaysummary = [];
 
 	var xml = data.responseXML;
