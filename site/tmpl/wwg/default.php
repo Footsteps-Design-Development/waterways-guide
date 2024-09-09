@@ -274,29 +274,20 @@ echo ("<h2>Waterways Guide</h2>");
 if ($guideaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
-	echo "<div id='guides_map'>";
 	include("guides_map.js");
-	echo '</div>';
 }
 if ($guideaction == "map_edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
-	echo "<div id='guides_edit'>";
 	include("guides_edit.js");
-	echo '</div>';
 }
 if ($guideaction == "memberedit" || $guideaction == "edit") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
-
-	echo "<div id='guides_memberedit'>";
 	include("guides_memberedit.js");
-	echo '</div>';
 }
 if ($positionaction == "map") {
 	//google map javascript code has to be here at end of body as it will not work inside <td> No problem with FFox
 	//only load it if a map is called for
-	echo "<div id='position_map'>";
 	include("../../wwg/tmpl/position_map.js");
-	echo '</div>';
 }
