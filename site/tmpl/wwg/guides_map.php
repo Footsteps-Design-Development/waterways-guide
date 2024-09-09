@@ -47,16 +47,12 @@ if ($thisid) {
         $mapvars .= "&thisid=" . $thisid;
     }
 }
-echo($mapvars);
 
 ?>
-
-
 
 <script type="text/javascript">
     var mapVars = "<?php echo $mapvars; ?>";
 </script>
-
 
 <div id="header" class="Header"></div>
 
