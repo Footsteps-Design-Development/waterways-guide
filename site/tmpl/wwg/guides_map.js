@@ -1,8 +1,5 @@
 <script type="text/javascript">
 
-
-
-
 	//V3 Google Maps API CJG 20201028
 	var html1 = "";
 	var curWaterway = "";
@@ -16,9 +13,6 @@
 	var customIcon= ["","/media/com_waterways_guide/images/marker1.png","/media/com_waterways_guide/images/marker2.png","/media/com_waterways_guide/images/marker3.png","/media/com_waterways_guide/images/marker4.png"];
 
 	function initMap() {
-
-	var mapVars = "<?php echo $mapvars; ?>";
-
 	var bounds = new google.maps.LatLngBounds;
 	var gmarkers = [];
 	var idmarkers = [];
