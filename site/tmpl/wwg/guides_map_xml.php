@@ -3,15 +3,13 @@
 // no direct access
 // require_once("../../../commonV3.php");
 
-echo 'hey';die; 
 
 // no direct access
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
-
-
 require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
+
+use Joomla\CMS\Factory;
 
 $db = Factory::getDbo();
 
