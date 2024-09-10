@@ -112,6 +112,10 @@ if (!$whereSet) {
 }
 // $query = $mapsql;
 $result = $db->setQuery($query)->loadAssocList();
+
+//Debugging
+echo "<pre>";print_r($result);die;
+
 if ($result === false) die('Invalid query: ' . $query->__toString());
 header("Content-type: text/xml");
 // Start XML file, echo parent node
