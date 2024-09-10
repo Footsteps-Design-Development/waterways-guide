@@ -9,13 +9,13 @@ defined('_JEXEC') or die;
 
 require_once("../../commonV3.php");
 
-echo 'hey';die; 
+
 
 use Joomla\CMS\Factory;
 
 $db = Factory::getDbo();
-
-echo("test");
+echo 'hey';die; 
+// echo("test");
 getpost_ifset(array('waterway', 'country', 'guidetable', 'GuideMooringCodes', 'GuideHazardCodes', 'thisid', 'filteroption'));
 
 if (!$guidetable) {
