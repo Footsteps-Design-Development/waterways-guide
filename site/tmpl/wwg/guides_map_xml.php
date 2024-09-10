@@ -9,8 +9,6 @@ defined('_JEXEC') or die;
 
 require_once("../../commonV3.php");
 
-
-
 use Joomla\CMS\Factory;
 
 $db = Factory::getDbo();
