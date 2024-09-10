@@ -7,7 +7,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
-require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
+require_once("../../../commonV3.php");
+
+echo 'hey';die; 
 
 use Joomla\CMS\Factory;
 
