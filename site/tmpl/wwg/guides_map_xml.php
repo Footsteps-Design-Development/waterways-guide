@@ -14,7 +14,8 @@ require_once("../../commonV3.php");
 use Joomla\CMS\Factory;
 
 $db = Factory::getDbo();
-echo 'hey';die; 
+
+// echo 'hey';die; 
 // echo("test");
 getpost_ifset(array('waterway', 'country', 'guidetable', 'GuideMooringCodes', 'GuideHazardCodes', 'thisid', 'filteroption'));
 
