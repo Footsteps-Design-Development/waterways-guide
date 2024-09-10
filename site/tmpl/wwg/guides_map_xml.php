@@ -3,7 +3,6 @@
 // no direct access
 // require_once("../../../commonV3.php");
 
-
 // no direct access
 defined('_JEXEC') or die;
 
@@ -14,7 +13,7 @@ use Joomla\CMS\Factory;
 $db = Factory::getDbo();
 
 // echo 'hey';die; 
-// echo("test");
+
 getpost_ifset(array('waterway', 'country', 'guidetable', 'GuideMooringCodes', 'GuideHazardCodes', 'thisid', 'filteroption'));
 
 if (!$guidetable) {
