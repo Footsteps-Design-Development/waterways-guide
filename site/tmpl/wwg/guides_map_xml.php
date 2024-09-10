@@ -114,7 +114,7 @@ if (!$whereSet) {
 $result = $db->setQuery($query)->loadAssocList();
 
 //Debugging
-echo "<pre>";print_r($result);die;
+echo "<pre>";echo " hello ";print_r($result);die;
 
 if ($result === false) die('Invalid query: ' . $query->__toString());
 header("Content-type: text/xml");
