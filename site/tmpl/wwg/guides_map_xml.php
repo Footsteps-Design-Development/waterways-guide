@@ -15,13 +15,11 @@ use Joomla\CMS\Factory;
 
 $db = Factory::getDbo();
 
-//echo("test");
 getpost_ifset(array('waterway', 'country', 'guidetable', 'GuideMooringCodes', 'GuideHazardCodes', 'thisid', 'filteroption'));
 
 if (!$guidetable) {
     $guidetable = $db->getPrefix() . "waterways_guide";
 }
-
 
 //$thisid="4858";
 
