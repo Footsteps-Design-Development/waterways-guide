@@ -8,6 +8,8 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
+echo 'hey';die; 
+
 require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
 
 $db = Factory::getDbo();
