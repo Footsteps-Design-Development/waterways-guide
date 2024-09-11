@@ -1,10 +1,11 @@
 <?php
+
 //V3 Google Maps API CJG 20210305
 // no direct access
 // require_once("../../../commonV3.php");
 
 // no direct access
-defined('_JEXEC') or die;
+// defined('_JEXEC') or die;
 
 require_once("../../commonV3.php");
 
@@ -110,9 +111,6 @@ if (!$whereSet) {
 }
 // $query = $mapsql;
 $result = $db->setQuery($query)->loadAssocList();
-
-//Debugging
-echo "<pre>";echo " hello ";print_r($result);die;
 
 if ($result === false) die('Invalid query: ' . $query->__toString());
 header("Content-type: text/xml");
