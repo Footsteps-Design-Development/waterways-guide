@@ -1,16 +1,18 @@
 <?php
 
-namespace Joomla\Component\WaterWaysGuide\Site\View\Pdf; // ✅ Make sure this is correct
+namespace Joomla\Component\WaterWaysGuide\Site\View\Pdf;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Factory;
 use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
-use TCPDF;
+
+// ✅ Load TCPDF manually to avoid autoload issues
+require_once JPATH_LIBRARIES . '/vendor/tecnickcom/tcpdf/tcpdf.php';
 
 // Prevent direct access
 defined('_JEXEC') or die;
 
-class HtmlView extends BaseHtmlView // ✅ Use "BaseHtmlView" instead of "HtmlView"
+class HtmlView extends BaseHtmlView
 {
     public function display($tpl = null)
     {
@@ -27,6 +29,11 @@ class HtmlView extends BaseHtmlView // ✅ Use "BaseHtmlView" instead of "HtmlVi
             ->order($db->qn(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
 
         $guides = $db->setQuery($query)->loadAssocList();
+
+        // ✅ Ensure TCPDF is properly loaded
+        if (!class_exists('TCPDF')) {
+            throw new \Exception("TCPDF library not found!");
+        }
 
         $pdf = new TCPDF();
         $pdf->SetCreator(PDF_CREATOR);
