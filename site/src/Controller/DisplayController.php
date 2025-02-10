@@ -2,27 +2,49 @@
 
 namespace Joomla\Component\WaterWaysGuide\Site\Controller;
 
-defined('_JEXEC') or die;
-
 use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\Factory;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
-/**
- * @package     Joomla.Site
- * @subpackage  com_waterways_guide
- *
- * @copyright   Copyright (C) 2024 John Smith. All rights reserved.
- * @license     GNU General Public License version 3; see LICENSE
- */
+// Prevent direct access
+defined('_JEXEC') or die;
 
-/**
- * HelloWorld Component Controller
- * @since  0.0.2
- */
-class DisplayController extends BaseController {
-
-    public function display($cachable = false, $urlparams = array()) {
+class DisplayController extends BaseController
+{
+    public function display($cachable = false, $urlparams = [])
+    {
         return parent::display($cachable, $urlparams);
     }
 
+    /**
+     * Generates the PDF file.
+     */
+    public function generatePdf()
+    {
+        $app = Factory::getApplication();
+        $inputValues = WaterwaysHelper::getPostIfSet([
+            'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
+        ]);
+    
+        // Ensure we load the PDF view
+        $view = $this->getView('pdf', 'html', 'site'); // Ensure 'pdf' matches the folder name
+        $view->assign('inputValues', $inputValues);
+        $view->display();
+    }
+    
+
+    /**
+     * Generates the KML file.
+     */
+    public function generateKml()
+    {
+        $app = Factory::getApplication();
+        $inputValues = WaterwaysHelper::getPostIfSet([
+            'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
+        ]);
+
+        $view = $this->getView('kml', 'html', 'Site');
+        $view->assign('inputValues', $inputValues);
+        $view->display();
+    }
 }
