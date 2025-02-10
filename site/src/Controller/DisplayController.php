@@ -23,7 +23,6 @@ class DisplayController extends BaseController
     {
         $app = Factory::getApplication();
     
-        // Ensure the helper class exists
         if (!class_exists('Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper')) {
             throw new \Exception("WaterwaysHelper class not found!");
         }
@@ -39,7 +38,6 @@ class DisplayController extends BaseController
             throw new \Exception("PDF view not found!");
         }
     
-        // Replace assign() with set()
         $view->set('inputValues', $inputValues);
         $view->display();
     }
