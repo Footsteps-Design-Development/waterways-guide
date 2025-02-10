@@ -139,7 +139,8 @@ if ($admin == "open") {
 					var filteroption = dml.filteroption.value;
 					var GuideMooringCodes = dml.GuideMooringCodes.value;
 					var GuideHazardCodes = dml.GuideHazardCodes.value;
-					var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_pdf.php";
+					var reportname = "/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php";
+					// var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_pdf.php";
 					//var reportname = "/components/com_waterways_guide/views/wwg/tmpl/guides_list_to_pdf.php";
 					var msid = "<?php echo ($login_memberid); ?>";
 					var menu_url = "<?php echo ($menu_url); ?>";
