@@ -1,8 +1,8 @@
 <?php
 
-namespace Joomla\Component\WaterWaysGuide\Site\View\Pdf;
+namespace Joomla\Component\WaterWaysGuide\Site\View\Pdf; // ✅ Make sure this is correct
 
-use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Factory;
 use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 use TCPDF;
@@ -10,7 +10,7 @@ use TCPDF;
 // Prevent direct access
 defined('_JEXEC') or die;
 
-class HtmlView extends HtmlView
+class HtmlView extends BaseHtmlView // ✅ Use "BaseHtmlView" instead of "HtmlView"
 {
     public function display($tpl = null)
     {
