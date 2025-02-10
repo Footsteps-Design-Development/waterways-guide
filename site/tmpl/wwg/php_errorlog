@@ -1,1 +1,37 @@
 [25-Sep-2023 15:09:55 UTC] PHP Notice:  A non well formed numeric value encountered in /home/customer/www/dev.barges.org/public_html/components/com_waterways_guide/commonV3.php on line 105
+[11-Sep-2024 11:39:19 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Class "Joomla\CMS\Factory" not found in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php on line 21
+[11-Sep-2024 11:40:26 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '/components/com_waterways_guide/commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php on line 16
+[11-Sep-2024 11:40:41 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '/components/com_waterways_guide/commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php on line 14
+[11-Sep-2024 11:44:28 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Undefined constant "JPATH_COMPONENT" in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_map_xml.php on line 12
+[10-Feb-2025 14:45:32 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '../../../commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php on line 7
+[10-Feb-2025 14:45:39 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '../../../commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php on line 7
+[10-Feb-2025 14:47:37 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '../../../commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php on line 7
+[10-Feb-2025 14:48:01 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '../../../commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php on line 7
+[10-Feb-2025 14:50:26 Europe/Amsterdam] PHP Fatal error:  Uncaught Error: Failed opening required '../../../commonV3.php' (include_path='.:/usr/local/php81/pear') in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/barges.org/public_html/components/com_waterways_guide/tmpl/wwg/guides_list_to_pdf.php on line 7

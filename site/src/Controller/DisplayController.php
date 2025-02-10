@@ -25,13 +25,11 @@ class DisplayController extends BaseController
         $inputValues = WaterwaysHelper::getPostIfSet([
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
         ]);
-    
-        // Ensure we load the PDF view
-        $view = $this->getView('pdf', 'html', 'site'); // Ensure 'pdf' matches the folder name
+
+        $view = $this->getView('pdf', 'html', 'site'); // Ensure 'pdf' matches the view folder
         $view->assign('inputValues', $inputValues);
         $view->display();
     }
-    
 
     /**
      * Generates the KML file.
@@ -43,7 +41,7 @@ class DisplayController extends BaseController
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
         ]);
 
-        $view = $this->getView('kml', 'html', 'Site');
+        $view = $this->getView('kml', 'html', 'site'); // Ensure 'kml' matches the view folder
         $view->assign('inputValues', $inputValues);
         $view->display();
     }
