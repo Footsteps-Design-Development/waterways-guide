@@ -6,12 +6,10 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Factory;
 use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
-// ✅ Ensure TCPDF is loaded
+// ✅ Load TCPDF
 require_once JPATH_LIBRARIES . '/vendor/tecnickcom/tcpdf/tcpdf.php';
+use TCPDF;
 
-use \TCPDF; // ✅ Ensure TCPDF is referenced in the global namespace
-
-// Prevent direct access
 defined('_JEXEC') or die;
 
 class HtmlView extends BaseHtmlView
@@ -33,13 +31,12 @@ class HtmlView extends BaseHtmlView
 
         $guides = $db->setQuery($query)->loadAssocList();
 
-        // ✅ Ensure TCPDF exists
-        if (!class_exists('\TCPDF')) {
+        if (!class_exists('TCPDF')) {
             throw new \Exception("TCPDF library not found!");
         }
 
-        // ✅ Set Up TCPDF
-        $pdf = new \TCPDF();
+        // ✅ Set up TCPDF
+        $pdf = new TCPDF();
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Waterways Guide');
         $pdf->SetTitle('Waterways Guide PDF Report');
