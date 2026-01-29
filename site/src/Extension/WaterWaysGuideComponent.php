@@ -31,18 +31,33 @@ class WaterWaysGuideComponent implements ComponentInterface, RouterServiceInterf
         return new Router();
     }
 
+    // public function getRoutes()
+    // {
+    //     return [
+    //         'generatePdf' => [
+    //             'type' => 'component',
+    //             'controller' => 'display',
+    //             'task' => 'generatePdf'
+    //         ],
+    //         'generateKml' => [
+    //             'type' => 'component',
+    //             'controller' => 'display',
+    //             'task' => 'generateKml'
+    //         ]
+    //     ];
+    // }
     public function getRoutes()
     {
         return [
             'generatePdf' => [
                 'type' => 'component',
-                'controller' => 'display',
-                'task' => 'generatePdf'
+                'controller' => 'wwg',
+                'task' => 'generatepdf'
             ],
             'generateKml' => [
                 'type' => 'component',
-                'controller' => 'display',
-                'task' => 'generateKml'
+                'controller' => 'wwg',
+                'task' => 'generatekml'
             ]
         ];
     }

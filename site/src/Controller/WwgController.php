@@ -2,45 +2,60 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_waterways_guide
- *
- * @copyright   Copyright (C) 2025
- * @license     GNU General Public License version 2 or later
  */
 
-namespace Joomla\Component\Waterways_guide\Site\Controller;
+namespace Joomla\Component\WaterWaysGuide\Site\Controller;
 
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\BaseController;
 
+
+
 /**
- * Waterways Guide Controller
+ * Waterways Guide main controller
  */
 class WwgController extends BaseController
 {
     /**
-     * Generate PDF version of the Waterways Guide.
+     * Generate PDF task
      *
-     * Route: index.php?option=com_waterways_guide&task=wwg.generatepdf
-     *
-     * @return  void
+     * URL: index.php?option=com_waterways_guide&task=wwg.generatepdf
      */
-    public function generatepdf(): void
+    public function generatepdf()
     {
         $app = Factory::getApplication();
+        $input = $app->input;
 
-        // Path to the legacy PDF generator file
-        $pdfFile = JPATH_COMPONENT_SITE . '/pdf/guides_list_to_pdf.php';
+        // Path to your legacy generator script
+        $pdfScript = JPATH_COMPONENT_SITE . '/tmpl/wwg/guides_list_to_pdf.php';
 
-        if (!is_file($pdfFile)) {
-            throw new \RuntimeException('PDF generator file not found: ' . $pdfFile, 404);
+        if (!file_exists($pdfScript)) {
+            throw new \Exception('PDF generator script not found: ' . $pdfScript, 500);
         }
 
-        // Execute the generator (streams PDF to browser)
-        require_once $pdfFile;
+        require $pdfScript;
+        $app->close();
+    }
 
-        // Stop Joomla from rendering further output
+    /**
+     * Generate KML task
+     *
+     * URL: index.php?option=com_waterways_guide&task=wwg.generatekml
+     */
+    public function generatekml()
+    {
+        $app = Factory::getApplication();
+        $input = $app->input;
+
+        $kmlScript = JPATH_COMPONENT_SITE . '/tmpl/wwg/guides_list_to_kml.php';
+
+        if (!file_exists($kmlScript)) {
+            throw new \Exception('KML generator script not found: ' . $kmlScript, 500);
+        }
+
+        require $kmlScript;
         $app->close();
     }
 }
