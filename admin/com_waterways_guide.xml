@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="1.6.1" method="upgrade">
+<extension type="component" version="5.0" method="upgrade">
   <name>com_waterways_guide</name>
 	<creationDate>May 2024</creationDate>
 	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
@@ -15,7 +15,6 @@
 		<folder>src</folder>
 		<folder>tmpl</folder>
 		<folder>helpers</folder>
-		<filename>commonV3.php</filename>
 	</files>
 	<languages>
 		<language tag="en-GB">site/language/en-GB/com_waterways_guide.ini</language>

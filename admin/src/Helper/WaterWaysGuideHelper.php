@@ -1,34 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joomla\Component\WaterWaysGuide\Administrator\Helper;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\User\UserHelper;
+defined('_JEXEC') or die;
+
 use Joomla\CMS\Access\Access;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Object\CMSObject;
 
 class WaterWaysGuideHelper
 {
-    public static function addSubmenu($vName = '')
+    public static function getActions(int $categoryId = 0): CMSObject
     {
-        JHtmlSidebar::addEntry(
-            Text::_('COM_WATERWAYS_GUIDE_TITLE_GUIDES'),
-            'index.php?option=com_waterways_guide&view=wwg',
-            $vName == 'wwg'
-        );
-        // Add other submenu entries as needed
-    }
-
-    public static function getActions($categoryId = 0)
-    {
-        $user = Factory::getUser();
-        $result = new \Joomla\CMS\Object\CMSObject;
+        $user = Factory::getApplication()->getIdentity();
+        $result = new CMSObject();
 
         if (empty($categoryId)) {
             $assetName = 'com_waterways_guide';
             $level = 'component';
         } else {
-            $assetName = 'com_waterways_guide.category.' . (int) $categoryId;
+            $assetName = 'com_waterways_guide.category.' . $categoryId;
             $level = 'category';
         }
 

@@ -1,23 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joomla\Component\WaterWaysGuide\Site\View\Pdf;
-
-use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Factory;
-use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
-
-// ✅ Load TCPDF
-require_once JPATH_LIBRARIES . '/vendor/tecnickcom/tcpdf/tcpdf.php';
-use TCPDF;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
+use TCPDF;
+
+// Load TCPDF
+if (!class_exists('TCPDF')) {
+    $tcpdfPath = JPATH_LIBRARIES . '/vendor/tecnickcom/tcpdf/tcpdf.php';
+    if (file_exists($tcpdfPath)) {
+        require_once $tcpdfPath;
+    }
+}
+
 class HtmlView extends BaseHtmlView
 {
-    public function display($tpl = null)
+    public function display($tpl = null): void
     {
-        $app = Factory::getApplication();
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get('DatabaseDriver');
 
         $inputValues = WaterwaysHelper::getPostIfSet([
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
@@ -25,17 +31,17 @@ class HtmlView extends BaseHtmlView
 
         $query = $db->getQuery(true)
             ->select('*')
-            ->from($db->qn('#__waterways_guide'))
-            ->where($db->qn('GuideStatus') . ' = 1')
-            ->order($db->qn(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
+            ->from($db->quoteName('#__waterways_guide'))
+            ->where($db->quoteName('GuideStatus') . ' = 1')
+            ->order($db->quoteName(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
 
         $guides = $db->setQuery($query)->loadAssocList();
 
         if (!class_exists('TCPDF')) {
-            throw new \Exception("TCPDF library not found!");
+            throw new \RuntimeException("TCPDF library not found!");
         }
 
-        // ✅ Set up TCPDF
+        // Set up TCPDF
         $pdf = new TCPDF();
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Waterways Guide');
@@ -43,23 +49,23 @@ class HtmlView extends BaseHtmlView
         $pdf->SetSubject('PDF Report');
         $pdf->SetKeywords('PDF, Joomla, Waterways Guide');
 
-        // ✅ Set header and footer
+        // Set header and footer
         $pdf->setHeaderData('', 0, 'Waterways Guide', 'Generated on ' . date('Y-m-d H:i:s'));
         $pdf->setFooterData();
 
-        // ✅ Set margins
+        // Set margins
         $pdf->SetMargins(15, 15, 15);
         $pdf->SetHeaderMargin(10);
         $pdf->SetFooterMargin(10);
-        $pdf->SetAutoPageBreak(TRUE, 15);
+        $pdf->SetAutoPageBreak(true, 15);
 
-        // ✅ Set font
+        // Set font
         $pdf->SetFont('helvetica', '', 12);
 
-        // ✅ Add a new page
+        // Add a new page
         $pdf->AddPage();
 
-        // ✅ Ensure content is not empty
+        // Ensure content is not empty
         if (empty($guides)) {
             $pdf->Write(0, "No waterways guides available.", '', 0, 'C', true, 0, false, false, 0);
         } else {
@@ -75,7 +81,7 @@ class HtmlView extends BaseHtmlView
             }
         }
 
-        // ✅ Send output to the browser
-        $pdf->Output('waterways_report.pdf', 'D'); // 'D' forces download
+        // Send output to the browser
+        $pdf->Output('waterways_report.pdf', 'D');
     }
 }

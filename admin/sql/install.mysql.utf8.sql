@@ -31,16 +31,16 @@ CREATE TABLE `#__waterways_guide` (
   `GuideStatus` tinyint(3) UNSIGNED DEFAULT NULL,
   `GuideEditorMemNo` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`GuideID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `#__waterways_guide_requests` (
   `memberid` bigint(20) NOT NULL DEFAULT '0',
   `GuideCountry` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `GuideWaterway` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `GuideRequestDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `GuideRequestDate` datetime DEFAULT NULL,
   `GuideRequestMethod` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `GuideRequestStatus` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `#__waterways_guide_services` (
   `ID` bigint(20) NOT NULL DEFAULT 0,
@@ -50,7 +50,7 @@ CREATE TABLE `#__waterways_guide_services` (
   `ServiceCategory` mediumtext DEFAULT NULL,
   `ServiceSortOrder` tinyint(3) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `#__waterways_guide_country` (
   `iso` char(2) NOT NULL DEFAULT '',
@@ -60,7 +60,7 @@ CREATE TABLE `#__waterways_guide_country` (
   `numcode` smallint(6) DEFAULT NULL,
   `postzone` char(3) DEFAULT NULL,
   PRIMARY KEY (`iso`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `#__waterways_guide_changelog` (
   `LogID` bigint NOT NULL AUTO_INCREMENT,
@@ -70,4 +70,4 @@ CREATE TABLE `#__waterways_guide_changelog` (
   `ChangeDesc` longtext COLLATE utf8mb4_unicode_ci,
   `ChangeDate` datetime DEFAULT NULL,
   PRIMARY KEY (`LogID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

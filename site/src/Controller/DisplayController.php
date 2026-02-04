@@ -1,69 +1,51 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joomla\Component\WaterWaysGuide\Site\Controller;
 
-use Joomla\CMS\MVC\Controller\BaseController;
-use Joomla\CMS\Factory;
-use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
-
-// Prevent direct access
 defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
 class DisplayController extends BaseController
 {
-    public function display($cachable = false, $urlparams = [])
+    protected $default_view = 'wwg';
+
+    public function display($cachable = false, $urlparams = []): static
     {
         return parent::display($cachable, $urlparams);
     }
 
-    /**
-     * Generates the PDF file.
-     */
-    public function generatePdf()
+    public function generatePdf(): void
     {
-        $app = Factory::getApplication();
-
-        if (!class_exists('Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper')) {
-            throw new \Exception("WaterwaysHelper class not found!");
-        }
-
-        // ✅ Get user input
         $inputValues = WaterwaysHelper::getPostIfSet([
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
         ]);
 
-        // ✅ Load the correct view
-        $view = $this->getView('pdf', 'html', 'site');
+        $view = $this->getView('pdf', 'html');
 
         if (!$view) {
-            throw new \Exception("PDF view not found!");
+            throw new \RuntimeException("PDF view not found!");
         }
 
-        // ✅ Pass data to the view
         $view->set('inputValues', $inputValues);
         $view->display();
     }
 
-    /**
-     * Generates the KML file.
-     */
-    public function generateKml()
+    public function generateKml(): void
     {
-        $app = Factory::getApplication();
-
-        // ✅ Get user input
         $inputValues = WaterwaysHelper::getPostIfSet([
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
         ]);
 
-        // ✅ Load the correct view
-        $view = $this->getView('kml', 'html', 'site');
+        $view = $this->getView('kml', 'html');
 
         if (!$view) {
-            throw new \Exception("KML view not found!");
+            throw new \RuntimeException("KML view not found!");
         }
 
-        // ✅ Pass data to the view
         $view->set('inputValues', $inputValues);
         $view->display();
     }

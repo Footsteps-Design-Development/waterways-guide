@@ -1,18 +1,23 @@
 <?php
 
-namespace Joomla\Component\WaterWaysGuide\Site\Router;
+declare(strict_types=1);
 
-use Joomla\CMS\Router\RouterView;
-use Joomla\CMS\Router\RouterViewConfiguration;
+namespace Joomla\Component\WaterWaysGuide\Site\Router;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\SiteApplication;
+use Joomla\CMS\Component\Router\RouterView;
+use Joomla\CMS\Component\Router\RouterViewConfiguration;
+use Joomla\CMS\Menu\AbstractMenu;
+
 class Router extends RouterView
 {
-    public function __construct($app, $menu)
+    public function __construct(SiteApplication $app, AbstractMenu $menu)
     {
-        $routes = new RouterViewConfiguration('waterways_guide');
-        $this->registerView($routes);
+        $wwg = new RouterViewConfiguration('wwg');
+        $this->registerView($wwg);
+
         parent::__construct($app, $menu);
     }
 }

@@ -1,30 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Joomla\Component\WaterWaysGuide\Site\View\Kml;
 
-use Joomla\CMS\MVC\View\HtmlView;
-use Joomla\CMS\Factory;
-use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
-use DOMDocument;
-
-// Prevent direct access
 defined('_JEXEC') or die;
 
-class HtmlView extends HtmlView
+use DOMDocument;
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
+
+class HtmlView extends BaseHtmlView
 {
-    public function display($tpl = null)
+    public function display($tpl = null): void
     {
-        $app = Factory::getApplication();
         $inputValues = WaterwaysHelper::getPostIfSet([
             'waterway', 'guideaction', 'filteroption', 'GuideMooringCodes', 'GuideHazardCodes'
         ]);
 
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get('DatabaseDriver');
         $query = $db->getQuery(true)
             ->select('*')
-            ->from($db->qn('#__waterways_guide'))
-            ->where($db->qn('GuideStatus') . ' = 1')
-            ->order($db->qn(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
+            ->from($db->quoteName('#__waterways_guide'))
+            ->where($db->quoteName('GuideStatus') . ' = 1')
+            ->order($db->quoteName(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
 
         $guides = $db->setQuery($query)->loadAssocList();
 

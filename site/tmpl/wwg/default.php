@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     3.0.0
+ * @version     5.0.0
  * @package     com_waterways_guide waterwaysguide
  * @copyright   Copyright (C) 2020. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -14,17 +14,20 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
-$config = Factory::getConfig();
-$doc = Factory::getDocument();
-$mailOn = Factory::getConfig()->get('mailonline') == '1';
+$app = Factory::getApplication();
+$config = $app->getConfig();
+$doc = Factory::getApplication()->getDocument();
+$mailOn = $config->get('mailonline') == '1';
 
-$app = Factory::getApplication('com_waterways_guide');
-$db = Factory::getDBO();
-require_once(JPATH_COMPONENT_SITE . "/commonV3.php");
-$user = Factory::getUser();
+$db = Factory::getContainer()->get('DatabaseDriver');
+$user = $app->getIdentity();
 $login_memberid = $user->id;
 $login_email = $user->email;
+
+// Component parameters (previously from commonV3.php)
+$cParams = WaterwaysHelper::getParams();
 
 //get menu parameters
 $currentMenuItem = $app->getMenu()->getActive();

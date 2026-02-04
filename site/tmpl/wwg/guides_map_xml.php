@@ -1,142 +1,135 @@
 <?php
 
-//V3 Google Maps API CJG 20210305
-// no direct access
-// require_once("../../../commonV3.php");
+// V3 Google Maps API CJG 20210305
+// Joomla 5 compatible
 
-// no direct access
-// defined('_JEXEC') or die;
-
-require_once("../../commonV3.php");
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
-$db = Factory::getDbo();
+$db = Factory::getContainer()->get('DatabaseDriver');
+$app = Factory::getApplication();
+$input = $app->getInput();
 
-getpost_ifset(array('waterway', 'country', 'guidetable', 'GuideMooringCodes', 'GuideHazardCodes', 'thisid', 'filteroption'));
+// Get input values
+$waterway = $input->getString('waterway', '');
+$country = $input->getString('country', '');
+$guidetable = $input->getString('guidetable', '');
+$GuideMooringCodes = $input->getString('GuideMooringCodes', '');
+$GuideHazardCodes = $input->getString('GuideHazardCodes', '');
+$thisid = $input->getString('thisid', '');
+$filteroption = $input->getString('filteroption', '');
 
 if (!$guidetable) {
     $guidetable = $db->getPrefix() . "waterways_guide";
 }
 
-//$thisid="4858";
-
 function parseToXML($htmlStr)
 {
-	//$xmlStr=str_replace('\\','',$htmlStr);
 	$xmlStr = stripslashes($htmlStr);
-	//$xmlStr=str_replace('–','-',$xmlStr); 
 	$xmlStr = str_replace('<', '&lt;', $xmlStr);
 	$xmlStr = str_replace('>', '&gt;', $xmlStr);
 	$xmlStr = str_replace('"', '&quot;', $xmlStr);
 	$xmlStr = str_replace("\'", '&quot', $xmlStr);
 	$xmlStr = str_replace("&", '&amp;', $xmlStr);
-	//$xmlStr = htmlspecialchars(strip_tags(($xmlStr)));
-	// $xmlStr = utf8_encode($xmlStr);
-
 	$xmlStr = htmlspecialchars($xmlStr, ENT_QUOTES, 'UTF-8');
-
-	//$xmlStr=str_replace("’",'&apos;',$xmlStr); 
 	return $xmlStr;
 }
+
 $query = $db->getQuery(true)
 	->select('*')
-	->from($db->qn($guidetable))
-	->where($db->qn('GuideStatus') . ' = 1')
-	->where($db->qn('GuideLat') . ' <> 0')
-	->where($db->qn('GuideLong') . ' <> 0')
-	->order($db->qn(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
-//$country="SE";
+	->from($db->quoteName($guidetable))
+	->where($db->quoteName('GuideStatus') . ' = 1')
+	->where($db->quoteName('GuideLat') . ' <> 0')
+	->where($db->quoteName('GuideLong') . ' <> 0')
+	->order($db->quoteName(['GuideCountry', 'GuideWaterway', 'GuideOrder']));
+
 $whereSet = false;
 if ($country && $country != 'All') {
-	$query->where($db->qn('GuideCountry') . ' = ' . $db->q($country));
+	$query->where($db->quoteName('GuideCountry') . ' = ' . $db->quote($country));
 	$whereSet = true;
 }
 if ($waterway && $waterway != 'All') {
-	$query->where($db->qn('GuideWaterway') . ' = ' . $db->q(stripslashes($waterway)));
+	$query->where($db->quoteName('GuideWaterway') . ' = ' . $db->quote(stripslashes($waterway)));
 	$whereSet = true;
 }
-//filter options
+
+// Filter options
 if (!empty($filteroption)) {
+	$filterwhere = '';
 	if ($filteroption == "ALL" || $filteroption == "M") {
-		//add any ticks in $GuideMoringCodes and compare to $GuideCodes
-		$filterwhere = '(' . $db->qn('GuideCategory') . ' = 1';
-		//explode to array
+		$filterwhere = '(' . $db->quoteName('GuideCategory') . ' = 1';
 		if (!empty($GuideMooringCodes)) {
 			$codes = explode("|", $GuideMooringCodes);
 			$maxcodes = sizeof($codes) - 2;
 			$codeno = 1;
 			while ($codeno <= $maxcodes) {
 				$thiscode = "|" . $codes[$codeno] . "|";
-				$filterwhere .= ' AND ' . $db->qn('GuideCodes') . " LIKE '%" . $thiscode . "%'";
+				$filterwhere .= ' AND ' . $db->quoteName('GuideCodes') . " LIKE '%" . $thiscode . "%'";
 				$codeno += 1;
 			}
 		}
 		$filterwhere .= ")";
 	}
 	if ($filteroption == "ALL" || $filteroption == "H") {
-		//add any ticks in $GuideHazardCodes and compare to $GuideCodes
 		if ($filterwhere) $filterwhere .= ' OR ';
-		else $filterwhere = '';
-		$filterwhere .= '(' . $db->qn('GuideCategory') . ' = 2';
-		//explode to array
+		$filterwhere .= '(' . $db->quoteName('GuideCategory') . ' = 2';
 		if ($GuideHazardCodes) {
 			$codes = explode("|", $GuideHazardCodes);
 			$maxcodes = sizeof($codes) - 2;
 			$codeno = 1;
 			while ($codeno <= $maxcodes) {
 				$thiscode = "|" . $codes[$codeno] . "|";
-				$filterwhere .= ' AND ' . $db->qn('GuideCodes') . " LIKE '%" . $thiscode . "%'";
+				$filterwhere .= ' AND ' . $db->quoteName('GuideCodes') . " LIKE '%" . $thiscode . "%'";
 				$codeno += 1;
 			}
 		}
 		$filterwhere .= ")";
 	}
 }
+
 if (!empty($filterwhere)) {
 	$query->where('(' . $filterwhere . ')');
 	$whereSet = true;
 } elseif (!empty($filteroption) && $filteroption != "All") {
-	//filter on Moorings and/or hazards without filter
 	if ($filteroption == "M") {
-		$query->where($db->qn('GuideCategory') . ' = 1');
+		$query->where($db->quoteName('GuideCategory') . ' = 1');
 		$whereSet = true;
 	} else if ($filteroption == "H") {
-		$query->where($db->qn('GuideCategory') . ' = 2');
+		$query->where($db->quoteName('GuideCategory') . ' = 2');
 		$whereSet = true;
 	}
 }
+
 if (!$whereSet) {
-	$query->where($db->qn('GuideID') . ' = ' . $db->q($thisid)); //live
+	$query->where($db->quoteName('GuideID') . ' = ' . $db->quote($thisid));
 }
-// $query = $mapsql;
+
 $result = $db->setQuery($query)->loadAssocList();
 
 if ($result === false) die('Invalid query: ' . $query->__toString());
+
 header("Content-type: text/xml");
-// Start XML file, echo parent node
 echo '<markers>';
-// Iterate through the rows, printing XML nodes for each
+
 foreach ($result as $row) {
-	// ADD TO XML DOCUMENT NODE
 	$GuideCodes = $row['GuideCodes'];
 	$boxhtml = "";
 	if ($GuideCodes) {
-		//add tick boxes here
 		$query = $db->getQuery(true)
 			->select('*')
-			->from($db->qn('#__waterways_guide_services'))
-			->order($db->qn('ServiceSortOrder'));
+			->from($db->quoteName('#__waterways_guide_services'))
+			->order($db->quoteName('ServiceSortOrder'));
 		switch ($row['GuideCategory']) {
 			case "1":
-				$query->where($db->qn('ServiceCategory') . " = 'mooringsguides'");
+				$query->where($db->quoteName('ServiceCategory') . " = 'mooringsguides'");
 				break;
 			case "2":
-				$query->where($db->qn('ServiceCategory') . " = 'hazardguides'");
+				$query->where($db->quoteName('ServiceCategory') . " = 'hazardguides'");
 				break;
 		}
 		$boxes = $db->setQuery($query)->loadAssocList();
-		$num_facilities = count($boxes) + 1;
 		foreach ($boxes as $boxrow) {
 			$boxid = $boxrow['ServiceID'];
 			$boxdesc = $boxrow['ServiceDescGB'];
@@ -145,12 +138,10 @@ foreach ($result as $row) {
 				if ($boxhtml) {
 					$boxhtml .= ", ";
 				}
-
 				$boxhtml .= $boxdesc;
 			}
 		}
 	}
-
 
 	echo '<marker ';
 	echo 'ID="' . parseToXML($row['GuideID']) . '" ';
@@ -164,7 +155,7 @@ foreach ($result as $row) {
 	echo 'Country="' . parseToXML((($row['GuideCountry']))) . '" ';
 	echo 'Summary="' . parseToXML((($row['GuideSummary']))) . '" ';
 	echo 'Name="' . parseToXML((($row['GuideName']))) . '" ';
-	echo 'LatLng="' . parseToXML(decimal2degree($row['GuideLat'], 'LAT') . " , " . decimal2degree($row['GuideLong'], 'LON')) . '" ';
+	echo 'LatLng="' . parseToXML(WaterwaysHelper::decimalToDegree($row['GuideLat'], 'LAT') . " , " . WaterwaysHelper::decimalToDegree($row['GuideLong'], 'LON')) . '" ';
 	echo 'Reference="' . parseToXML((($row['GuideRef']))) . '" ';
 	echo 'Waterway="' . parseToXML((($row['GuideWaterway']))) . '" ';
 	echo 'Remarks="' . parseToXML((($row['GuideRemarks']))) . '" ';
@@ -179,15 +170,12 @@ foreach ($result as $row) {
 	echo 'Amenities = "' . parseToXML((($row['GuideAmenities']))) . '" ';
 	echo 'Contributors = "' . parseToXML((($row['GuideContributors']))) . '" ';
 	echo 'Cat = "' . parseToXML((($row['GuideCategory']))) . '" ';
-	if ($row['GuideUpdate'] == '0000-00-00 00:00:00') {
+	if ($row['GuideUpdate'] == '0000-00-00 00:00:00' || empty($row['GuideUpdate'])) {
 		echo 'Update = "' . parseToXML("-") . '" ';
 	} else {
-		echo 'Update = "' . parseToXML(date_to_format($row['GuideUpdate'], "ymd")) . '" ';
+		echo 'Update = "' . parseToXML(WaterwaysHelper::dateToFormat($row['GuideUpdate'], "ymd")) . '" ';
 	}
 	echo '/>';
 }
 
-
-
-// End XML file
 echo '</markers>';
