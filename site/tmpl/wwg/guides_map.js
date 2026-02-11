@@ -266,5 +266,5 @@
 
 	</script>
 
-		<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKo0H_nOTM_q77GOGvWhltJoys9rfvLVo&callback=initMap&libraries=maps,marker">
+		<script defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $cParams->get('google_maps_api_key', ''); ?>&callback=initMap&libraries=maps,marker">
 		</script>

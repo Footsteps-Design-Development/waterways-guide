@@ -105,7 +105,7 @@ function initMap() {
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<script defer 
-	src="//maps.googleapis.com/maps/api/js?key=AIzaSyDqbOSdCUbI7FB7URPvUDSmrEunaDPqgNY&libraries=places&callback=initMap">
+<script defer
+	src="//maps.googleapis.com/maps/api/js?key=<?php echo $cParams->get('google_maps_api_key', ''); ?>&libraries=places&callback=initMap">
 </script>
  

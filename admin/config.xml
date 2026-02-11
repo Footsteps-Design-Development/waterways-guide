@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 
+	<fieldset name="api"
+		label="COM_WATERWAYS_GUIDE_CONFIG_API_LABEL"
+		description="COM_WATERWAYS_GUIDE_CONFIG_API_DESC"
+	>
+		<field name="google_maps_api_key" type="text"
+			label="COM_WATERWAYS_GUIDE_CONFIG_API_GOOGLE_MAPS_KEY_LABEL"
+			description="COM_WATERWAYS_GUIDE_CONFIG_API_GOOGLE_MAPS_KEY_DESC"
+			filter="string"
+			class="input-xxlarge" />
+	</fieldset>
+
 	<fieldset name="emails"
 		label="COM_WATERWAYS_GUIDE_CONFIG_EMAILS_LABEL"
 		description="COM_WATERWAYS_GUIDE_CONFIG_EMAILS_DESC"
