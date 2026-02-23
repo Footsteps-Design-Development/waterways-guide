@@ -6,6 +6,7 @@ namespace Joomla\Component\WaterWaysGuide\Administrator\Model;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Database\QueryInterface;
 
@@ -13,7 +14,7 @@ class WwgModel extends ListModel
 {
     protected function populateState($ordering = null, $direction = null): void
     {
-        $app = $this->getApplication();
+        $app = Factory::getApplication();
         $context = $this->context;
 
         // Load the filter state.

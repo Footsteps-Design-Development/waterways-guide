@@ -29,6 +29,14 @@ $login_email = $user->email;
 // Component parameters (previously from commonV3.php)
 $cParams = WaterwaysHelper::getParams();
 
+// Load configuration variables used by sub-templates
+$mooringsguidesectionintrotext = $cParams->get('mooringsguidesectionintrotext', '');
+$mooringsguidedocintrotext = $cParams->get('mooringsguidedocintrotext', '');
+$copyright_guides = $cParams->get('copyright_guides', '');
+$message_guides = $cParams->get('message_guides', '');
+$footerguide = $cParams->get('footerguide', '');
+$footermooringsguide = $cParams->get('footermooringsguide', '');
+
 //get menu parameters
 $currentMenuItem = $app->getMenu()->getActive();
 $view = $currentMenuItem->getParams()->get('wwg_view');
