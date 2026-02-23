@@ -217,19 +217,14 @@ if ($admin == "open") {
 						var mypage = reportname + "&country=" + country + "&waterway=" + waterway + "&filteroption=" + filteroption + "&GuideMooringCodes=" + GuideMooringCodes + "&GuideHazardCodes=" + GuideHazardCodes + "&msid=" + msid + "&menu_url=" + menu_url;
 					}
 
-					//alert(mypage);
-					var myname = "WaterwaysGuide";
-					var w = 400;
-					var h = 200;
-					var scroll = "no";
-					var winl = (screen.width - w) / 2;
-					var wint = (screen.height - h) / 2;
-					winprops = 'height=' + h + ',width=' + w + ',top=' + wint + ',left=' + winl + ',scrollbars=' + scroll + ',resizable'
+					// Direct download instead of popup - create temporary link and click it
 					mypage += (mypage.indexOf('?') != -1 ? '&' : '?') + 'nocache=' + Date.now();
-					win = window.open(mypage, myname, winprops)
-					if (parseInt(navigator.appVersion) >= 4) {
-						win.window.focus();
-					}
+					var link = document.createElement('a');
+					link.href = mypage;
+					link.style.display = 'none';
+					document.body.appendChild(link);
+					link.click();
+					document.body.removeChild(link);
 
 				}
 			}
