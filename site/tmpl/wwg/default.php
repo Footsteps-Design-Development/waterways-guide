@@ -48,6 +48,20 @@ $message_guides = $cParams->get('message_guides', '');
 $footerguide = $cParams->get('footerguide', '');
 $footermooringsguide = $cParams->get('footermooringsguide', '');
 
+// Email addresses from component config
+$adminemail = $cParams->get('adminemail', '');
+$guidesemail = $cParams->get('guidesemail', '');
+$forumemail = $cParams->get('forumemail', '');
+$bulletinemail = $cParams->get('bulletinemail', '');
+$membershipemail = $cParams->get('membershipemail', '');
+$supportemail = $cParams->get('supportemail', '');
+$feedbackemail = $cParams->get('feedbackemail', '');
+$registrationemail = $cParams->get('registrationemail', '');
+$eventsemail = $cParams->get('eventsemail', '');
+$linksemail = $cParams->get('linksemail', '');
+$webmasteremail = $cParams->get('webmasteremail', '');
+$classifiedemail = $cParams->get('classifiedemail', '');
+
 //get menu parameters
 $currentMenuItem = $app->getMenu()->getActive();
 $view = $currentMenuItem->getParams()->get('wwg_view');
