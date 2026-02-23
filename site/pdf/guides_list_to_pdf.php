@@ -379,7 +379,8 @@ class Creport extends Cezpdf
 
     function __construct($p, $o)
     {
-        parent::__construct($p, $o);
+        // Call PHP 4 style parent constructor (Cezpdf uses old-style constructor)
+        parent::Cezpdf($p, $o);
     }
 
     function rf($info)
