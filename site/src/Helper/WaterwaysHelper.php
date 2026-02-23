@@ -38,7 +38,13 @@ class WaterwaysHelper
         }
 
         $decimalCoord = (float) $decimalCoord;
-        $degrees = abs(intval($decimalCoord)) . '&deg;' . (($decimalCoord * 60) % 60) . '&apos;' . number_format(fmod($decimalCoord * 3600, 60), 2) . '"';
+        $absCoord = abs($decimalCoord);
+        $deg = (int) $absCoord;
+        $minFloat = ($absCoord - $deg) * 60;
+        $min = (int) $minFloat;
+        $sec = ($minFloat - $min) * 60;
+
+        $degrees = $deg . '&deg;' . $min . '&apos;' . number_format($sec, 2) . '"';
 
         if ($latOrLon === 'LAT') {
             return $degrees . ($decimalCoord < 0 ? 'S' : 'N');
