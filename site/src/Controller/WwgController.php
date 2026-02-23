@@ -33,4 +33,16 @@ class WwgController extends BaseController
         require $kmlScript;
         $this->app->close();
     }
+
+    public function mapxml(): void
+    {
+        $xmlScript = JPATH_COMPONENT_SITE . '/tmpl/wwg/guides_map_xml.php';
+
+        if (!file_exists($xmlScript)) {
+            throw new \RuntimeException('Map XML script not found: ' . $xmlScript, 500);
+        }
+
+        require $xmlScript;
+        $this->app->close();
+    }
 }
