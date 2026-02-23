@@ -6,7 +6,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Footsteps - Russell English</author>
 	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<version>1.0.9</version>
+	<version>1.0.10</version>
 	<description>Waterways Guide</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>

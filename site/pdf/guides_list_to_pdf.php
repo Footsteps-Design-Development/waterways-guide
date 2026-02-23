@@ -7,6 +7,9 @@
 
 defined('_JEXEC') or die;
 
+// Start output buffering to catch any unexpected output that would corrupt PDF
+ob_start();
+
 use Joomla\CMS\Factory;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
@@ -106,8 +109,16 @@ $guides = $db->setQuery($query)->loadAssocList();
 $rows = count($guides);
 
 if ($rows == 0) {
-    echo "<tr><td class=bodytext colspan=3>Sorry - there are no guides at the moment matching your selection.</td></tr>\n";
-} else {
+    // No guides found - output error as plain text and exit
+    header('Content-Type: text/plain');
+    echo "Sorry - there are no guides at the moment matching your selection.\n";
+    echo "Country: " . ($country ?: 'All') . "\n";
+    echo "Waterway: " . ($waterway ?: 'All') . "\n";
+    return;
+}
+
+// Build guide content for PDF
+{
     // build filter options description
     if ($filteroption) {
         if ($GuideMooringCodes) {
@@ -347,12 +358,15 @@ if ($rows == 0) {
 }
 
 // PDF Generation using ezpdf
-error_reporting(E_ALL);
+// Suppress error output - any text output will corrupt the PDF binary stream
+error_reporting(0);
 set_time_limit(20000);
 
 // Include ezpdf class - adjust path as needed
 $ezpdfPath = __DIR__ . '/../tmpl/wwg/class.ezpdf.php';
 if (!file_exists($ezpdfPath)) {
+    ob_end_clean();
+    header('Content-Type: text/plain');
     die('PDF library not found: ' . $ezpdfPath);
 }
 include $ezpdfPath;
@@ -561,6 +575,9 @@ foreach ($contents as $k => $v) {
             break;
     }
 }
+
+// Clear any buffered output (PHP warnings, etc.) before sending PDF
+ob_end_clean();
 
 // Output the PDF
 $pdf->ezStream();
