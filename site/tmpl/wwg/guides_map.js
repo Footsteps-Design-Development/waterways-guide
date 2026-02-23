@@ -266,5 +266,11 @@
 
 	</script>
 
-		<script defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $cParams->get('google_maps_api_key', ''); ?>&callback=initMap&libraries=maps,marker">
+<?php
+$apiKey = $cParams->get('google_maps_api_key', '');
+if (empty($apiKey)) {
+    echo "<!-- WARNING: Google Maps API key is not configured. Go to Components > Water Ways Guide > Options > API tab -->\n";
+}
+?>
+		<script defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apiKey; ?>&callback=initMap&libraries=maps,marker">
 		</script>

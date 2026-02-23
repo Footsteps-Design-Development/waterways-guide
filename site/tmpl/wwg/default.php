@@ -37,6 +37,9 @@ $login_email = $user->email;
 // Component parameters (previously from commonV3.php)
 $cParams = WaterwaysHelper::getParams();
 
+// Site name for copyright notices
+$sitename = $config->get('sitename', '');
+
 // Load configuration variables used by sub-templates
 $mooringsguidesectionintrotext = $cParams->get('mooringsguidesectionintrotext', '');
 $mooringsguidedocintrotext = $cParams->get('mooringsguidedocintrotext', '');
