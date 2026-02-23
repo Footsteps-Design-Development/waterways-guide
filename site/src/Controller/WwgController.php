@@ -12,7 +12,7 @@ class WwgController extends BaseController
 {
     public function generatepdf(): void
     {
-        $pdfScript = JPATH_COMPONENT_SITE . '/tmpl/wwg/guides_list_to_pdf.php';
+        $pdfScript = JPATH_COMPONENT_SITE . '/pdf/guides_list_to_pdf.php';
 
         if (!file_exists($pdfScript)) {
             throw new \RuntimeException('PDF generator script not found: ' . $pdfScript, 500);

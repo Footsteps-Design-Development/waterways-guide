@@ -16,6 +16,7 @@
 		<folder>tmpl</folder>
 		<folder>helpers</folder>
 		<folder>cli</folder>
+		<folder>pdf</folder>
 	</files>
 	<languages>
 		<language tag="en-GB">site/language/en-GB/com_waterways_guide.ini</language>
