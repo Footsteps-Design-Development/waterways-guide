@@ -31,9 +31,9 @@
 		<!-- The link that will appear in the Admin panel's "Components" menu -->
 		<menu link="index.php?option=com_waterways_guide">COM_WATERWAYS_GUIDE</menu>
 		<submenu>
-			<menu link="index.php?option=com_waterways_guide&amp;view=guides">COM_WATERWAYS_GUIDE_SUBMENU_GUIDES</menu>
-			<menu link="index.php?option=com_waterways_guide&amp;view=requests">COM_WATERWAYS_GUIDE_SUBMENU_REQUESTS</menu>
-			<menu link="index.php?option=com_waterways_guide&amp;view=changelogs">COM_WATERWAYS_GUIDE_SUBMENU_CHANGELOGS</menu>
+			<menu link="option=com_waterways_guide&amp;view=guides">COM_WATERWAYS_GUIDE_SUBMENU_GUIDES</menu>
+			<menu link="option=com_waterways_guide&amp;view=requests">COM_WATERWAYS_GUIDE_SUBMENU_REQUESTS</menu>
+			<menu link="option=com_waterways_guide&amp;view=changelogs">COM_WATERWAYS_GUIDE_SUBMENU_CHANGELOGS</menu>
 		</submenu>
 
 		<!-- List of files and folders to copy. Note the 'folder' attribute.
