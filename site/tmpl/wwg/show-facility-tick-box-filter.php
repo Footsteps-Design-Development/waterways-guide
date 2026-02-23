@@ -211,10 +211,10 @@ if ($admin == "open") {
 							var waterway1 = "Marne";
 							var waterway2 = "Yonne";
 						}
-						var mypage = reportname + "?country=" + country + "&waterway=" + waterway + "&filteroption=" + filteroption + "&GuideMooringCodes=" + GuideMooringCodes + "&GuideHazardCodes=" + GuideHazardCodes + "&waterway1=" + waterway1 + "&waterway2=" + waterway2 + "&msid=" + msid + "&menu_url=" + menu_url;
+						var mypage = reportname + "&country=" + country + "&waterway=" + waterway + "&filteroption=" + filteroption + "&GuideMooringCodes=" + GuideMooringCodes + "&GuideHazardCodes=" + GuideHazardCodes + "&waterway1=" + waterway1 + "&waterway2=" + waterway2 + "&msid=" + msid + "&menu_url=" + menu_url;
 
 					} else {
-						var mypage = reportname + "?country=" + country + "&waterway=" + waterway + "&filteroption=" + filteroption + "&GuideMooringCodes=" + GuideMooringCodes + "&GuideHazardCodes=" + GuideHazardCodes + "&msid=" + msid + "&menu_url=" + menu_url;
+						var mypage = reportname + "&country=" + country + "&waterway=" + waterway + "&filteroption=" + filteroption + "&GuideMooringCodes=" + GuideMooringCodes + "&GuideHazardCodes=" + GuideHazardCodes + "&msid=" + msid + "&menu_url=" + menu_url;
 					}
 
 					//alert(mypage);
