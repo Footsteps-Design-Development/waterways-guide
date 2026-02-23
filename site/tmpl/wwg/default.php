@@ -16,6 +16,14 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
+// Legacy function wrappers for sub-templates
+if (!function_exists('decimal2degree')) {
+    function decimal2degree($decimalCoord, string $latOrLon = ""): string
+    {
+        return WaterwaysHelper::decimalToDegree($decimalCoord, $latOrLon);
+    }
+}
+
 $app = Factory::getApplication();
 $config = $app->getConfig();
 $doc = Factory::getApplication()->getDocument();

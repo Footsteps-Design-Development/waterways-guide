@@ -10,6 +10,10 @@ $items = $this->items;
 $pagination = $this->pagination;
 $state = $this->state;
 $filterForm = $this->getFilterForm();
+
+// Get sort parameters with defaults
+$listOrder = $state->get('list.ordering', 'GuideID');
+$listDirn = $state->get('list.direction', 'asc');
 ?>
 
 <h1><?php echo Text::_('COM_WATERWAYS_GUIDE_LIST'); ?></h1>
@@ -21,10 +25,10 @@ $filterForm = $this->getFilterForm();
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_ID', 'GuideID', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
-                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_UPDATE', 'GuideUpdate', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
-                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_NAME', 'GuideName', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
-                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_COUNTRY', 'GuideCountry', $state->get('list.direction'), $state->get('list.ordering')); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_ID', 'GuideID', $listDirn, $listOrder); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_UPDATE', 'GuideUpdate', $listDirn, $listOrder); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_NAME', 'GuideName', $listDirn, $listOrder); ?></th>
+                    <th><?php echo HTMLHelper::_('grid.sort', 'COM_WATERWAYS_GUIDE_GUIDE_COUNTRY', 'GuideCountry', $listDirn, $listOrder); ?></th>
                 </tr>
             </thead>
             <tbody>

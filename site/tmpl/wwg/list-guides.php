@@ -186,7 +186,7 @@ if ($rows == 0) {
                 ->from($db->qn('#__waterways_guide_country'))
                 ->where($db->qn('iso') . ' = ' . $db->q(strtoupper($GuideCountry)));
             $countryrow = $db->setQuery($query)->loadAssoc();
-            $CountryName = stripslashes($countryrow["printable_name"]);
+            $CountryName = $countryrow ? stripslashes($countryrow["printable_name"] ?? '') : $GuideCountry;
             $outputlistresults .= "<tr><td colspan=4><h2>$CountryName</h2></td></tr>\n";
             $thiscountry = $country;
         }

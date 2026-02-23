@@ -30,8 +30,10 @@ class WaterWaysGuideHelper
             "/access/section[@name='{$level}']/"
         );
 
-        foreach ($actions as $action) {
-            $result->set($action->name, $user->authorise($action->name, $assetName));
+        if ($actions) {
+            foreach ($actions as $action) {
+                $result->set($action->name, $user->authorise($action->name, $assetName));
+            }
         }
 
         return $result;

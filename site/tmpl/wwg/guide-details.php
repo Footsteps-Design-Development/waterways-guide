@@ -66,6 +66,7 @@ $GuideCategory = stripslashes($row["GuideCategory"]);
 $GuideUpdate = stripslashes($row["GuideUpdate"]);
 $GuideStatus = stripslashes($row["GuideStatus"]);
 $GuideUpdatedisplay = (empty($GuideUpdate) ? 'Date unknown' : date('Y-m-d', strtotime($GuideUpdate))) . " - Mooring Index: " . $GuideNo . " - Version: " . $GuideVer;
+$GuideRatingIcon = '';
 $i = 1;
 while ($i <= $GuideRating) {
     $GuideRatingIcon .= "<img src=\"Image/common/star.gif\" title=\"rating\" alt=\"rating\" width=\"16\" height=\"16\" border=\"0\">";
