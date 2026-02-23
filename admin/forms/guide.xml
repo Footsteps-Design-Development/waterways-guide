@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="basic" label="COM_WATERWAYS_GUIDE_FIELDSET_BASIC">
+        <field
+            name="GuideID"
+            type="hidden"
+        />
+
+        <field
+            name="GuideName"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDENAME_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDENAME_DESC"
+            class="form-control"
+            size="60"
+            required="true"
+        />
+
+        <field
+            name="GuideCountry"
+            type="country"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDECOUNTRY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDECOUNTRY_DESC"
+            class="form-select"
+        />
+
+        <field
+            name="GuideWaterway"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEWATERWAY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEWATERWAY_DESC"
+            class="form-control"
+            size="60"
+        />
+
+        <field
+            name="GuideCategory"
+            type="list"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDECATEGORY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDECATEGORY_DESC"
+            class="form-select"
+            default="1"
+        >
+            <option value="1">COM_WATERWAYS_GUIDE_CATEGORY_MOORING</option>
+            <option value="2">COM_WATERWAYS_GUIDE_CATEGORY_HAZARD</option>
+            <option value="3">COM_WATERWAYS_GUIDE_CATEGORY_BRIDGE</option>
+            <option value="4">COM_WATERWAYS_GUIDE_CATEGORY_LOCK</option>
+            <option value="5">COM_WATERWAYS_GUIDE_CATEGORY_OTHER</option>
+        </field>
+
+        <field
+            name="GuideStatus"
+            type="guidestatus"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDESTATUS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDESTATUS_DESC"
+            class="form-select"
+            default="1"
+        />
+
+        <field
+            name="GuideSummary"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDESUMMARY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDESUMMARY_DESC"
+            class="form-control"
+            rows="4"
+            cols="60"
+        />
+    </fieldset>
+
+    <fieldset name="location" label="COM_WATERWAYS_GUIDE_FIELDSET_LOCATION">
+        <field
+            name="GuideLat"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDELAT_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDELAT_DESC"
+            class="form-control"
+            size="20"
+            filter="float"
+        />
+
+        <field
+            name="GuideLong"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDELONG_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDELONG_DESC"
+            class="form-control"
+            size="20"
+            filter="float"
+        />
+
+        <field
+            name="GuideLatLong"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDELATLONG_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDELATLONG_DESC"
+            class="form-control"
+            size="40"
+        />
+
+        <field
+            name="GuideLocation"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDELOCATION_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDELOCATION_DESC"
+            class="form-control"
+            rows="3"
+            cols="60"
+        />
+
+        <field
+            name="GuideRef"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEREF_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEREF_DESC"
+            class="form-control"
+            size="20"
+        />
+
+        <field
+            name="GuideOrder"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEORDER_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEORDER_DESC"
+            class="form-control"
+            size="10"
+            filter="int"
+        />
+    </fieldset>
+
+    <fieldset name="details" label="COM_WATERWAYS_GUIDE_FIELDSET_DETAILS">
+        <field
+            name="GuideMooring"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEMOORING_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEMOORING_DESC"
+            class="form-control"
+            rows="4"
+            cols="60"
+        />
+
+        <field
+            name="GuideFacilities"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEFACILITIES_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEFACILITIES_DESC"
+            class="form-control"
+            rows="4"
+            cols="60"
+        />
+
+        <field
+            name="GuideCodes"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDECODES_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDECODES_DESC"
+            class="form-control"
+            size="40"
+        />
+
+        <field
+            name="GuideCosts"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDECOSTS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDECOSTS_DESC"
+            class="form-control"
+            size="40"
+        />
+
+        <field
+            name="GuideRating"
+            type="list"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDERATING_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDERATING_DESC"
+            class="form-select"
+            default="0"
+        >
+            <option value="0">COM_WATERWAYS_GUIDE_RATING_NONE</option>
+            <option value="1">COM_WATERWAYS_GUIDE_RATING_1</option>
+            <option value="2">COM_WATERWAYS_GUIDE_RATING_2</option>
+            <option value="3">COM_WATERWAYS_GUIDE_RATING_3</option>
+            <option value="4">COM_WATERWAYS_GUIDE_RATING_4</option>
+            <option value="5">COM_WATERWAYS_GUIDE_RATING_5</option>
+        </field>
+
+        <field
+            name="GuideAmenities"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEAMENITIES_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEAMENITIES_DESC"
+            class="form-control"
+            rows="4"
+            cols="60"
+        />
+    </fieldset>
+
+    <fieldset name="additional" label="COM_WATERWAYS_GUIDE_FIELDSET_ADDITIONAL">
+        <field
+            name="GuideContributors"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDECONTRIBUTORS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDECONTRIBUTORS_DESC"
+            class="form-control"
+            size="60"
+        />
+
+        <field
+            name="GuideRemarks"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEREMARKS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEREMARKS_DESC"
+            class="form-control"
+            rows="4"
+            cols="60"
+        />
+
+        <field
+            name="GuideDocs"
+            type="textarea"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEDOCS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEDOCS_DESC"
+            class="form-control"
+            rows="3"
+            cols="60"
+        />
+    </fieldset>
+
+    <fieldset name="publishing" label="COM_WATERWAYS_GUIDE_FIELDSET_PUBLISHING">
+        <field
+            name="GuideNo"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDENO_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDENO_DESC"
+            class="form-control"
+            size="10"
+            readonly="true"
+        />
+
+        <field
+            name="GuideVer"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEVER_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEVER_DESC"
+            class="form-control"
+            size="10"
+            readonly="true"
+            default="1"
+        />
+
+        <field
+            name="GuidePostingDate"
+            type="calendar"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEPOSTINGDATE_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEPOSTINGDATE_DESC"
+            class="form-control"
+            format="%Y-%m-%d %H:%M:%S"
+            readonly="true"
+        />
+
+        <field
+            name="GuideUpdate"
+            type="calendar"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEUPDATE_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEUPDATE_DESC"
+            class="form-control"
+            format="%Y-%m-%d %H:%M:%S"
+            readonly="true"
+        />
+
+        <field
+            name="GuideEditorMemNo"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FIELD_GUIDEEDITORMEMNO_LABEL"
+            description="COM_WATERWAYS_GUIDE_FIELD_GUIDEEDITORMEMNO_DESC"
+            class="form-control"
+            size="20"
+            readonly="true"
+        />
+    </fieldset>
+</form>

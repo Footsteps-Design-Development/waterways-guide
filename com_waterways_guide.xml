@@ -6,8 +6,8 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Russell English</author>
 	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<version>1.0.6</version>
-	<description>Waterways Guide</description>
+	<version>2.5.0</version>
+	<description>Waterways Guide - Manage moorings, hazards, and waterway information</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
 
@@ -29,7 +29,12 @@
 
 	<administration>
 		<!-- The link that will appear in the Admin panel's "Components" menu -->
-		<menu link="index.php?option=com_config&amp;view=component&amp;component=com_waterways_guide">Water Ways Guide</menu>
+		<menu link="index.php?option=com_waterways_guide">COM_WATERWAYS_GUIDE</menu>
+		<submenu>
+			<menu link="index.php?option=com_waterways_guide&amp;view=guides">COM_WATERWAYS_GUIDE_SUBMENU_GUIDES</menu>
+			<menu link="index.php?option=com_waterways_guide&amp;view=requests">COM_WATERWAYS_GUIDE_SUBMENU_REQUESTS</menu>
+			<menu link="index.php?option=com_waterways_guide&amp;view=changelogs">COM_WATERWAYS_GUIDE_SUBMENU_CHANGELOGS</menu>
+		</submenu>
 
 		<!-- List of files and folders to copy. Note the 'folder' attribute.
              This is the name of the folder in your component package to copy FROM -->
@@ -39,6 +44,7 @@
 			<folder>src</folder>
 			<folder>tmpl</folder>
 			<folder>sql</folder>
+			<filename>access.xml</filename>
 			<filename>config.xml</filename>
 		</files>
 		<languages>

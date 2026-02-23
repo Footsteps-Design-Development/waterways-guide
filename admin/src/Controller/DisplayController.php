@@ -10,7 +10,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
 
 class DisplayController extends BaseController
 {
-    protected $default_view = 'wwg';
+    protected $default_view = 'guides';
 
     public function display($cachable = false, $urlparams = []): static
     {

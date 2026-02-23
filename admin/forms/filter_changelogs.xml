@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FILTER_SEARCH_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_SEARCH_DESC"
+            hint="JSEARCH_FILTER"
+        />
+
+        <field
+            name="subject"
+            type="list"
+            label="COM_WATERWAYS_GUIDE_FILTER_SUBJECT_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_SUBJECT_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_SUBJECT</option>
+            <option value="Guides">COM_WATERWAYS_GUIDE_SUBJECT_GUIDES</option>
+            <option value="Requests">COM_WATERWAYS_GUIDE_SUBJECT_REQUESTS</option>
+        </field>
+
+        <field
+            name="date_from"
+            type="calendar"
+            label="COM_WATERWAYS_GUIDE_FILTER_DATE_FROM_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_DATE_FROM_DESC"
+            format="%Y-%m-%d"
+            onchange="this.form.submit();"
+        />
+
+        <field
+            name="date_to"
+            type="calendar"
+            label="COM_WATERWAYS_GUIDE_FILTER_DATE_TO_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_DATE_TO_DESC"
+            format="%Y-%m-%d"
+            onchange="this.form.submit();"
+        />
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="JGLOBAL_SORT_BY"
+            default="a.ChangeDate DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.ChangeDate ASC">COM_WATERWAYS_GUIDE_HEADING_DATE_ASC</option>
+            <option value="a.ChangeDate DESC">COM_WATERWAYS_GUIDE_HEADING_DATE_DESC</option>
+            <option value="a.User ASC">COM_WATERWAYS_GUIDE_HEADING_USER_ASC</option>
+            <option value="a.User DESC">COM_WATERWAYS_GUIDE_HEADING_USER_DESC</option>
+            <option value="a.Subject ASC">COM_WATERWAYS_GUIDE_HEADING_SUBJECT_ASC</option>
+            <option value="a.Subject DESC">COM_WATERWAYS_GUIDE_HEADING_SUBJECT_DESC</option>
+            <option value="a.LogID ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="a.LogID DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FILTER_SEARCH_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_SEARCH_DESC"
+            hint="JSEARCH_FILTER"
+        />
+
+        <field
+            name="status"
+            type="list"
+            label="COM_WATERWAYS_GUIDE_FILTER_STATUS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_STATUS_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_STATUS</option>
+            <option value="pending">COM_WATERWAYS_GUIDE_REQUEST_STATUS_PENDING</option>
+            <option value="approved">COM_WATERWAYS_GUIDE_REQUEST_STATUS_APPROVED</option>
+            <option value="rejected">COM_WATERWAYS_GUIDE_REQUEST_STATUS_REJECTED</option>
+        </field>
+
+        <field
+            name="country"
+            type="country"
+            label="COM_WATERWAYS_GUIDE_FILTER_COUNTRY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_COUNTRY_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_COUNTRY</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="JGLOBAL_SORT_BY"
+            default="a.GuideRequestDate DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.GuideRequestDate ASC">COM_WATERWAYS_GUIDE_HEADING_DATE_ASC</option>
+            <option value="a.GuideRequestDate DESC">COM_WATERWAYS_GUIDE_HEADING_DATE_DESC</option>
+            <option value="a.GuideCountry ASC">COM_WATERWAYS_GUIDE_HEADING_COUNTRY_ASC</option>
+            <option value="a.GuideCountry DESC">COM_WATERWAYS_GUIDE_HEADING_COUNTRY_DESC</option>
+            <option value="a.memberid ASC">COM_WATERWAYS_GUIDE_HEADING_MEMBERID_ASC</option>
+            <option value="a.memberid DESC">COM_WATERWAYS_GUIDE_HEADING_MEMBERID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

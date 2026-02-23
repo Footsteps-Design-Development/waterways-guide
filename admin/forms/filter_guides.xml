@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_WATERWAYS_GUIDE_FILTER_SEARCH_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_SEARCH_DESC"
+            hint="JSEARCH_FILTER"
+        />
+
+        <field
+            name="guidestatus"
+            type="guidestatus"
+            label="COM_WATERWAYS_GUIDE_FILTER_STATUS_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_STATUS_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_STATUS</option>
+        </field>
+
+        <field
+            name="country"
+            type="country"
+            label="COM_WATERWAYS_GUIDE_FILTER_COUNTRY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_COUNTRY_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_COUNTRY</option>
+        </field>
+
+        <field
+            name="waterway"
+            type="waterway"
+            label="COM_WATERWAYS_GUIDE_FILTER_WATERWAY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_WATERWAY_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_WATERWAY</option>
+        </field>
+
+        <field
+            name="category"
+            type="list"
+            label="COM_WATERWAYS_GUIDE_FILTER_CATEGORY_LABEL"
+            description="COM_WATERWAYS_GUIDE_FILTER_CATEGORY_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+            <option value="1">COM_WATERWAYS_GUIDE_CATEGORY_MOORING</option>
+            <option value="2">COM_WATERWAYS_GUIDE_CATEGORY_HAZARD</option>
+            <option value="3">COM_WATERWAYS_GUIDE_CATEGORY_BRIDGE</option>
+            <option value="4">COM_WATERWAYS_GUIDE_CATEGORY_LOCK</option>
+            <option value="5">COM_WATERWAYS_GUIDE_CATEGORY_OTHER</option>
+        </field>
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="JGLOBAL_SORT_BY"
+            default="a.GuideID DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.GuideName ASC">COM_WATERWAYS_GUIDE_HEADING_NAME_ASC</option>
+            <option value="a.GuideName DESC">COM_WATERWAYS_GUIDE_HEADING_NAME_DESC</option>
+            <option value="a.GuideCountry ASC">COM_WATERWAYS_GUIDE_HEADING_COUNTRY_ASC</option>
+            <option value="a.GuideCountry DESC">COM_WATERWAYS_GUIDE_HEADING_COUNTRY_DESC</option>
+            <option value="a.GuideWaterway ASC">COM_WATERWAYS_GUIDE_HEADING_WATERWAY_ASC</option>
+            <option value="a.GuideWaterway DESC">COM_WATERWAYS_GUIDE_HEADING_WATERWAY_DESC</option>
+            <option value="a.GuideStatus ASC">COM_WATERWAYS_GUIDE_HEADING_STATUS_ASC</option>
+            <option value="a.GuideStatus DESC">COM_WATERWAYS_GUIDE_HEADING_STATUS_DESC</option>
+            <option value="a.GuideID ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="a.GuideID DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            default="25"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>
