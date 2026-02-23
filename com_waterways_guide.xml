@@ -6,7 +6,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Russell English</author>
 	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<version>2.5.0</version>
+	<version>3.0.0</version>
 	<description>Waterways Guide - Manage moorings, hazards, and waterway information</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>

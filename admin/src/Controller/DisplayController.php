@@ -10,6 +10,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
 
 class DisplayController extends BaseController
 {
+    protected $option = 'com_waterways_guide';
     protected $default_view = 'guides';
 
     public function display($cachable = false, $urlparams = []): static

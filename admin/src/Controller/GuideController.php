@@ -17,6 +17,13 @@ use Joomla\CMS\Router\Route;
 class GuideController extends FormController
 {
     /**
+     * The component option
+     *
+     * @var    string
+     */
+    protected $option = 'com_waterways_guide';
+
+    /**
      * The prefix to use for controller messages
      *
      * @var    string

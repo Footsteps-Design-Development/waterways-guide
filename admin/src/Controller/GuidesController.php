@@ -17,6 +17,13 @@ use Joomla\CMS\Language\Text;
 class GuidesController extends AdminController
 {
     /**
+     * The component option
+     *
+     * @var    string
+     */
+    protected $option = 'com_waterways_guide';
+
+    /**
      * The prefix to use for controller messages
      *
      * @var    string

@@ -16,6 +16,13 @@ use Joomla\CMS\MVC\Controller\AdminController;
 class ChangelogsController extends AdminController
 {
     /**
+     * The component option
+     *
+     * @var    string
+     */
+    protected $option = 'com_waterways_guide';
+
+    /**
      * The prefix to use for controller messages
      *
      * @var    string
