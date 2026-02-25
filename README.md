@@ -102,7 +102,7 @@ If migrating from an older installation that uses `tbl*` prefixed tables, run th
 -- MIGRATION: Legacy tbl* tables to Joomla 5 component tables
 -- ============================================
 
--- 1. Migrate Guide Data (tblwwg -> #__waterways_guide)
+-- 1. Migrate Guide Data (tblGuides -> #__waterways_guide)
 INSERT INTO `#__waterways_guide` (
     GuideID, GuideNo, GuideVer, GuideCountry, GuideWaterway,
     GuideSummary, GuideName, GuideLatLong, GuideLocation, GuideRef,
@@ -118,9 +118,9 @@ SELECT
     GuideAmenities, GuideContributors, GuideRemarks, GuideLat, GuideLong,
     GuideOrder, GuideDocs, GuidePostingDate, GuideCategory, GuideUpdate,
     GuideStatus, GuideEditorMemNo
-FROM `tblwwg`;
+FROM `tblGuides`;
 
--- 2. Migrate Access Requests (tblwwgrequest -> #__waterways_guide_requests)
+-- 2. Migrate Access Requests (tblGuidesRequests -> #__waterways_guide_requests)
 INSERT INTO `#__waterways_guide_requests` (
     memberid, GuideCountry, GuideWaterway,
     GuideRequestDate, GuideRequestMethod, GuideRequestStatus
@@ -128,9 +128,9 @@ INSERT INTO `#__waterways_guide_requests` (
 SELECT
     memberid, GuideCountry, GuideWaterway,
     GuideRequestDate, GuideRequestMethod, GuideRequestStatus
-FROM `tblwwgrequest`;
+FROM `tblGuidesRequests`;
 
--- 3. Migrate Services Lookup (tblservices -> #__waterways_guide_services)
+-- 3. Migrate Services Lookup (tblServices -> #__waterways_guide_services)
 INSERT INTO `#__waterways_guide_services` (
     ID, ServiceID, ServiceDescGB, ServiceHelpGB,
     ServiceCategory, ServiceSortOrder
@@ -138,23 +138,23 @@ INSERT INTO `#__waterways_guide_services` (
 SELECT
     ID, ServiceID, ServiceDescGB, ServiceHelpGB,
     ServiceCategory, ServiceSortOrder
-FROM `tblservices`;
+FROM `tblServices`;
 
--- 4. Migrate Country Lookup (tblcountry -> #__waterways_guide_country)
+-- 4. Migrate Country Lookup (tblCountry -> #__waterways_guide_country)
 INSERT INTO `#__waterways_guide_country` (
     iso, name, printable_name, iso3, numcode, postzone
 )
 SELECT
     iso, name, printable_name, iso3, numcode, postzone
-FROM `tblcountry`;
+FROM `tblCountry`;
 
--- 5. Migrate Change Log (tblwwgchangelog -> #__waterways_guide_changelog)
+-- 5. Migrate Change Log (tblChangeLog -> #__waterways_guide_changelog)
 INSERT INTO `#__waterways_guide_changelog` (
     LogID, User, MemberID, Subject, ChangeDesc, ChangeDate
 )
 SELECT
     LogID, User, MemberID, Subject, ChangeDesc, ChangeDate
-FROM `tblwwgchangelog`;
+FROM `tblChangeLog`;
 ```
 
 ### Post-Migration Verification
