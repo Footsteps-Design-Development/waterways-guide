@@ -1,3 +1,11 @@
+<?php
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
+
+// Build the map XML URL using Joomla's router for SEF compatibility
+$mapXmlParams = 'index.php?option=com_waterways_guide&task=wwg.mapxml&format=raw' . str_replace('?', '&', $mapvars);
+$mapXmlUrl = Uri::root() . Route::_($mapXmlParams, false);
+?>
 <script type="text/javascript">
 
 	//V3 Google Maps API CJG 20201028
@@ -27,8 +35,8 @@
 
 
 
-	// Use Joomla controller endpoint for XML data
-	var mapXmlUrl = "index.php?option=com_waterways_guide&task=wwg.mapxml&format=raw<?php echo str_replace('?', '&', $mapvars); ?>";
+	// Use Joomla controller endpoint for XML data (SEF compatible)
+	var mapXmlUrl = "<?php echo $mapXmlUrl; ?>";
 	console.log(mapXmlUrl);
 
 	downloadUrl(mapXmlUrl, function(data) {
