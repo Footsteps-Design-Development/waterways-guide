@@ -102,7 +102,9 @@ if (!empty($filterwhere)) {
 	}
 }
 
-if (!$whereSet) {
+// Only filter by thisid if it has a valid value
+// If no filters set and no thisid, return all published guides with coordinates
+if (!$whereSet && !empty($thisid) && $thisid !== '0') {
 	$query->where($db->quoteName('GuideID') . ' = ' . $db->quote($thisid));
 }
 
