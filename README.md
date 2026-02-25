@@ -164,23 +164,23 @@ After running the migration, verify the data counts match:
 ```sql
 -- Verify migration counts
 SELECT 'Guides' as TableName,
-       (SELECT COUNT(*) FROM tblwwg) as Legacy,
+       (SELECT COUNT(*) FROM tblGuides) as Legacy,
        (SELECT COUNT(*) FROM `#__waterways_guide`) as New;
 
 SELECT 'Requests' as TableName,
-       (SELECT COUNT(*) FROM tblwwgrequest) as Legacy,
+       (SELECT COUNT(*) FROM tblGuidesRequests) as Legacy,
        (SELECT COUNT(*) FROM `#__waterways_guide_requests`) as New;
 
 SELECT 'Services' as TableName,
-       (SELECT COUNT(*) FROM tblservices) as Legacy,
+       (SELECT COUNT(*) FROM tblServices) as Legacy,
        (SELECT COUNT(*) FROM `#__waterways_guide_services`) as New;
 
 SELECT 'Countries' as TableName,
-       (SELECT COUNT(*) FROM tblcountry) as Legacy,
+       (SELECT COUNT(*) FROM tblCountry) as Legacy,
        (SELECT COUNT(*) FROM `#__waterways_guide_country`) as New;
 
 SELECT 'Changelog' as TableName,
-       (SELECT COUNT(*) FROM tblwwgchangelog) as Legacy,
+       (SELECT COUNT(*) FROM tblChangeLog) as Legacy,
        (SELECT COUNT(*) FROM `#__waterways_guide_changelog`) as New;
 ```
 
