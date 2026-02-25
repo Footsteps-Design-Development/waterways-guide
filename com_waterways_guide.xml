@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="5.0" method="upgrade">
   <name>com_waterways_guide</name>
-	<creationDate>May 2024</creationDate>
-	<copyright>Copyright (C) 2011. All rights reserved.</copyright>
+	<creationDate>February 2025</creationDate>
+	<copyright>Copyright (C) 2025. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Russell English</author>
 	<authorEmail>russell@footsteps-design.co.uk</authorEmail>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<description>Waterways Guide - Manage moorings, hazards, and waterway information</description>
 
 	<namespace path="src">Joomla\Component\WaterWaysGuide</namespace>
