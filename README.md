@@ -93,7 +93,7 @@ If migrating from an older installation that uses `tbl*` prefixed tables, run th
 
 - Backup your database before running migration queries
 - Replace `#__` with your actual Joomla table prefix (e.g., `jos_`)
-- The legacy tables are assumed to be: `tblwwg`, `tblwwgrequest`, `tblservices`, `tblcountry`, `tblwwgchangelog`
+- The legacy tables are assumed to be: `tblGuides`, `tblGuidesRequests`, `tblServices`, `tblCountry`, `tblChangeLog`
 
 ### Migration Queries
 
