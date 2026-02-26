@@ -63,8 +63,26 @@ $dnode = $dom->createElement('Document');
 $docNode = $parNode->appendChild($dnode);
 
 // Add document name
-$docName = $dom->createElement('name', 'Waterways Guide - ' . ($country ?: 'All Countries'));
+$docName = $dom->createElement('name', ($country ?: 'All') . '-' . ($waterway ?: 'All'));
 $docNode->appendChild($docName);
+
+// Add mooring style
+$styleNode = $dom->createElement('Style');
+$styleNode->setAttribute('id', 'mooringStyle');
+$iconStyleNode = $dom->createElement('IconStyle');
+$iconStyleNode->setAttribute('id', 'mooringIcon');
+$iconNode = $dom->createElement('Icon');
+$hrefNode = $dom->createElement('href', 'http://www.barges.org/Image/common/mooring1.png');
+$iconNode->appendChild($hrefNode);
+$iconStyleNode->appendChild($iconNode);
+$styleNode->appendChild($iconStyleNode);
+$docNode->appendChild($styleNode);
+
+// Get component params for copyright
+$cParams = WaterwaysHelper::getParams();
+$sitename = Factory::getApplication()->get('sitename', 'DBA The Barge Association');
+$memberNumber = $cParams->get('member_number', '');
+$user = Factory::getApplication()->getIdentity();
 
 foreach ($guides as $row) {
     // Skip entries without valid coordinates
@@ -73,13 +91,126 @@ foreach ($guides as $row) {
         continue;
     }
 
-    $GuideName = htmlspecialchars(stripslashes($row['GuideName']));
-    $GuideWaterway = htmlspecialchars(stripslashes($row['GuideWaterway']));
-    $GuideSummary = htmlspecialchars(stripslashes($row['GuideSummary']));
+    $GuideID = $row['GuideID'];
+    $GuideNo = $row['GuideNo'];
+    $GuideVer = $row['GuideVer'];
+    $GuideName = stripslashes($row['GuideName']);
+    $GuideWaterway = stripslashes($row['GuideWaterway']);
+    $GuideRating = $row['GuideRating'];
+    $GuideRef = stripslashes($row['GuideRef']);
+    $GuideLocation = stripslashes($row['GuideLocation']);
+    $GuideMooring = stripslashes($row['GuideMooring']);
+    $GuideCodes = stripslashes($row['GuideCodes']);
+    $GuideFacilities = stripslashes($row['GuideFacilities']);
+    $GuideCosts = stripslashes($row['GuideCosts']);
+    $GuideAmenities = stripslashes($row['GuideAmenities']);
+    $GuideContributors = stripslashes($row['GuideContributors']);
+    $GuideSummary = stripslashes($row['GuideSummary']);
+    $GuideRemarks = stripslashes($row['GuideRemarks']);
+    $GuideUpdate = $row['GuideUpdate'];
+    $GuideCategory = $row['GuideCategory'];
     $GuideLat = stripslashes($row['GuideLat']);
     $GuideLong = stripslashes($row['GuideLong']);
 
+    // Format lat/long for display
+    $GuideLatLong = WaterwaysHelper::decimalToDegree($GuideLat, 'LAT') . ' , ' .
+                    WaterwaysHelper::decimalToDegree($GuideLong, 'LON');
+
+    // Get mooring rating text
+    $mooringRating = '';
+    switch ($GuideRating) {
+        case 1: $mooringRating = 'Rating Poor'; break;
+        case 2: $mooringRating = 'Rating Adequate'; break;
+        case 3: $mooringRating = 'Rating Good'; break;
+        case 4: $mooringRating = 'Rating Excellent'; break;
+    }
+
+    // Get service codes description
+    $serviceDesc = '';
+    if ($GuideCodes) {
+        $query = $db->getQuery(true)
+            ->select('ServiceDescGB')
+            ->from($db->quoteName('#__waterways_guide_services'))
+            ->where($db->quoteName('ServiceCategory') . ' = ' .
+                   $db->quote($GuideCategory == 1 ? 'mooringsguides' : 'hazardguides'))
+            ->order($db->quoteName('ServiceSortOrder'));
+        $services = $db->setQuery($query)->loadColumn();
+
+        $essentials = [];
+        foreach ($services as $service) {
+            $serviceId = '';
+            // Match service to code (simplified - you may need to enhance this)
+            if (strpos($GuideCodes, '|' . $service . '|') !== false) {
+                $essentials[] = $service;
+            }
+        }
+        // Get actual service descriptions
+        $query = $db->getQuery(true)
+            ->select(['ServiceID', 'ServiceDescGB'])
+            ->from($db->quoteName('#__waterways_guide_services'))
+            ->where($db->quoteName('ServiceCategory') . ' = ' .
+                   $db->quote($GuideCategory == 1 ? 'mooringsguides' : 'hazardguides'))
+            ->order($db->quoteName('ServiceSortOrder'));
+        $allServices = $db->setQuery($query)->loadAssocList('ServiceID');
+
+        $essentials = [];
+        foreach ($allServices as $serviceId => $service) {
+            if (strpos($GuideCodes, '|' . $serviceId . '|') !== false) {
+                $essentials[] = $service['ServiceDescGB'];
+            }
+        }
+        $serviceDesc = implode(', ', $essentials);
+    }
+
+    // Build description HTML
+    $description = '<b>Waterway:</b> ' . htmlspecialchars($GuideWaterway) . '<br />' . "\n";
+    if ($mooringRating) {
+        $description .= '<b>Mooring:</b> ' . $mooringRating . '<br />' . "\n";
+    }
+    $description .= '<b>Lat/Long:</b> ' . htmlspecialchars($GuideLatLong) . '<br />' . "\n";
+    if ($GuideRef) {
+        $description .= '<b>Reference:</b> ' . htmlspecialchars($GuideRef) . '<br />' . "\n";
+    }
+    if ($GuideLocation) {
+        $description .= '<b>Location:</b> ' . htmlspecialchars($GuideLocation) . '<br />' . "\n";
+    }
+    if ($GuideMooring) {
+        $description .= '<b>Mooring:</b> ' . htmlspecialchars($GuideMooring) . '<br />' . "\n";
+    }
+    if ($serviceDesc) {
+        $description .= '<b>Essentials:</b> ' . htmlspecialchars($serviceDesc) . '<br />' . "\n";
+    }
+    if ($GuideFacilities) {
+        $description .= '<b>Facilities:</b> ' . htmlspecialchars($GuideFacilities) . '<br />' . "\n";
+    }
+    if ($GuideCosts) {
+        $description .= '<b>Costs:</b> ' . htmlspecialchars($GuideCosts) . '<br />' . "\n";
+    }
+    if ($GuideAmenities) {
+        $description .= '<b>Amenities:</b> ' . htmlspecialchars($GuideAmenities) . '<br />' . "\n";
+    }
+    if ($GuideContributors) {
+        $description .= '<b>Contributors:</b> ' . htmlspecialchars($GuideContributors) . '<br />' . "\n";
+    }
+    if ($GuideRemarks) {
+        $description .= '<b>Remarks:</b> ' . htmlspecialchars($GuideRemarks) . '<br />' . "\n";
+    }
+    if ($GuideUpdate && $GuideUpdate != '0000-00-00 00:00:00') {
+        $updateDate = date('dmy', strtotime($GuideUpdate));
+        $description .= '<b>Last Update:</b> ' . $updateDate . ' - Mooring Index: ' . $GuideNo . ' - Version: ' . $GuideVer . '<br />' . "\n";
+    }
+
+    // Add edit link
+    $editUrl = 'http://barges.org/knowledgebase/waterways-guide/waterways-guide?guideaction=memberedit&infoid=' . $GuideID;
+    $description .= '<a href=\'' . $editUrl . '\'>Click here to update this entry on-line</a><br />' . "\n";
+
+    // Add copyright
+    $description .= 'Copyright ' . date('Y') . '  ' . htmlspecialchars($sitename) . ', ' . htmlspecialchars($memberNumber) . '.<br />' . "\n";
+    $description .= 'For use of DBA member ' . htmlspecialchars($user->name) . ' only.<br />' . "\n";
+
+    // Create placemark
     $node = $dom->createElement('Placemark');
+    $node->setAttribute('id', 'placemark' . $GuideID);
     $placeNode = $docNode->appendChild($node);
 
     // Name with CDATA
@@ -88,21 +219,21 @@ foreach ($guides as $row) {
     $nameNode->appendChild($cdataNode);
     $placeNode->appendChild($nameNode);
 
-    // Description with waterway and summary
-    $description = $GuideWaterway;
-    if ($GuideSummary) {
-        $description .= "\n" . $GuideSummary;
-    }
+    // Description with CDATA
     $descNode = $dom->createElement('description');
     $descCdata = $dom->createCDATASection($description);
     $descNode->appendChild($descCdata);
     $placeNode->appendChild($descNode);
 
+    // Style URL
+    $styleUrlNode = $dom->createElement('styleUrl', '#mooringStyle');
+    $placeNode->appendChild($styleUrlNode);
+
     // Point coordinates
     $pointNode = $dom->createElement('Point');
     $placeNode->appendChild($pointNode);
 
-    $coorStr = $GuideLong . ',' . $GuideLat . ',0';
+    $coorStr = $GuideLong . ',' . $GuideLat;
     $coorNode = $dom->createElement('coordinates', $coorStr);
     $pointNode->appendChild($coorNode);
 }
