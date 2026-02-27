@@ -1,5 +1,5 @@
 <?php
-use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';

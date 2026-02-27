@@ -1,5 +1,5 @@
 <?php
-use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
 
 echo ("<tr><td colspan=4>");
 	echo("<input name=\"colsort\" type=\"hidden\" value=\"$colsort\">\n");

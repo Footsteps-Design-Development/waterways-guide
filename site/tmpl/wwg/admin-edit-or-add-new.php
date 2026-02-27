@@ -1,7 +1,7 @@
 <?php
 use Joomla\CMS\Factory;
 use Joomla\CMS\Router\Route;
-use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
+use Joomla\Component\WaterWaysGuide\Site\Helper\WaterwaysHelper;
     function diff($old, $new)
     {
         $maxlen = 0;

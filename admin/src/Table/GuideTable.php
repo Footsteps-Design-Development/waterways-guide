@@ -18,6 +18,24 @@ use Joomla\CMS\Factory;
 class GuideTable extends Table
 {
     /**
+     * Indicates that columns fully support the NULL value in the database
+     *
+     * @var    boolean
+     * @since  4.0.0
+     */
+    protected $_supportNullValue = true;
+
+    /**
+     * Maps legacy column names to the actual column names in the database
+     *
+     * @var    array
+     * @since  4.0.0
+     */
+    protected $_columnAlias = [
+        'published' => 'GuideStatus',
+    ];
+
+    /**
      * Constructor
      *
      * @param   DatabaseDriver  $db  Database driver object
