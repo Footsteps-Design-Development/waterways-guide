@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updates>
+    <update>
+        <name>Waterways Guide component</name>
+        <description>Waterways Guide - Manage moorings, hazards, and waterway information for Joomla 5</description>
+        <element>com_waterways_guide</element>
+        <type>component</type>
+        <client>site</client>
+        <version>3.0.7</version>
+        <infourl title="Waterways Guide Component">https://github.com/Footsteps-Design-Development/waterways-guide</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/Footsteps-Design-Development/waterways-guide/releases/download/3.0.7/waterways-guide-main.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Russell English</maintainer>
+        <maintainerurl>https://github.com/Footsteps-Design-Development/waterways-guide</maintainerurl>
+        <targetplatform name="joomla" version="5\.[0-9]"/>
+    </update>
+</updates>

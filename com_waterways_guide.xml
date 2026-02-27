@@ -64,5 +64,11 @@
   		</sql>
    </uninstall>
 
+    <updateservers>
+        <server type="extension" priority="1" name="Waterways Guide Component Updates">
+            https://raw.githubusercontent.com/Footsteps-Design-Development/waterways-guide/main/updates.xml
+        </server>
+    </updateservers>
+
 </extension>
 
