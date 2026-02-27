@@ -1,4 +1,6 @@
 <?php
+use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
+
 echo ("<tr><td colspan=4>");
 	echo("<input name=\"colsort\" type=\"hidden\" value=\"$colsort\">\n");
 
@@ -40,7 +42,7 @@ echo ("<tr><td colspan=4>");
 		}
 		$GuideCountry = stripslashes($row["GuideCountry"]);
 		$GuideWaterway = stripslashes($row["GuideWaterway"]);
-		$GuideRequestDate = date_to_format($row["GuideRequestDate"],"ymd");
+		$GuideRequestDate = WaterwaysHelper::dateToFormat($row["GuideRequestDate"],"ymd");
 		$GuideRequestMethod = stripslashes($row["GuideRequestMethod"]);
 		$GuideRequestStatus = stripslashes($row["GuideRequestStatus"]);
 		if($row[$colsort]!=$thisfield){

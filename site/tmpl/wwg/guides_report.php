@@ -1,4 +1,5 @@
 <?php
+use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
 
 $config = Factory::getConfig();
 $mailOn = Factory::getConfig()->get('mailonline') == '1';
@@ -60,7 +61,7 @@ $mailOn = Factory::getConfig()->get('mailonline') == '1';
 				if($memberlevel==60){
 					$supervisor=1;	
 				}
-				$datepaiddisplay=date_to_format($DatePaid,"d") ;
+				$datepaiddisplay=WaterwaysHelper::dateToFormat($DatePaid,"d") ;
 				
 				switch ($memberrow["MemStatus"]) {
 					case 1:

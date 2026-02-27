@@ -27,27 +27,27 @@ if (!$num_rows) {
 
 $datenow = time();
 $row = reset($result);
-$GuideID = stripslashes($row["GuideID"]);
-$GuideNo = stripslashes($row["GuideNo"]);
-$GuideVer = stripslashes($row["GuideVer"]);
-$GuideCountry = stripslashes($row["GuideCountry"]);
-$GuideWaterway = stripslashes($row["GuideWaterway"]);
-$GuideSummary = nl2br(stripslashes($row["GuideSummary"]));
-$GuideName = stripslashes($row["GuideName"]);
-$GuideRef = stripslashes($row["GuideRef"]);
-$GuideOrder = stripslashes($row["GuideOrder"]);
-$GuideLatLong = stripslashes($row["GuideLatLong"]);
-$GuideLocation = nl2br(stripslashes($row["GuideLocation"]));
-$GuideMooring = nl2br(stripslashes($row["GuideMooring"]));
-$GuideFacilities = nl2br(stripslashes($row["GuideFacilities"]));
-$GuideCodes = stripslashes($row["GuideCodes"]);
-$GuideCosts = nl2br(stripslashes($row["GuideCosts"]));
-$GuideRating = stripslashes($row["GuideRating"]);
-$GuideAmenities = nl2br(stripslashes($row["GuideAmenities"]));
-$GuideContributors = nl2br(stripslashes($row["GuideContributors"]));
-$GuideRemarks = nl2br(stripslashes($row["GuideRemarks"]));
-$GuideLat = stripslashes($row["GuideLat"]);
-$GuideLong = stripslashes($row["GuideLong"]);
+$GuideID = stripslashes($row["GuideID"] ?? '');
+$GuideNo = stripslashes($row["GuideNo"] ?? '');
+$GuideVer = stripslashes($row["GuideVer"] ?? '');
+$GuideCountry = stripslashes($row["GuideCountry"] ?? '');
+$GuideWaterway = stripslashes($row["GuideWaterway"] ?? '');
+$GuideSummary = nl2br(stripslashes($row["GuideSummary"] ?? ''));
+$GuideName = stripslashes($row["GuideName"] ?? '');
+$GuideRef = stripslashes($row["GuideRef"] ?? '');
+$GuideOrder = stripslashes($row["GuideOrder"] ?? '');
+$GuideLatLong = stripslashes($row["GuideLatLong"] ?? '');
+$GuideLocation = nl2br(stripslashes($row["GuideLocation"] ?? ''));
+$GuideMooring = nl2br(stripslashes($row["GuideMooring"] ?? ''));
+$GuideFacilities = nl2br(stripslashes($row["GuideFacilities"] ?? ''));
+$GuideCodes = stripslashes($row["GuideCodes"] ?? '');
+$GuideCosts = nl2br(stripslashes($row["GuideCosts"] ?? ''));
+$GuideRating = stripslashes($row["GuideRating"] ?? '');
+$GuideAmenities = nl2br(stripslashes($row["GuideAmenities"] ?? ''));
+$GuideContributors = nl2br(stripslashes($row["GuideContributors"] ?? ''));
+$GuideRemarks = nl2br(stripslashes($row["GuideRemarks"] ?? ''));
+$GuideLat = stripslashes($row["GuideLat"] ?? '');
+$GuideLong = stripslashes($row["GuideLong"] ?? '');
 //convert dec to lat long
 if ($GuideLat && $GuideLong) {
     $GuideLatLong = decimal2degree($GuideLat, 'LAT') . " , " . decimal2degree($GuideLong, 'LON');
@@ -60,11 +60,11 @@ if ($GuideLat && $GuideLong) {
     $mapicon = "";
 }
 
-$GuideDocs = stripslashes($row["GuideDocs"]);
-$GuidePostingDate = stripslashes($row["GuidePostingDate"]);
-$GuideCategory = stripslashes($row["GuideCategory"]);
-$GuideUpdate = stripslashes($row["GuideUpdate"]);
-$GuideStatus = stripslashes($row["GuideStatus"]);
+$GuideDocs = stripslashes($row["GuideDocs"] ?? '');
+$GuidePostingDate = stripslashes($row["GuidePostingDate"] ?? '');
+$GuideCategory = stripslashes($row["GuideCategory"] ?? '');
+$GuideUpdate = stripslashes($row["GuideUpdate"] ?? '');
+$GuideStatus = stripslashes($row["GuideStatus"] ?? '');
 $GuideUpdatedisplay = (empty($GuideUpdate) ? 'Date unknown' : date('Y-m-d', strtotime($GuideUpdate))) . " - Mooring Index: " . $GuideNo . " - Version: " . $GuideVer;
 $GuideRatingIcon = '';
 $i = 1;

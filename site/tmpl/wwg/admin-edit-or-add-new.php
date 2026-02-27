@@ -1,6 +1,7 @@
 <?php
 use Joomla\CMS\Factory;
 use Joomla\CMS\Router\Route;
+use Footsteps\Component\WaterwaysGuide\Site\Helper\WaterwaysHelper;
     function diff($old, $new)
     {
         $maxlen = 0;
@@ -274,7 +275,7 @@ use Joomla\CMS\Router\Route;
         $listresults .= "<tr><td><b>SUBMISSION APPROVAL REQUIRED</b> Check and adjust if necessary the entry below, sequence order may need to be added, edit the email message in the box that will be sent to the submitter and click the appropriate button</td></tr>\n";
         $listresults .= "<tr><td><b>Submitter: </b>" . $contact . "</td></tr>\n";
         $listresults .= "<tr valign='top'><td><b>Version:</b> " . $GuideVer . " (version 1 will be a new submission)</td></tr>\n";
-        $GuideMessage = "Many thanks for your update to the guide, '" . $GuideName . "' (" . $GuideWaterway . ") version " . $GuideVer . " made on " . date_to_format($GuideUpdate, 'd') . ". ";
+        $GuideMessage = "Many thanks for your update to the guide, '" . $GuideName . "' (" . $GuideWaterway . ") version " . $GuideVer . " made on " . WaterwaysHelper::dateToFormat($GuideUpdate, 'd') . ". ";
         $GuideMessage .= "It has now been incorporated into the guides as the current version.\n\n";
         $GuideMessage .= "Guide Editor.\n";
         $listresults .= "<tr valign='top'><td><b>Message:</b> <i>Edit the <b>default</b> message which will be emailed to the submitter or delete it completely if you don't want to send an email</i><br><textarea cols=\"90\" rows=\"10\" name=\"GuideMessage\" class=\"formtextarea\">" . $GuideMessage . "</textarea></td></tr>\n";
